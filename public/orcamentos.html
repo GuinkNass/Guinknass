@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação de Orçamento — GuinkNass</title>
+  <meta name="description" content="Solicite seu orçamento de tatuagem autoral com GuinkNass. Descreva sua ideia, anexe referências e receba uma análise personalizada.">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo">
+        <span>Guink<span class="text-cyan">Nass</span></span>
+        <span class="logo-tag">ART</span>
+      </a>
+
+      <nav class="nav-desktop">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="galeria.html" class="nav-link">Quadros</a></li>
+          <li><a href="estudos.html" class="nav-link">Estudos</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li><a href="orcamentos.html" class="nav-link active">Orçamentos</a></li>
+          <li><a href="anamnese.html" class="nav-link">Anamnese</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gaveta Mobile -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer">
+    <div>
+      <div style="margin-bottom: 32px;">
+        <span class="site-logo">Guink<span class="text-cyan">Nass</span></span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Início</a>
+        <a href="portfolio.html" class="mobile-nav-link">Portfólio de Tatuagens</a>
+        <a href="galeria.html" class="mobile-nav-link">Galeria de Quadros</a>
+        <a href="estudos.html" class="mobile-nav-link">Rascunhos e Estudos</a>
+        <a href="sobre.html" class="mobile-nav-link">Sobre o Artista</a>
+        <a href="orcamentos.html" class="mobile-nav-link active">Solicitar Orçamento</a>
+        <a href="anamnese.html" class="mobile-nav-link">Ficha de Anamnese</a>
+        <a href="contato.html" class="mobile-nav-link">Contato & WhatsApp</a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">WhatsApp Comercial</a>
+    </div>
+  </aside>
+
+  <main style="padding-top: var(--header-height);">
+    <!-- Top Banner -->
+    <section class="section-sm section-bg-dark" style="border-bottom: 1px solid var(--border-light); text-align: center;">
+      <div class="container container-narrow">
+        <span class="tag-badge">Atendimento Personalizado</span>
+        <h1 style="margin-bottom: 16px;">Solicitação de Orçamento</h1>
+        <p class="lead" style="margin-bottom: 20px;">
+          Descreva sua ideia com total liberdade. Cada projeto é elaborado sob medida de acordo com a anatomia e a proposta visual do cliente.
+        </p>
+        <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3); padding: 10px 20px; rounded: 12px; border-radius: 9999px;">
+          <span style="color: #f59e0b; font-size: 0.9rem; font-weight: 600;">Já possui orçamento aprovado ou quer agendar retorno?</span>
+          <a href="/consultar-orcamento" style="background: #f59e0b; color: #0a0a0c; font-weight: 700; font-size: 0.85rem; padding: 6px 14px; border-radius: 9999px; text-decoration: none; transition: opacity 0.2s;">Consultar & Agendar &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário -->
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="form-wrapper">
+
+          <!-- Formulário Ativo -->
+          <form id="budgetForm" novalidate>
+            <!-- Bloco 1: Identificação -->
+            <div style="margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border-light);">
+              <h3 style="color: var(--color-secondary); margin-bottom: 20px; font-size: 1.3rem;">1. Seus Dados de Contato</h3>
+              
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="clientName">Nome Completo <span class="required">*</span></label>
+                  <input type="text" id="clientName" class="form-control" placeholder="Seu nome completo" required>
+                  <span class="form-error-msg">Informe seu nome completo.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="clientEmail">E-mail <span class="required">*</span></label>
+                  <input type="email" id="clientEmail" class="form-control" placeholder="seuemail@exemplo.com" required>
+                  <span class="form-error-msg">Informe um e-mail válido.</span>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="clientPhone">WhatsApp com DDD <span class="required">*</span></label>
+                  <input type="tel" id="clientPhone" class="form-control" placeholder="(11) 99999-9999" required>
+                  <span class="form-error-msg">Informe seu telefone ou WhatsApp.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="clientCity">Cidade e Estado <span class="optional">(Opcional)</span></label>
+                  <input type="text" id="clientCity" class="form-control" placeholder="Ex: São Paulo - SP">
+                </div>
+              </div>
+            </div>
+
+            <!-- Bloco 2: Informações da Tatuagem -->
+            <div style="margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border-light);">
+              <h3 style="color: var(--color-secondary); margin-bottom: 20px; font-size: 1.3rem;">2. Sobre a Tatuagem</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="tattooIdea">Descrição da Ideia <span class="required">*</span></label>
+                <textarea id="tattooIdea" class="form-control" placeholder="Descreva o que deseja tatuar, elementos principais, conceito ou narrativa..." required></textarea>
+                <span class="form-error-msg">Por favor, descreva sua ideia.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tattooMeaning">Significado ou Contexto <span class="optional">(Opcional)</span></label>
+                <input type="text" id="tattooMeaning" class="form-control" placeholder="Algum significado pessoal especial?">
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="tattooLocation">Local do Corpo <span class="required">*</span></label>
+                  <input type="text" id="tattooLocation" class="form-control" placeholder="Ex: Antebraço, Costas, Coxa, Peito..." required>
+                  <span class="form-error-msg">Informe a região do corpo.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="tattooSize">Tamanho Aproximado (cm) <span class="required">*</span></label>
+                  <input type="text" id="tattooSize" class="form-control" placeholder="Ex: 15 cm x 10 cm" required>
+                  <span class="form-error-msg">Informe o tamanho estimado em centímetros.</span>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="tattooOrientation">Orientação / Posicionamento <span class="optional">(Opcional)</span></label>
+                  <input type="text" id="tattooOrientation" class="form-control" placeholder="Ex: Vertical, horizontal, lado esquerdo...">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="tattooStyle">Estilo Preferido <span class="optional">(Opcional)</span></label>
+                  <input type="text" id="tattooStyle" class="form-control" placeholder="Ex: Autoral, Realismo, Surrealismo...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Preferência de Cores</label>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="colorPreference" value="Preto e Cinza" checked>
+                    <span class="pill-label">Preto e Cinza</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="colorPreference" value="Colorido">
+                    <span class="pill-label">Colorido</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="colorPreference" value="A Combinar com o Artista">
+                    <span class="pill-label">A Combinar com o Artista</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="additionalNotes">Informações Adicionais <span class="optional">(Opcional)</span></label>
+                <textarea id="additionalNotes" class="form-control" style="min-height: 80px;" placeholder="Disponibilidade de dias, se já possui outras tatuagens no local, etc."></textarea>
+              </div>
+            </div>
+
+            <!-- Bloco 3: Referências Visuais -->
+            <div style="margin-bottom: 36px;">
+              <h3 style="color: var(--color-secondary); margin-bottom: 12px; font-size: 1.3rem;">3. Imagens de Referência</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+                Anexe fotos, rascunhos ou imagens que ajudem a contextualizar a sua ideia. Não envie imagens contendo documentos ou dados pessoais.
+              </p>
+
+              <div class="dropzone-container" id="budgetDropzone">
+                <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <div class="dropzone-title">Clique ou arraste imagens de referência aqui</div>
+                <div class="dropzone-sub">Formatos suportados: JPG, PNG, WEBP (Máx. 10MB cada)</div>
+                <input type="file" id="budgetFileInput" multiple accept="image/jpeg,image/png,image/webp" style="display: none;">
+              </div>
+
+              <div class="preview-list" id="budgetPreviewList">
+                <!-- Pré-visualização com miniatura e botão de remover -->
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="budgetSubmitBtn" style="width: 100%;">
+              <span>ENVIAR SOLICITAÇÃO DE ORÇAMENTO</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+
+          <!-- Card de Confirmação de Sucesso -->
+          <div class="form-success-card" id="budgetSuccessCard">
+            <div class="success-icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 style="margin-bottom: 16px;">Recebi sua solicitação!</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 620px; margin: 0 auto 30px auto; line-height: 1.7;">
+              Vou analisar sua ideia e as referências para avaliar as possibilidades do projeto. Obrigado por entrar em contato com <strong>GuinkNass</strong>.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">
+              A resposta com a proposta e o orçamento personalizado será combinada diretamente via e-mail ou WhatsApp.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+              <a id="budgetWhatsAppFallback" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                <span>Confirmar Envio no WhatsApp</span>
+              </a>
+              <a href="portfolio.html" class="btn btn-outline">Continuar Navegando</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col-brand">
+          <a href="index.html" class="footer-logo">Guink<span class="text-cyan">Nass</span></a>
+          <p class="footer-bio">
+            Atendimento exclusivo com hora marcada. São Paulo, SP.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="portfolio.html" class="footer-link">Portfólio</a></li>
+            <li><a href="galeria.html" class="footer-link">Quadros</a></li>
+            <li><a href="estudos.html" class="footer-link">Estudos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Formulários</h4>
+          <ul class="footer-links">
+            <li><a href="orcamentos.html" class="footer-link">Solicitar Orçamento</a></li>
+            <li><a href="anamnese.html" class="footer-link">Ficha de Anamnese</a></li>
+            <li><a href="contato.html" class="footer-link">Contato Geral</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contato Direto</h4>
+          <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">+55 11 99580-2338</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> GuinkNass. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/budget-form.js"></script>
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

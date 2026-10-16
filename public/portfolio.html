@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Tatuagens — GuinkNass</title>
+  <meta name="description" content="Explore o portfólio de tatuagens autorais do artista GuinkNass. Mais de 13 anos de experiência em composições de alto impacto, preto e cinza e projetos sob medida.">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo">
+        <span>Guink<span class="text-cyan">Nass</span></span>
+        <span class="logo-tag">ART</span>
+      </a>
+
+      <nav class="nav-desktop">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="portfolio.html" class="nav-link active">Portfólio</a></li>
+          <li><a href="galeria.html" class="nav-link">Quadros</a></li>
+          <li><a href="estudos.html" class="nav-link">Estudos</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li><a href="orcamentos.html" class="nav-link">Orçamentos</a></li>
+          <li><a href="anamnese.html" class="nav-link">Anamnese</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gaveta Mobile -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer">
+    <div>
+      <div style="margin-bottom: 32px;">
+        <span class="site-logo">Guink<span class="text-cyan">Nass</span></span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Início</a>
+        <a href="portfolio.html" class="mobile-nav-link active">Portfólio de Tatuagens</a>
+        <a href="galeria.html" class="mobile-nav-link">Galeria de Quadros</a>
+        <a href="estudos.html" class="mobile-nav-link">Rascunhos e Estudos</a>
+        <a href="sobre.html" class="mobile-nav-link">Sobre o Artista</a>
+        <a href="orcamentos.html" class="mobile-nav-link">Solicitar Orçamento</a>
+        <a href="anamnese.html" class="mobile-nav-link">Ficha de Anamnese</a>
+        <a href="contato.html" class="mobile-nav-link">Contato & WhatsApp</a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="orcamentos.html" class="btn btn-primary" style="width: 100%;">SOLICITAR ORÇAMENTO</a>
+      <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">WhatsApp Comercial</a>
+    </div>
+  </aside>
+
+  <main style="padding-top: var(--header-height);">
+    <!-- Top Banner -->
+    <section class="section-sm section-bg-dark" style="border-bottom: 1px solid var(--border-light); text-align: center;">
+      <div class="container">
+        <span class="tag-badge">Obras Autorais na Pele</span>
+        <h1 style="margin-bottom: 16px;">Portfólio de Tatuagens</h1>
+        <p class="lead" style="max-width: 720px; margin: 0 auto;">
+          Trabalhos executados com rigor técnico, preservando nitidez, solidez de preto e anatomia corporal. Clique em qualquer obra para ampliar em alta definição.
+        </p>
+      </div>
+    </section>
+
+    <!-- Galeria com Filtros -->
+    <section class="section">
+      <div class="container">
+        <!-- Filtros de Categoria -->
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="todos">Todos os Trabalhos</button>
+          <button class="filter-btn" data-filter="autorais">Autorais</button>
+          <button class="filter-btn" data-filter="pretoecinza">Preto e Cinza</button>
+          <button class="filter-btn" data-filter="realismo">Realismo & Sombra</button>
+          <button class="filter-btn" data-filter="detalhes">Detalhes & Traços</button>
+          <button class="filter-btn" data-filter="fechamento">Fechamentos</button>
+        </div>
+
+        <!-- Grade Dinâmica -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Gerado dinamicamente via js/portfolio.js com as 41 imagens reais -->
+        </div>
+
+        <!-- Call to Action Oficial -->
+        <div style="margin-top: 80px; text-align: center; background: var(--bg-card); border: 1px solid var(--border-cyan); border-radius: var(--radius-xl); padding: 50px 30px; box-shadow: var(--glow-cyan);">
+          <span class="tag-badge tag-badge-accent">Projeto Exclusivo</span>
+          <h2 style="margin-bottom: 16px;">Inicie Seu Próprio Projeto</h2>
+          <p style="max-width: 650px; margin: 0 auto 32px auto; color: var(--text-muted);">
+            Trabalhos criados de forma personalizada, respeitando o desejo do cliente e a visão artística autoral.
+          </p>
+          <a href="orcamentos.html" class="btn btn-primary btn-lg">
+            <span>QUERO FAZER MINHA TATUAGEM</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col-brand">
+          <a href="index.html" class="footer-logo">Guink<span class="text-cyan">Nass</span></a>
+          <p class="footer-bio">
+            Mais de 20 anos de trajetória como artista visual e mais de 13 anos dedicados à tatuagem.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="portfolio.html" class="footer-link">Portfólio</a></li>
+            <li><a href="galeria.html" class="footer-link">Quadros</a></li>
+            <li><a href="estudos.html" class="footer-link">Estudos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Atendimento</h4>
+          <ul class="footer-links">
+            <li><a href="orcamentos.html" class="footer-link">Solicitar Orçamento</a></li>
+            <li><a href="anamnese.html" class="footer-link">Ficha de Anamnese</a></li>
+            <li><a href="contato.html" class="footer-link">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">WhatsApp</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Atendimento comercial direto:</p>
+          <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">+55 11 99580-2338</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> GuinkNass. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-popup">
+      <div class="whatsapp-popup-header">
+        <span class="whatsapp-popup-title">Contato Oficial GuinkNass</span>
+        <button class="whatsapp-popup-close">✕</button>
+      </div>
+      <div class="whatsapp-popup-body">
+        <p>Como posso te ajudar hoje?</p>
+        <div class="whatsapp-quick-links">
+          <a href="https://wa.me/5511995802338?text=Ol%C3%A1%2C%20GuinkNass!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20uma%20tatuagem." target="_blank" rel="noopener noreferrer" class="whatsapp-quick-link">
+            <span>🖋️ Orçamento de Tatuagem</span>
+          </a>
+          <a href="https://wa.me/5511995802338?text=Ol%C3%A1%2C%20GuinkNass!%20Tenho%20interesse%20em%20uma%20das%20suas%20obras." target="_blank" rel="noopener noreferrer" class="whatsapp-quick-link">
+            <span>🎨 Compra de Quadro</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class="whatsapp-btn-trigger" aria-label="Abrir WhatsApp">
+      <svg viewBox="0 0 32 32"><path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16c0 2.656.768 5.136 2.096 7.232L2.64 29.36l6.32-1.92A13.432 13.432 0 0016 29.5c7.456 0 13.5-6.044 13.5-13.5S23.456 2.5 16 2.5zm7.888 19.04c-.336.944-1.664 1.76-2.32 1.84-.624.08-1.424.112-4.608-1.2-3.84-1.584-6.304-5.488-6.496-5.744-.192-.256-1.536-2.048-1.536-3.904 0-1.856.976-2.768 1.328-3.136.352-.368.768-.464 1.024-.464.256 0 .512.016.736.032.24.016.56-.096.88.672.336.8 1.136 2.768 1.232 2.976.096.208.16.448.032.704-.128.256-.192.416-.384.64-.192.224-.4.496-.576.672-.192.192-.384.4-.16.784.224.384.992 1.632 2.128 2.64 1.456 1.296 2.688 1.696 3.072 1.888.384.192.608.16.832-.096.224-.256.96-1.12 1.216-1.504.256-.384.512-.32.864-.192.352.128 2.224 1.056 2.608 1.248.384.192.64.288.736.448.096.16.096.944-.24 1.888z"/></svg>
+    </button>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/portfolio.js"></script>
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
