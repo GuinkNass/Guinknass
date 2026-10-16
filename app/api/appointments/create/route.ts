@@ -61,10 +61,10 @@ export async function POST(request: NextRequest) {
       // Mock fallback
     }
 
-    // 3. Hold de 15 minutos e cálculo estrito de 25% de sinal
+    // 3. Hold de 15 minutos e sinal FIXO oficial de R$ 150,00
     const holdExpiresAt = new Date(Date.now() + 15 * 60 * 1000);
-    const depositAmount = Number((totalPrice * 0.25).toFixed(2));
-    const balanceDue = Number((totalPrice - depositAmount).toFixed(2));
+    const depositAmount = 150.0;
+    const balanceDue = Number(Math.max(0, totalPrice - depositAmount).toFixed(2));
 
     const appointmentId = `app_new_${Date.now()}`;
 

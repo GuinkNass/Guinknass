@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
         sizeCm: quote.sizeCm,
         style: quote.style,
         totalPrice: Number(quote.totalPrice),
-        depositAmount: Number((Number(quote.totalPrice) * 0.25).toFixed(2)),
+        depositAmount: 150.0,
         estimatedDurationHours: quote.estimatedDurationHours || 3,
         hasActiveProject: quote.hasActiveProject,
         canRequestTouchup: quote.canRequestTouchup,

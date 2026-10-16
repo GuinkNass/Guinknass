@@ -8,10 +8,15 @@ export interface InfinitePayPixResponse {
   expiresAt: string;
 }
 
+// Valor fixo oficial do sinal de reserva da data / diária
+export const FIXED_DEPOSIT_AMOUNT = 150.0;
+
+// Link fixo oficial de checkout criado pelo estúdio na InfinitePay
+export const FIXED_INFINITEPAY_CHECKOUT_URL = "https://checkout.infinitepay.io/deal-hunter-pro-br/YhWrx0WoY3";
+
 /**
- * Serviço de Integração com InfinitePay Checkout Links
- * Utiliza o endpoint oficial da InfinitePay (api.checkout.infinitepay.io/links)
- * usando a sua InfiniteTag (handle), SEM precisar de chave secreta de API!
+ * Serviço de Integração com InfinitePay Checkout
+ * Gera a cobrança do sinal FIXO de R$ 150,00
  */
 export async function generateInfinitePayPix(params: {
   appointmentId: string;
@@ -25,9 +30,9 @@ export async function generateInfinitePayPix(params: {
   const webhookUrl = `${appUrl}/api/webhooks/infinitepay`;
   const redirectUrl = `${appUrl}/consultar-orcamento?status=paid&appId=${params.appointmentId}`;
 
-  // Cálculo estrito no backend: exatamente 25% de sinal
-  const depositAmount = Number((params.totalPrice * 0.25).toFixed(2));
-  const amountInCents = Math.round(depositAmount * 100);
+  // Sinal fixo de R$ 150,00 (15000 centavos)
+  const depositAmount = FIXED_DEPOSIT_AMOUNT;
+  const amountInCents = 15000;
 
   // Hold de 15 minutos para expiração do agendamento
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
@@ -39,7 +44,7 @@ export async function generateInfinitePayPix(params: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        handle: handle.replace(/^\$/, ""), // Remove o $ se houver
+        handle: handle.replace(/^\$/, ""),
         redirect_url: redirectUrl,
         webhook_url: webhookUrl,
         order_nsu: params.appointmentId,
@@ -47,7 +52,7 @@ export async function generateInfinitePayPix(params: {
           {
             quantity: 1,
             price: amountInCents,
-            description: `Sinal 25% Tattoo (${depositAmount.toFixed(2)}) - ${params.clientName}`,
+            description: `Sinal Fixo Tattoo (R$ 150,00) - ${params.clientName}`,
           },
         ],
       }),
@@ -68,24 +73,23 @@ export async function generateInfinitePayPix(params: {
       }
     }
   } catch (error) {
-    console.warn("[InfinitePay Checkout] Erro ao chamar API externa. Usando fallback dinâmico:", error);
+    console.warn("[InfinitePay Checkout] Erro ao chamar API externa. Usando link fixo oficial:", error);
   }
 
-  // Fallback seguro caso a chamada de rede externa oscile
-  const directCheckoutUrl = `https://checkout.infinitepay.com.br/${handle.replace(/^\$/, "")}`;
+  // Link oficial direto configurado na conta InfinitePay
   return {
     orderId: params.appointmentId,
     txid: params.appointmentId,
     amount: depositAmount,
-    checkoutUrl: directCheckoutUrl,
-    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(directCheckoutUrl)}`,
-    copiaECola: directCheckoutUrl,
+    checkoutUrl: FIXED_INFINITEPAY_CHECKOUT_URL,
+    qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(FIXED_INFINITEPAY_CHECKOUT_URL)}`,
+    copiaECola: FIXED_INFINITEPAY_CHECKOUT_URL,
     expiresAt,
   };
 }
 
 /**
- * Serviço de Cobrança de Saldo Restante (75%)
+ * Serviço de Cobrança de Saldo Restante (Valor Total - R$ 150,00)
  */
 export async function generateBalancePix(params: {
   appointmentId: string;
@@ -117,7 +121,7 @@ export async function generateBalancePix(params: {
           {
             quantity: 1,
             price: amountInCents,
-            description: `Saldo Restante 75% Tattoo (R$ ${params.balanceAmount.toFixed(2)}) - ${params.clientName}`,
+            description: `Saldo Restante Tattoo (R$ ${params.balanceAmount.toFixed(2)}) - ${params.clientName}`,
           },
         ],
       }),

@@ -89,8 +89,8 @@ export default function SchedulingModal({
 
   const duration = appointmentType === "TOUCHUP" ? 2 : quote.estimatedDurationHours || 3;
   const isRetorno = appointmentType === "TOUCHUP" || appointmentType === "NEXT_SESSION";
-  const depositAmount = isRetorno ? 0 : Number((quote.totalPrice * 0.25).toFixed(2));
-  const balanceDue = isRetorno ? 0 : Number((quote.totalPrice - depositAmount).toFixed(2));
+  const depositAmount = isRetorno ? 0 : 150.0;
+  const balanceDue = isRetorno ? 0 : Number(Math.max(0, quote.totalPrice - depositAmount).toFixed(2));
 
   // Submissão do Formulário
   const handleSubmit = async (e: React.FormEvent) => {
@@ -192,7 +192,7 @@ export default function SchedulingModal({
               Studio 13Point Tattoo & GuinkNass
             </span>
             <h2 className="text-xl sm:text-2xl font-bold mt-1 text-white">
-              {pixData ? "Pagamento do Sinal Pix (25%)" : "Agendamento de Sessão"}
+              {pixData ? "Pagamento do Sinal Fixo (R$ 150,00)" : "Agendamento de Sessão"}
             </h2>
           </div>
           <button
@@ -439,11 +439,11 @@ export default function SchedulingModal({
               </div>
               <div className="flex justify-between text-amber-400 font-bold text-sm">
                 <span>Sinal a Pagar Agora:</span>
-                <span>{isRetorno ? "R$ 0,00 (Isento)" : `R$ ${depositAmount.toFixed(2).replace(".", ",")} (25%)`}</span>
+                <span>{isRetorno ? "R$ 0,00 (Isento)" : "R$ 150,00 (Sinal Fixo)"}</span>
               </div>
               {!isRetorno && (
                 <div className="flex justify-between text-neutral-400 border-t border-neutral-800 pt-2">
-                  <span>Saldo Restante no Estúdio (75%):</span>
+                  <span>Saldo Restante no Estúdio:</span>
                   <span className="text-neutral-300">R$ {balanceDue.toFixed(2).replace(".", ",")}</span>
                 </div>
               )}
@@ -461,7 +461,7 @@ export default function SchedulingModal({
                     required
                   />
                   <span className="text-xs text-amber-200 leading-relaxed">
-                    <strong>Termo de Reserva de Data e Diária:</strong> Estou ciente de que o sinal de 25% (R$ {depositAmount.toFixed(2).replace(".", ",")}) garante a reserva da minha data e diária do estúdio, <strong>NÃO sendo reembolsável em nenhuma hipótese de cancelamento ou não comparecimento</strong>. O valor será integralmente abatido no dia da tattoo.
+                    <strong>Termo de Reserva de Data e Diária:</strong> Estou ciente de que o sinal fixo de R$ 150,00 garante a reserva da minha data e diária do estúdio, <strong>NÃO sendo reembolsável em nenhuma hipótese de cancelamento ou não comparecimento</strong>. O valor será integralmente abatido no dia da tattoo.
                   </span>
                 </label>
               </div>
@@ -477,7 +477,7 @@ export default function SchedulingModal({
                 ? "Processando Agendamento..."
                 : isRetorno
                 ? "CONFIRMAR RETORNO / REAGENDAMENTO (R$ 0,00)"
-                : `PAGAR SINAL DE R$ ${depositAmount.toFixed(2).replace(".", ",")} VIA PIX`}
+                : "PAGAR SINAL FIXO DE R$ 150,00 VIA PIX"}
             </button>
           </form>
         )}

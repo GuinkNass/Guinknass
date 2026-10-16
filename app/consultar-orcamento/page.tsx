@@ -317,16 +317,16 @@ export default function ConsultarOrcamentoPage() {
                     </div>
                     <div className="flex justify-between items-center text-sm border-b border-neutral-800/80 pb-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-amber-400 font-medium">Sinal de Reserva (25%):</span>
+                        <span className="text-amber-400 font-medium">Sinal de Reserva (Fixo):</span>
                       </div>
                       <span className="font-bold text-amber-400 text-base">
-                        R$ {(searchResult.quote.depositAmount ?? (searchResult.quote.totalPrice * 0.25)).toFixed(2).replace(".", ",")}
+                        R$ 150,00
                       </span>
                     </div>
                     <div className="flex justify-between items-center text-xs text-neutral-400 pt-1">
-                      <span>Saldo a acertar no estúdio (75%):</span>
+                      <span>Saldo a acertar no estúdio:</span>
                       <span className="font-medium text-neutral-300">
-                        R$ {(searchResult.quote.totalPrice - (searchResult.quote.depositAmount ?? (searchResult.quote.totalPrice * 0.25))).toFixed(2).replace(".", ",")}
+                        R$ {Math.max(0, searchResult.quote.totalPrice - 150).toFixed(2).replace(".", ",")}
                       </span>
                     </div>
                   </div>
@@ -360,7 +360,7 @@ export default function ConsultarOrcamentoPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Novo Agendamento</h3>
                   <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                    Reserva oficial da sua sessão inaugural com garantia de data e diária de bancada. Exige sinal estrito de 25% (R$ {(searchResult.quote.depositAmount ?? (searchResult.quote.totalPrice * 0.25)).toFixed(2).replace(".", ",")}), <strong>não reembolsável em caso de cancelamento</strong>, abatido presencialmente no estúdio.
+                    Reserva oficial da sua sessão inaugural com garantia de data e diária de bancada. Exige sinal fixo de R$ 150,00, <strong>não reembolsável em caso de cancelamento</strong>, abatido presencialmente no valor total da tattoo.
                   </p>
                   
                   <div className="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800 text-xs text-neutral-300 space-y-1 mb-5">
@@ -383,7 +383,7 @@ export default function ConsultarOrcamentoPage() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span>Agendar 1ª Sessão (Sinal 25%)</span>
+                  <span>Agendar 1ª Sessão (Sinal Fixo R$ 150)</span>
                 </button>
               </div>
 
