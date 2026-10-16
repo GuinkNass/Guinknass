@@ -1,29 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { infinitepayWebhookSchema } from "@/lib/validations/schedule";
 import { createGoogleCalendarEvent } from "@/lib/googleCalendar";
 
 export async function POST(request: NextRequest) {
   try {
     const rawBody = await request.json();
+    console.log("[Webhook InfinitePay] Payload recebido:", JSON.stringify(rawBody));
 
-    const validation = infinitepayWebhookSchema.safeParse(rawBody);
-    if (!validation.success) {
-      console.warn("[Webhook InfinitePay] Payload inválido:", validation.error.format());
-      return NextResponse.json({ error: "Payload inválido" }, { status: 400 });
+    // Suporta o formato oficial do Checkout Integrado (order_nsu, amount, etc.) ou formato legado
+    const appointmentId = 
+      rawBody.order_nsu || 
+      rawBody.data?.metadata?.appointmentId || 
+      rawBody.data?.id;
+
+    if (!appointmentId) {
+      console.warn("[Webhook InfinitePay] Nenhum order_nsu / ID de agendamento encontrado.");
+      return NextResponse.json({ success: false, message: "order_nsu não informado" }, { status: 400 });
     }
 
-    const { event, data } = validation.data;
-    const appointmentId = data.metadata?.appointmentId || data.id;
-    const paymentType = data.metadata?.type || "TATTOO_DEPOSIT_25";
-
-    console.log(`[Webhook InfinitePay] Evento: ${event}, Status: ${data.status}, AppId: ${appointmentId}, Tipo: ${paymentType}`);
-
-    // Verifica se o pagamento foi concluído com sucesso
-    const isPaid = data.status === "paid" || data.status === "approved" || event === "transaction.paid";
-
-    if (!isPaid) {
-      return NextResponse.json({ received: true, status: data.status });
-    }
+    const cleanAppId = appointmentId.replace(/^balance_/, "");
+    const isBalancePayment = appointmentId.startsWith("balance_") || rawBody.data?.metadata?.type === "TATTOO_BALANCE_REMAINING";
 
     // Busca o agendamento no banco
     let appointment: any = null;
@@ -32,22 +27,21 @@ export async function POST(request: NextRequest) {
       appointment = await prisma.appointment.findFirst({
         where: {
           OR: [
-            { id: appointmentId },
-            { infinitepayOrderId: data.id },
-            { infinitepayTxid: data.txid },
-            { balanceOrderId: data.id },
+            { id: cleanAppId },
+            { infinitepayOrderId: cleanAppId },
+            { balanceOrderId: cleanAppId },
           ],
         },
         include: { quote: true },
       });
 
       if (!appointment) {
-        console.error(`[Webhook InfinitePay] Agendamento não encontrado para ID: ${appointmentId}`);
-        return NextResponse.json({ error: "Agendamento não encontrado" }, { status: 404 });
+        console.error(`[Webhook InfinitePay] Agendamento não encontrado para ID: ${cleanAppId}`);
+        return NextResponse.json({ success: false, message: "Agendamento não encontrado" }, { status: 400 });
       }
 
       // 1. Pagamento de Saldo Restante (75%)
-      if (paymentType === "TATTOO_BALANCE_REMAINING") {
+      if (isBalancePayment) {
         await prisma.appointment.update({
           where: { id: appointment.id },
           data: {
@@ -56,17 +50,18 @@ export async function POST(request: NextRequest) {
             balanceDue: 0,
           },
         });
-        return NextResponse.json({ success: true, message: "Saldo restante liquidado com sucesso. Projeto quitado!" });
+        return NextResponse.json({ success: true, message: "Saldo restante liquidado com sucesso!" }, { status: 200 });
       }
 
       // 2. Pagamento de Sinal Inicial de 25%
-      // Se já estava confirmado, evita duplicidade
       if (appointment.status === "CONFIRMED") {
-        return NextResponse.json({ message: "Agendamento já confirmado anteriormente." });
+        return NextResponse.json({ success: true, message: "Agendamento já confirmado anteriormente." }, { status: 200 });
       }
 
+      const rawAmount = rawBody.paid_amount || rawBody.amount || rawBody.data?.amount;
+      const paidAmount = rawAmount ? Number((rawAmount / 100).toFixed(2)) : Number(appointment.depositPaid);
+
       // Atualiza status para CONFIRMED e limpa o hold
-      const paidAmount = Number(data.amount ? (data.amount / 100).toFixed(2) : appointment.depositPaid);
       await prisma.appointment.update({
         where: { id: appointment.id },
         data: {
@@ -108,11 +103,12 @@ export async function POST(request: NextRequest) {
       } catch {}
     }
 
-    return NextResponse.json({ success: true, message: "Pagamento Pix confirmado e evento agendado." });
+    // Resposta 200 rápida conforme recomendação da InfinitePay
+    return NextResponse.json({ success: true, message: null }, { status: 200 });
   } catch (error: any) {
     console.error("[Webhook InfinitePay] Erro no processamento:", error);
     return NextResponse.json(
-      { error: "Erro interno no webhook da InfinitePay." },
+      { success: false, message: "Erro interno no webhook" },
       { status: 500 }
     );
   }

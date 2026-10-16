@@ -35,6 +35,7 @@ export default function SchedulingModal({
     amount: number;
     qrCodeUrl: string;
     copiaECola: string;
+    checkoutUrl?: string;
     expiresInMinutes: number;
   } | null>(null);
   const [createdAppointmentId, setCreatedAppointmentId] = useState<string | null>(null);
@@ -238,12 +239,23 @@ export default function SchedulingModal({
             </div>
 
             <div className="max-w-md mx-auto space-y-3">
+              {pixData.checkoutUrl && (
+                <a
+                  href={pixData.checkoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm"
+                >
+                  <span>⚡ Pagar Sinal no Checkout InfinitePay (Pix / Cartão) &rarr;</span>
+                </a>
+              )}
+
               <button
                 type="button"
                 onClick={copyPix}
-                className="w-full py-3.5 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 text-xs"
               >
-                {copied ? "✓ Código Copiado com Sucesso!" : "Copiar Código Pix (Copia e Cola)"}
+                {copied ? "✓ Link / Chave Copiado com Sucesso!" : "Copiar Chave / Link Pix"}
               </button>
 
               <a
