@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha Digital de Anamnese — GuinkNass</title>
+  <meta name="description" content="Ficha de anamnese e segurança para procedimento de tatuagem com o artista GuinkNass. Preenchimento em etapas, proteção de dados LGPD e assinatura eletrônica.">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo">
+        <span>Guink<span class="text-cyan">Nass</span></span>
+        <span class="logo-tag">ART</span>
+      </a>
+
+      <nav class="nav-desktop">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Início</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="galeria.html" class="nav-link">Quadros</a></li>
+          <li><a href="estudos.html" class="nav-link">Estudos</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li><a href="orcamentos.html" class="nav-link">Orçamentos</a></li>
+          <li><a href="anamnese.html" class="nav-link active">Anamnese</a></li>
+          <li><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gaveta Mobile -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer">
+    <div>
+      <div style="margin-bottom: 32px;">
+        <span class="site-logo">Guink<span class="text-cyan">Nass</span></span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">Início</a>
+        <a href="portfolio.html" class="mobile-nav-link">Portfólio de Tatuagens</a>
+        <a href="galeria.html" class="mobile-nav-link">Galeria de Quadros</a>
+        <a href="estudos.html" class="mobile-nav-link">Rascunhos e Estudos</a>
+        <a href="sobre.html" class="mobile-nav-link">Sobre o Artista</a>
+        <a href="orcamentos.html" class="mobile-nav-link">Solicitar Orçamento</a>
+        <a href="anamnese.html" class="mobile-nav-link active">Ficha de Anamnese</a>
+        <a href="contato.html" class="mobile-nav-link">Contato & WhatsApp</a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">WhatsApp Comercial</a>
+    </div>
+  </aside>
+
+  <main style="padding-top: var(--header-height);">
+    <!-- Top Banner -->
+    <section class="section-sm section-bg-dark" style="border-bottom: 1px solid var(--border-light); text-align: center;">
+      <div class="container container-narrow">
+        <span class="tag-badge">Segurança & Procedimento</span>
+        <h1 style="margin-bottom: 16px;">Ficha de Anamnese para Tatuagem</h1>
+        <p class="lead">
+          Preenchimento prévio obrigatório para planejar sua sessão com segurança, cuidado técnico e proteção total dos seus dados.
+        </p>
+      </div>
+    </section>
+
+    <!-- Formulário Multi-Step -->
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="form-wrapper">
+
+          <!-- Cabeçalho de Etapas (Wizard) -->
+          <div class="wizard-steps-header">
+            <div class="wizard-progress-bar" id="wizardProgressBar" style="width: 0%;"></div>
+            
+            <div class="step-indicator active" data-step="1">
+              <div class="step-circle">1</div>
+              <span class="step-title">Identificação</span>
+            </div>
+
+            <div class="step-indicator" data-step="2">
+              <div class="step-circle">2</div>
+              <span class="step-title">Segurança</span>
+            </div>
+
+            <div class="step-indicator" data-step="3">
+              <div class="step-circle">3</div>
+              <span class="step-title">Declarações</span>
+            </div>
+
+            <div class="step-indicator" data-step="4">
+              <div class="step-circle">4</div>
+              <span class="step-title">Assinatura</span>
+            </div>
+          </div>
+
+          <!-- Formulário -->
+          <form id="anamneseForm" novalidate>
+
+            <!-- ==========================================================
+                 ETAPA 1: IDENTIFICAÇÃO
+                 ========================================================== -->
+            <div class="wizard-step-pane active" id="wizardStep1">
+              <h3 style="color: var(--color-secondary); margin-bottom: 24px;">Etapa 1 — Identificação do Cliente</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="anamneseName">Nome Completo <span class="required">*</span></label>
+                <input type="text" id="anamneseName" class="form-control" placeholder="Seu nome completo" required>
+                <span class="form-error-msg">Informe seu nome completo.</span>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="anamneseBirthDate">Data de Nascimento <span class="required">*</span></label>
+                  <input type="date" id="anamneseBirthDate" class="form-control" required>
+                  <span class="form-error-msg">Informe sua data de nascimento.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="anamnesePhone">WhatsApp / Telefone <span class="required">*</span></label>
+                  <input type="tel" id="anamnesePhone" class="form-control" placeholder="(11) 99999-9999" required>
+                  <span class="form-error-msg">Informe seu WhatsApp ou telefone.</span>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="anamneseEmail">E-mail <span class="required">*</span></label>
+                  <input type="email" id="anamneseEmail" class="form-control" placeholder="seuemail@exemplo.com" required>
+                  <span class="form-error-msg">Informe um e-mail válido.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="anamneseSessionDate">Data Prevista da Sessão <span class="optional">(Se já combinada)</span></label>
+                  <input type="date" id="anamneseSessionDate" class="form-control">
+                </div>
+              </div>
+
+              <p class="form-helper" style="margin-top: 20px;">
+                * Em conformidade com a LGPD, solicitamos apenas as informações estritamente necessárias para a realização e o agendamento do procedimento.
+              </p>
+            </div>
+
+            <!-- ==========================================================
+                 ETAPA 2: FATORES DE SEGURANÇA E SAÚDE
+                 ========================================================== -->
+            <div class="wizard-step-pane" id="wizardStep2">
+              <h3 style="color: var(--color-secondary); margin-bottom: 8px;">Etapa 2 — Informações Relevantes de Segurança</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+                Estas perguntas auxiliam na prevenção de reações e no cuidado adequado com a cicatrização. Não substituem diálogo presencial.
+              </p>
+
+              <!-- Pergunta 1: Alergias -->
+              <div class="question-card">
+                <div class="question-text">1. Possui histórico de alergias a produtos, pigmentos, adesivos, látex ou antissépticos?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qAllergies" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qAllergies" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qAllergies" value="Prefiro conversar pessoalmente">
+                    <span class="pill-label">Prefiro conversar pessoalmente</span>
+                  </label>
+                </div>
+                <div class="conditional-input">
+                  <input type="text" id="qAllergiesDetails" class="form-control" placeholder="Quais produtos ou substâncias?">
+                </div>
+              </div>
+
+              <!-- Pergunta 2: Cicatrização / Queloides -->
+              <div class="question-card">
+                <div class="question-text">2. Possui histórico de cicatrização difícil, queloides ou cicatrizes hipertróficas?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealing" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealing" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealing" value="Prefiro conversar pessoalmente">
+                    <span class="pill-label">Prefiro conversar pessoalmente</span>
+                  </label>
+                </div>
+                <div class="conditional-input">
+                  <input type="text" id="qHealingDetails" class="form-control" placeholder="Descreva brevemente sua experiência prévia de cicatrização.">
+                </div>
+              </div>
+
+              <!-- Pergunta 3: Condições de Saúde Relevantes -->
+              <div class="question-card">
+                <div class="question-text">3. Possui alguma condição de saúde relevante para o procedimento (ex: diabetes, imunossupressão, problemas cardíacos)?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealth" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealth" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qHealth" value="Prefiro conversar pessoalmente">
+                    <span class="pill-label">Prefiro conversar pessoalmente</span>
+                  </label>
+                </div>
+                <div class="conditional-input">
+                  <input type="text" id="qHealthDetails" class="form-control" placeholder="Se desejar, informe a condição para adequarmos os cuidados.">
+                </div>
+              </div>
+
+              <!-- Pergunta 4: Medicamentos -->
+              <div class="question-card">
+                <div class="question-text">4. Faz uso contínuo de anticoagulantes ou medicamentos que afetem sangramento/cicatrização?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qMedications" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qMedications" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qMedications" value="Prefiro conversar pessoalmente">
+                    <span class="pill-label">Prefiro conversar pessoalmente</span>
+                  </label>
+                </div>
+                <div class="conditional-input">
+                  <input type="text" id="qMedicationsDetails" class="form-control" placeholder="Quais medicamentos?">
+                </div>
+              </div>
+
+              <!-- Pergunta 5: Região da Pele -->
+              <div class="question-card">
+                <div class="question-text">5. Apresenta lesões, infecções, queimaduras solares ou irritação ativa na região onde será feita a tatuagem?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qSkin" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qSkin" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                </div>
+                <div class="conditional-input">
+                  <input type="text" id="qSkinDetails" class="form-control" placeholder="Descreva a condição da pele no local.">
+                </div>
+              </div>
+
+              <!-- Pergunta 6: Histórico de Desmaios -->
+              <div class="question-card">
+                <div class="question-text">6. Possui histórico de tonturas, quedas de pressão ou desmaios em procedimentos semelhantes ou exames?</div>
+                <div class="choice-pills">
+                  <label class="choice-pill">
+                    <input type="radio" name="qFainting" value="Não" checked>
+                    <span class="pill-label">Não</span>
+                  </label>
+                  <label class="choice-pill">
+                    <input type="radio" name="qFainting" value="Sim">
+                    <span class="pill-label">Sim</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Observações Extras -->
+              <div class="form-group">
+                <label class="form-label" for="qOtherNotes">Outras observações que julgue relevantes para a sua segurança <span class="optional">(Opcional)</span></label>
+                <textarea id="qOtherNotes" class="form-control" style="min-height: 80px;" placeholder="Ex: sensibilidade a dor, jejum, etc."></textarea>
+              </div>
+            </div>
+
+            <!-- ==========================================================
+                 ETAPA 3: DECLARAÇÕES & CONSENTIMENTO LGPD
+                 ========================================================== -->
+            <div class="wizard-step-pane" id="wizardStep3">
+              <h3 style="color: var(--color-secondary); margin-bottom: 16px;">Etapa 3 — Declarações e Consentimento</h3>
+              
+              <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px;">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="declTruth" required>
+                  <span class="checkbox-visual">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="checkbox-text">
+                    Declaro que forneci informações verdadeiras sobre meu estado de saúde e histórico conforme meu conhecimento atual.
+                  </span>
+                </label>
+
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="declTalk" required>
+                  <span class="checkbox-visual">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="checkbox-text">
+                    Entendo que o preenchimento desta ficha não substitui a conversa presencial com o tatuador nem o esclarecimento de dúvidas no dia da sessão.
+                  </span>
+                </label>
+
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="declCare" required>
+                  <span class="checkbox-visual">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="checkbox-text">
+                    Estou ciente da importância dos cuidados prévios (alimentação, hidratação) e dos cuidados posteriores de cicatrização recomendados.
+                  </span>
+                </label>
+              </div>
+
+              <!-- Termo de Consentimento LGPD Específico para Dados de Saúde -->
+              <div style="background: rgba(0, 252, 219, 0.03); border: 1px solid var(--border-cyan); border-radius: var(--radius-md); padding: 24px;">
+                <h4 style="color: var(--color-secondary); margin-bottom: 10px; font-size: 1.05rem;">Tratamento de Dados Pessoais Sensíveis (LGPD - Art. 11)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Os dados de saúde fornecidos nesta ficha são utilizados exclusivamente para salvaguardar sua integridade física durante o procedimento de tatuagem realizado por GuinkNass. Não são compartilhados com terceiros, agências de marketing ou plataformas públicas. O acesso é estritamente restrito ao profissional responsável.
+                </p>
+
+                <label class="custom-checkbox" style="margin-bottom: 0;">
+                  <input type="checkbox" id="consentLgpd" required>
+                  <span class="checkbox-visual">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="checkbox-text" style="font-weight: 600; color: #ffffff;">
+                    Autorizo de forma informada o tratamento dos dados de saúde informados unicamente para a finalidade de segurança do procedimento de tatuagem.
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- ==========================================================
+                 ETAPA 4: REVISÃO, ASSINATURA ELETRÔNICA & ENVIO
+                 ========================================================== -->
+            <div class="wizard-step-pane" id="wizardStep4">
+              <h3 style="color: var(--color-secondary); margin-bottom: 16px;">Etapa 4 — Revisão e Assinatura Eletrônica</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+                Revise suas respostas abaixo e assine eletronicamente com o dedo (no celular) ou com o mouse para registrar o documento.
+              </p>
+
+              <!-- Resumo das Respostas -->
+              <div id="anamneseReviewSummary">
+                <!-- Preenchido via populateReviewData() no anamnese-form.js -->
+              </div>
+
+              <!-- Campo de Assinatura Canvas -->
+              <div class="form-group" style="margin-top: 24px;">
+                <label class="form-label">Assinatura Eletrônica <span class="required">*</span></label>
+                <div class="signature-box">
+                  <canvas id="signaturePad" class="signature-canvas"></canvas>
+                  <div class="signature-controls">
+                    <button type="button" id="clearSignatureBtn" class="signature-clear-btn">Limpar Assinatura</button>
+                  </div>
+                </div>
+                <p class="form-helper">
+                  Assine dentro da área delimitada. Esta assinatura registra sua confirmação eletrônica acompanhada de carimbo de data e hora.
+                </p>
+              </div>
+            </div>
+
+            <!-- Botões de Navegação do Wizard -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border-light);">
+              <button type="button" id="wizardPrevBtn" class="btn btn-outline" style="display: none;">❮ Voltar</button>
+              <div style="margin-left: auto; display: flex; gap: 14px;">
+                <button type="button" id="wizardNextBtn" class="btn btn-primary">Avançar ❯</button>
+                <button type="submit" id="wizardSubmitBtn" class="btn btn-cyan btn-lg" style="display: none;">CONFIRMAR E ENVIAR FICHA</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Tela de Confirmação Segura (Sem expor dados médicos na tela pública) -->
+          <div class="form-success-card" id="anamneseSuccessCard">
+            <div class="success-icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 style="margin-bottom: 16px;">Ficha de Anamnese Registrada!</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 620px; margin: 0 auto 24px auto; line-height: 1.7;">
+              Suas informações foram registradas com sucesso e armazenadas em ambiente seguro e confidencial.
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 32px auto;">
+              No dia agendado, conversaremos presencialmente sobre os detalhes da arte e os cuidados. Obrigado pelo preenchimento!
+            </p>
+            <div style="display: flex; justify-content: center; gap: 16px;">
+              <a href="index.html" class="btn btn-primary">Voltar à Página Inicial</a>
+              <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Avisar no WhatsApp</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col-brand">
+          <a href="index.html" class="footer-logo">Guink<span class="text-cyan">Nass</span></a>
+          <p class="footer-bio">
+            Compromisso ético, respeito e segurança em cada procedimento artístico.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Privacidade</h4>
+          <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+            Dados sensíveis protegidos conforme Lei Geral de Proteção de Dados (Lei nº 13.709/2018).
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="portfolio.html" class="footer-link">Portfólio</a></li>
+            <li><a href="orcamentos.html" class="footer-link">Orçamentos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contato</h4>
+          <a href="https://wa.me/5511995802338" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">+55 11 99580-2338</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear"></span> GuinkNass. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/anamnese-form.js"></script>
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

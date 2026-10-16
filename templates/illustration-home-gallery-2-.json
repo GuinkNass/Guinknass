@@ -1,0 +1,987 @@
+{
+    "version": "0.4",
+    "title": "Illustration Home Gallery (2)",
+    "type": "section",
+    "metadata": {
+        "template_type": "section-other",
+        "include_in_zip": "1",
+        "elementor_pro_required": null,
+        "wp_page_template": "elementor_canvas"
+    },
+    "content": [
+        {
+            "id": "167fb2a9",
+            "settings": {
+                "content_width": "full",
+                "flex_gap": {
+                    "size": 0,
+                    "column": "0",
+                    "row": "0",
+                    "unit": "px"
+                },
+                "overflow": "hidden",
+                "background_background": "classic",
+                "__globals__": {
+                    "background_color": "globals\/colors?id=ff2be4d"
+                },
+                "flex_direction": "row",
+                "flex_align_items": "center",
+                "flex_justify_content": "center",
+                "margin": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "328a6071",
+                    "settings": {
+                        "_column_size": 100,
+                        "width": {
+                            "size": null,
+                            "unit": "%"
+                        },
+                        "margin": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": false
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": false
+                        },
+                        "content_width": "full",
+                        "flex_justify_content": "center",
+                        "flex_align_items": "center",
+                        "flex_gap": {
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": false,
+                            "unit": "px",
+                            "size": 0
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "29334a81",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_gap": {
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "unit": "px"
+                                },
+                                "overflow": "hidden",
+                                "structure": "30",
+                                "flex_direction": "row",
+                                "flex_align_items": "center",
+                                "flex_justify_content": "center",
+                                "margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "2c348e2e",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "width": {
+                                            "size": 35.8,
+                                            "unit": "%"
+                                        },
+                                        "margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "content_width": "full",
+                                        "flex_justify_content": "center",
+                                        "flex_align_items": "center",
+                                        "flex_gap": {
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": false,
+                                            "unit": "px",
+                                            "size": 0
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "6665ffee",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_gap": {
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "unit": "px"
+                                                },
+                                                "overflow": "hidden",
+                                                "structure": "20",
+                                                "flex_direction": "row",
+                                                "flex_align_items": "center",
+                                                "flex_justify_content": "center",
+                                                "margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "1719393d",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "content_width": "full",
+                                                        "margin_tablet": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding_tablet": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": false
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "39719a9a",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-2.jpg",
+                                                                    "id": 996,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                },
+                                                {
+                                                    "id": "7fcf7262",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "background_background": "classic",
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "content_width": "full",
+                                                        "margin_tablet": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding_tablet": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "4",
+                                                            "left": "5",
+                                                            "isLinked": false
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "faad296",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-3.jpg",
+                                                                    "id": 997,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                }
+                                            ],
+                                            "isInner": true,
+                                            "elType": "container"
+                                        },
+                                        {
+                                            "id": "2d3bdca9",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_gap": {
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "unit": "px"
+                                                },
+                                                "overflow": "hidden",
+                                                "structure": "20",
+                                                "flex_direction": "row",
+                                                "flex_align_items": "center",
+                                                "flex_justify_content": "center",
+                                                "margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "3a8b632",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "content_width": "full"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "2a71b851",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-1.jpg",
+                                                                    "id": 994,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                },
+                                                {
+                                                    "id": "2d9a8c8b",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "content_width": "full"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "63cd02a1",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-4.jpg",
+                                                                    "id": 995,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                }
+                                            ],
+                                            "isInner": true,
+                                            "elType": "container"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "container"
+                                },
+                                {
+                                    "id": "29174cc6",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "width": {
+                                            "size": 27.6,
+                                            "unit": "%"
+                                        },
+                                        "margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "width_mobile": {
+                                            "size": 100,
+                                            "unit": "%"
+                                        },
+                                        "content_width": "full",
+                                        "flex_justify_content": "center",
+                                        "flex_align_items": "center",
+                                        "flex_gap": {
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": false,
+                                            "unit": "px",
+                                            "size": 0
+                                        },
+                                        "margin_tablet": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "padding_tablet": {
+                                            "unit": "px",
+                                            "top": "5",
+                                            "right": "5",
+                                            "bottom": "5",
+                                            "left": "5",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "6d8b0e4d",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-5.jpg",
+                                                    "id": 998,
+                                                    "size": "",
+                                                    "alt": "",
+                                                    "source": "library"
+                                                },
+                                                "image_size": "full",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "_padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 100,
+                                                    "sizes": []
+                                                }
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "image",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "container"
+                                },
+                                {
+                                    "id": "6cb23ee1",
+                                    "settings": {
+                                        "_column_size": 33,
+                                        "width": {
+                                            "size": 35.932,
+                                            "unit": "%"
+                                        },
+                                        "margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "content_width": "full",
+                                        "flex_justify_content": "center",
+                                        "flex_align_items": "center",
+                                        "flex_gap": {
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": false,
+                                            "unit": "px",
+                                            "size": 0
+                                        },
+                                        "flex_gap_tablet": {
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": false,
+                                            "unit": "px",
+                                            "size": 0
+                                        },
+                                        "margin_tablet": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "padding_tablet": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "5252a3e3",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_gap": {
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "unit": "px"
+                                                },
+                                                "overflow": "hidden",
+                                                "structure": "20",
+                                                "flex_direction": "row",
+                                                "flex_align_items": "center",
+                                                "flex_justify_content": "center",
+                                                "flex_gap_tablet": {
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "isLinked": false,
+                                                    "unit": "px",
+                                                    "size": 0
+                                                },
+                                                "margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "518ff55f",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "width_mobile": {
+                                                            "size": 100,
+                                                            "unit": "%"
+                                                        },
+                                                        "content_width": "full",
+                                                        "flex_gap_tablet": {
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": false,
+                                                            "unit": "px",
+                                                            "size": 0
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "20409db6",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-8.jpg",
+                                                                    "id": 1001,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                },
+                                                {
+                                                    "id": "572e86dc",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "width_mobile": {
+                                                            "size": 100,
+                                                            "unit": "%"
+                                                        },
+                                                        "content_width": "full",
+                                                        "flex_gap_tablet": {
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": false,
+                                                            "unit": "px",
+                                                            "size": 0
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "5aa6a96b",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-9.jpg",
+                                                                    "id": 1002,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                }
+                                            ],
+                                            "isInner": true,
+                                            "elType": "container"
+                                        },
+                                        {
+                                            "id": "4fe8bdf2",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_gap": {
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "unit": "px"
+                                                },
+                                                "overflow": "hidden",
+                                                "structure": "20",
+                                                "flex_direction": "row",
+                                                "flex_align_items": "center",
+                                                "flex_justify_content": "center",
+                                                "margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "3aaf3dfa",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "width_mobile": {
+                                                            "size": 100,
+                                                            "unit": "%"
+                                                        },
+                                                        "content_width": "full",
+                                                        "flex_gap_tablet": {
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": false,
+                                                            "unit": "px",
+                                                            "size": 0
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "1ef534d0",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-6.jpg",
+                                                                    "id": 999,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                },
+                                                {
+                                                    "id": "f32c4aa",
+                                                    "settings": {
+                                                        "_column_size": 50,
+                                                        "width": {
+                                                            "size": null,
+                                                            "unit": "%"
+                                                        },
+                                                        "margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": false
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "5",
+                                                            "right": "5",
+                                                            "bottom": "5",
+                                                            "left": "5",
+                                                            "isLinked": true
+                                                        },
+                                                        "content_width": "full",
+                                                        "flex_gap_tablet": {
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": false,
+                                                            "unit": "px",
+                                                            "size": 0
+                                                        }
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "6d72681a",
+                                                            "settings": {
+                                                                "image": {
+                                                                    "url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-7.jpg",
+                                                                    "id": 1000,
+                                                                    "size": "",
+                                                                    "alt": "",
+                                                                    "source": "library"
+                                                                },
+                                                                "image_size": "full",
+                                                                "width": {
+                                                                    "unit": "%",
+                                                                    "size": 100,
+                                                                    "sizes": []
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "isInner": false,
+                                                            "widgetType": "image",
+                                                            "elType": "widget"
+                                                        }
+                                                    ],
+                                                    "isInner": true,
+                                                    "elType": "container"
+                                                }
+                                            ],
+                                            "isInner": true,
+                                            "elType": "container"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "container"
+                                }
+                            ],
+                            "isInner": true,
+                            "elType": "container"
+                        }
+                    ],
+                    "isInner": true,
+                    "elType": "container"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        }
+    ],
+    "page_settings": {
+        "hide_title": "yes",
+        "template": "elementor_canvas"
+    }
+}

@@ -1,0 +1,335 @@
+/* ==========================================================================
+   GALLERIES STYLING: TATTOOS, ORIGINAL PAINTINGS & STUDIES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Filter Tabs
+   -------------------------------------------------------------------------- */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-secondary);
+  color: #ffffff;
+}
+
+.filter-btn.active {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: #000000;
+  font-weight: 700;
+  box-shadow: var(--glow-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   Tattoo Portfolio Grid
+   -------------------------------------------------------------------------- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.portfolio-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  aspect-ratio: 4 / 5;
+  transition: all var(--transition-normal);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-cyan);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), var(--glow-cyan);
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.06);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 8, 12, 0.95) 0%, rgba(7, 8, 12, 0.4) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.portfolio-card-cat {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   Quadros & Obras Físicas (Galeria Principal)
+   -------------------------------------------------------------------------- */
+.quadro-showcase-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 60px;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+}
+
+.quadro-showcase-card:hover {
+  border-color: var(--border-cyan);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 252, 219, 0.15);
+}
+
+.quadro-media-col {
+  position: relative;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.quadro-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.quadro-showcase-card:hover .quadro-main-img {
+  transform: scale(1.02);
+}
+
+.quadro-video-badge-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(18, 19, 24, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-cyan);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.quadro-video-badge-btn:hover {
+  background: var(--color-secondary);
+  color: #000000;
+  box-shadow: var(--glow-cyan);
+}
+
+.quadro-video-badge-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.quadro-info-col {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quadro-meta-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.quadro-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quadro-meta-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quadro-meta-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.quadro-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.status-available {
+  background: rgba(0, 252, 219, 0.12);
+  color: var(--color-secondary);
+  border: 1px solid var(--border-cyan);
+}
+
+.status-reserved {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
+}
+
+.status-sold {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.quadro-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* --------------------------------------------------------------------------
+   Galeria de Estudos e Rascunhos
+   -------------------------------------------------------------------------- */
+.estudos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.estudo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.estudo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-cyan);
+  box-shadow: var(--shadow-card);
+}
+
+.estudo-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #000000;
+}
+
+.estudo-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.estudo-card:hover .estudo-thumb-wrap img {
+  transform: scale(1.05);
+}
+
+.estudo-info {
+  padding: 18px 20px;
+}
+
+.estudo-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.estudo-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Painel de Controle de Visibilidade do Artista */
+.visibility-banner {
+  background: rgba(53, 0, 252, 0.1);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .quadro-showcase-card {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .quadro-info-col {
+    padding: 32px 24px;
+  }
+}

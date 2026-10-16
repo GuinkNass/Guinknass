@@ -1,0 +1,2463 @@
+{
+    "manifest_version": "1.0.21",
+    "title": "AiMentor",
+    "page_builder": "elementor",
+    "kit_version": "1.0.1",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Art Direction Home 3 Gallery",
+            "screenshot": "screenshots\/art-direction-home-3-gallery.jpg",
+            "source": "templates\/art-direction-home-3-gallery.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/art-direction-home-3-gallery\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Illustration Home Gallery (2)",
+            "screenshot": "screenshots\/illustration-home-gallery-2-.jpg",
+            "source": "templates\/illustration-home-gallery-2-.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/illustration-home-gallery-2\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Art Direction Home Gallery (1)",
+            "screenshot": "screenshots\/art-direction-home-gallery-1-.jpg",
+            "source": "templates\/art-direction-home-gallery-1-.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/art-direction-home-gallery-1\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Illustration Home 2 Gallery",
+            "screenshot": "screenshots\/illustration-home-2-gallery.jpg",
+            "source": "templates\/illustration-home-2-gallery.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/illustration-home-2-gallery\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Art Direction Home 2 Gallery",
+            "screenshot": "screenshots\/art-direction-home-2-gallery.jpg",
+            "source": "templates\/art-direction-home-2-gallery.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/art-direction-home-2-gallery\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Design Home Gallery 3",
+            "screenshot": "screenshots\/design-home-gallery-3.jpg",
+            "source": "templates\/design-home-gallery-3.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/design-home-gallery-3\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Pricing Plan",
+            "screenshot": "screenshots\/pricing-plan.jpg",
+            "source": "templates\/pricing-plan.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/pricing-plan\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "404",
+            "screenshot": "screenshots\/404.jpg",
+            "source": "templates\/404.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/404\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Newsletter",
+            "screenshot": "screenshots\/newsletter.jpg",
+            "source": "templates\/newsletter.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/newsletter\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/footer\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/header\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Testimonials",
+            "screenshot": "screenshots\/testimonials.jpg",
+            "source": "templates\/testimonials.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/testimonials\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.jpg",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/single-post\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Services",
+            "screenshot": "screenshots\/services.jpg",
+            "source": "templates\/services.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/services\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "How Can Help",
+            "screenshot": "screenshots\/how-can-help.jpg",
+            "source": "templates\/how-can-help.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/how-can-help\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 03",
+            "screenshot": "screenshots\/home-03.jpg",
+            "source": "templates\/home-03.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/home-03\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Team",
+            "screenshot": "screenshots\/our-team.jpg",
+            "source": "templates\/our-team.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/our-team\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-team",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 02",
+            "screenshot": "screenshots\/home-02.jpg",
+            "source": "templates\/home-02.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/home-02\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 01",
+            "screenshot": "screenshots\/home-01.jpg",
+            "source": "templates\/home-01.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/home-01\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "FAQ",
+            "screenshot": "screenshots\/faq.jpg",
+            "source": "templates\/faq.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/faq\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Us",
+            "screenshot": "screenshots\/contact-us.jpg",
+            "source": "templates\/contact-us.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/contact-us\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Coming Soon",
+            "screenshot": "screenshots\/coming-soon.jpg",
+            "source": "templates\/coming-soon.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/coming-soon\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/about\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Newsletter single post",
+            "screenshot": "screenshots\/newsletter-single-post.jpg",
+            "source": "templates\/newsletter-single-post.json",
+            "preview_url": "https:\/\/designingmedia.com\/layout92\/template-kit\/newsletter-single-post\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "3.16.4",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "3.0.0",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "Jeg Elementor Kit",
+            "version": "2.6.2",
+            "file": "jeg-elementor-kit\/jeg-elementor-kit.php",
+            "author": "Jegtheme"
+        },
+        {
+            "name": "MetForm",
+            "version": "3.6.0",
+            "file": "metform\/metform.php",
+            "author": "Wpmet"
+        }
+    ],
+    "images": [
+        {
+            "filename": "home-3-img-6.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-img-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 73074,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": " https:\/\/www.freepik.com\/premium-photo\/three-balls-with-different-colors-black-background_44971367.htm#query=three-balls-with-different-colors-black-background&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-4-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-4-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 101518,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-pretty-girl-with-virtual-glasses-experience_39287554.htm#query=generative-ai-illustration-pretty-girl-with-virtual-glasses-experience&position=5&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-2-img-8.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-2-img-8.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 20438,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/watering-can-is-pouring-water-mindgenerative-ai_42236965.htm#query=watering-can-is-pouring-water-mindgenerative-ai&position=3&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-3-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 17651,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/3d-render-abstract-composition-with-apple-geometric-shapes-pastel-colors_44830716.htm#query=3d-render-abstract-composition-with-apple-geometric-shapes-pastel-colors&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-3-img-7.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-img-7.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 21423,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/brainstorm-whit-new-creative-ideas-art-collage-illustration_37062649.htm#query=brainstorm-whit-new-creative-ideas-art-collage-illustration&position=44&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-3-img5.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-img5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-3-gallery.json",
+                    "name": "Art Direction Home 3 Gallery"
+                },
+                {
+                    "source": "templates\/illustration-home-2-gallery.json",
+                    "name": "Illustration Home 2 Gallery"
+                }
+            ],
+            "filesize": 39873,
+            "dimensions": [
+                430,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/pink-flamingo-with-blue-suit-pink-bow-tie_44773827.htm"
+        },
+        {
+            "filename": "gallery-2.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 39355,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/watering-can-is-pouring-water-mindgenerative-ai_42236965.htm#query=watering-can-is-pouring-water-mindgenerative-ai&position=3&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-3.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 39776,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/brainstorm-whit-new-creative-ideas-art-collage-illustration_37062649.htm#query=brainstorm-whit-new-creative-ideas-art-collage-illustration&position=44&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 60951,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/paradise-island-collage-with-camera-tropical-landscape-concept-abstract-generative-ai-illustration_43827685.htm#query=paradise-island-collage-with-camera-tropical-landscape-concept-abstract-generative-ai-illustration&position=0&from_view=author"
+        },
+        {
+            "filename": "gallery-4.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 49131,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": " https:\/\/www.freepik.com\/premium-photo\/three-balls-with-different-colors-black-background_44971367.htm#query=three-balls-with-different-colors-black-background&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-5.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 71940,
+            "dimensions": [
+                530,
+                690
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/generative-ai-portrait-illustration-beautiful-girl-with-birds-flowers-her-hair_45485150.htm#query=generative-ai-portrait-illustration-beautiful-girl-with-birds-flowers-her-hair&position=9&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-8.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-8.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 70749,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-isometric-buildings-concept-business-analysis-purchasing-sales-consulting_41338702.htm#query=generative-ai-illustration-isometric-buildings-concept-business-analysis-purchasing-sales-consulting&position=5&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-9.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-9.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 44703,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/abstract-illustration-human-brain-growing-from-flower_45484309.htm#query=abstract-illustration-human-brain-growing-from-flower&position=13&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-6.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 71133,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/doubleexposure-fashion-portrait-beautiful-young-woman-with-colorful-flowers-her-face-generative-ai_44789270.htm#query=doubleexposure-fashion-portrait-beautiful-young-woman-with-colorful-flowers-her-face-generative-ai&position=4&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-7.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-7.jpg",
+            "templates": [
+                {
+                    "source": "templates\/illustration-home-gallery-2-.json",
+                    "name": "Illustration Home Gallery (2)"
+                },
+                {
+                    "source": "templates\/art-direction-home-gallery-1-.json",
+                    "name": "Art Direction Home Gallery (1)"
+                }
+            ],
+            "filesize": 47516,
+            "dimensions": [
+                345,
+                345
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-electric-car-charging-battery-respecting-environment_41241121.htm"
+        },
+        {
+            "filename": "gallery-15.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-15.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 51948,
+            "dimensions": [
+                960,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-electric-car-charging-battery-respecting-environment_41241121.htm"
+        },
+        {
+            "filename": "gallery-14.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-14.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 49524,
+            "dimensions": [
+                480,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/pink-flamingo-with-blue-suit-pink-bow-tie_44773827.htm"
+        },
+        {
+            "filename": "gallery-12.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-12.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 123382,
+            "dimensions": [
+                480,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-pretty-girl-with-virtual-glasses-experience_39287554.htm#query=generative-ai-illustration-pretty-girl-with-virtual-glasses-experience&position=5&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-13.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-13.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 100279,
+            "dimensions": [
+                480,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/butterfly-with-black-background-yellow-powder-middle_44854630.htm#query=butterfly-with-black-background-yellow-powder-middle&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-11.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-11.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 21768,
+            "dimensions": [
+                480,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/3d-render-abstract-composition-with-apple-geometric-shapes-pastel-colors_44830716.htm#query=3d-render-abstract-composition-with-apple-geometric-shapes-pastel-colors&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "gallery-10.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/gallery-10.jpg",
+            "templates": [
+                {
+                    "source": "templates\/art-direction-home-2-gallery.json",
+                    "name": "Art Direction Home 2 Gallery"
+                },
+                {
+                    "source": "templates\/design-home-gallery-3.json",
+                    "name": "Design Home Gallery 3"
+                }
+            ],
+            "filesize": 78498,
+            "dimensions": [
+                960,
+                480
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/free-ai-image\/man-jacket-with-leopard-mask-stands-front-lit-up-building_41855228.htm"
+        },
+        {
+            "filename": "About-shado-img.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/About-shado-img.png",
+            "templates": [
+                {
+                    "source": "templates\/pricing-plan.json",
+                    "name": "Pricing Plan"
+                },
+                {
+                    "source": "templates\/404.json",
+                    "name": "404"
+                },
+                {
+                    "source": "templates\/testimonials.json",
+                    "name": "Testimonials"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                },
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/coming-soon.json",
+                    "name": "Coming Soon"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 133909,
+            "dimensions": [
+                1682,
+                1528
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Vedio-image.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Vedio-image.jpg",
+            "templates": [
+                {
+                    "source": "templates\/pricing-plan.json",
+                    "name": "Pricing Plan"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 208426,
+            "dimensions": [
+                1920,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-spectacular-ecofuturistic-cityscape-full-with-greenery-skyscrapers-parks-other-manmade-green-spaces-urban-area_41241454.htm#query=generative-ai-illustration-spectacular-ecofuturistic-cityscape-full-with-greenery-skyscrapers-parks-other-manmade-green-spaces-urban-area&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "Pricing-section-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/Pricing-section-img-1-800x422.jpg",
+            "templates": [
+                {
+                    "source": "templates\/pricing-plan.json",
+                    "name": "Pricing Plan"
+                }
+            ],
+            "filesize": 278667,
+            "dimensions": [
+                1920,
+                1013
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/futuristic-fantasy-abstract-night-landscape-with-island-moonlight-shine_14993883.htm#page=2&query=futuristic-fantasy-abstract-night-landscape-with-island-moonlight-shine&position=18&from_view=search&track=sph"
+        },
+        {
+            "filename": "header-logo.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/06\/header-logo.png",
+            "templates": [
+                {
+                    "source": "templates\/404.json",
+                    "name": "404"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                },
+                {
+                    "source": "templates\/coming-soon.json",
+                    "name": "Coming Soon"
+                }
+            ],
+            "filesize": 852,
+            "dimensions": [
+                140,
+                26
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Team-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/Team-img-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/testimonials.json",
+                    "name": "Testimonials"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 13887,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/corporate-young-caucasian-businessman_57086343.htm#page=3&position=8&from_view=search&track=ais"
+        },
+        {
+            "filename": "team-img-4.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/team-img-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/testimonials.json",
+                    "name": "Testimonials"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 14590,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/man-with-neon-light-his-face_44433227.htm#&position=8&from_view=search&track=ais"
+        },
+        {
+            "filename": "Testimonials-img.png-2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Testimonials-img.png-2.png",
+            "templates": [
+                {
+                    "source": "templates\/testimonials.json",
+                    "name": "Testimonials"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 419409,
+            "dimensions": [
+                1920,
+                843
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": " https:\/\/www.freepik.com\/free-photo\/natures-beauty-tranquil-mountain-landscape-generative-ai_40933440.htm"
+        },
+        {
+            "filename": "team-img-6.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/team-img-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/testimonials.json",
+                    "name": "Testimonials"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 11194,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/handsome-realistic-man-business-wear-suit-office-background_57103217.htm#page=2&position=18&from_view=search&track=ais"
+        },
+        {
+            "filename": "Home-2-img-bg.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home-2-img-bg.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 192522,
+            "dimensions": [
+                1920,
+                813
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/earth-planet-outer-space-generative-ai_38571564.htm#query=earth-planet-outer-space-generative-ai%20jpg&position=31&from_view=search&track=ais"
+        },
+        {
+            "filename": "services-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/services-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 30752,
+            "dimensions": [
+                400,
+                400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/head-with-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that_42210880.htm#query=head-with-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that&position=31&from_view=search&track=sph"
+        },
+        {
+            "filename": "services-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/services-img-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 45916,
+            "dimensions": [
+                400,
+                400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/woman-walks-past-giant-clock-that-says-time-is-now_46066459.htm#query=woman-walks-past-giant-clock-that-says-time-is-now&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "logo-ipsom.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1533,
+            "dimensions": [
+                155,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom1.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom1.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1681,
+            "dimensions": [
+                167,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom2.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1744,
+            "dimensions": [
+                186,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom3.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom3.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1379,
+            "dimensions": [
+                202,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom4.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom4.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1310,
+            "dimensions": [
+                172,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom5.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom5.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1441,
+            "dimensions": [
+                170,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "logo-ipsom6.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-ipsom6.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1147,
+            "dimensions": [
+                174,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "our-services-img2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/our-services-img2.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 907,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "our-services-5img.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/our-services-5img.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 1019,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "our-services-1.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/our-services-1.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 1015,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "our-services-3img.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/our-services-3img.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 930,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "sloution-sec-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/sloution-sec-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 241008,
+            "dimensions": [
+                630,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai_39458875.htm#query=astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai&position=2&from_view=search&track=sph"
+        },
+        {
+            "filename": "sloution-sec-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/sloution-sec-img-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 137111,
+            "dimensions": [
+                630,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/woman-s-face-with-colorful-background-word-love-left-side_39321161.htm#query=woman-s-face-with-colorful-background-word-love-left-side&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "FAQ-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/FAQ-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 96859,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/what-is-mind-midjourney-generative-ai_37914395.htm#query=what-is-mind-midjourney-generative-ai&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "name.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/name.png",
+            "templates": [
+                {
+                    "source": "templates\/how-can-help.json",
+                    "name": "How Can Help"
+                }
+            ],
+            "filesize": 372,
+            "dimensions": [
+                20,
+                20
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "phone.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/phone.png",
+            "templates": [
+                {
+                    "source": "templates\/how-can-help.json",
+                    "name": "How Can Help"
+                }
+            ],
+            "filesize": 396,
+            "dimensions": [
+                15,
+                20
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "envelop.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/envelop.png",
+            "templates": [
+                {
+                    "source": "templates\/how-can-help.json",
+                    "name": "How Can Help"
+                }
+            ],
+            "filesize": 315,
+            "dimensions": [
+                20,
+                14
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "pencile.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/pencile.png",
+            "templates": [
+                {
+                    "source": "templates\/how-can-help.json",
+                    "name": "How Can Help"
+                }
+            ],
+            "filesize": 265,
+            "dimensions": [
+                20,
+                20
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "home3-bg-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/home3-bg-img-800x314.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 159014,
+            "dimensions": [
+                1920,
+                753
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/abstract-geometric-pattern-shades-blue-green-generative-ai_41556713.htm#&position=29&from_view=search&track=ais"
+        },
+        {
+            "filename": "What-we-do-gallery4-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/What-we-do-gallery4-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 37640,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-attractive-mother-kissing-her-little-son_41441292.htm#query=generative-ai-illustration-attractive-mother-kissing-her-little-son&position=2&from_view=search&track=sph"
+        },
+        {
+            "filename": "What-we-do-gallery3.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/What-we-do-gallery3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 43718,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/intelligent-cat-wearing-glasses-reading-book-education-concept-generative-ai_39332157.htm#query=intelligent-cat-wearing-glasses-reading-book-education-concept-generative-ai&position=1&from_view=search&track=sph"
+        },
+        {
+            "filename": "What-we-do-gallery2.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/What-we-do-gallery2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 31209,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/green-air-balloon-flying-air-transport-illustration-decorated-st-patricks-day-generative-ai_39251803.htm#query=green-air-balloon-flying-air-transport-illustration-decorated-st-patricks-day-generative-ai&position=6&from_view=search&track=sph"
+        },
+        {
+            "filename": "What-we-do-gallery1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/What-we-do-gallery1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 120565,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai_39458875.htm#query=astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai&position=2&from_view=search&track=sph"
+        },
+        {
+            "filename": "What-we-do-gallery.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/What-we-do-gallery.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 96500,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/woman-s-face-with-colorful-background-word-love-left-side_39321161.htm#query=woman-s-face-with-colorful-background-word-love-left-side&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "Home-3-bg-img.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home-3-bg-img.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 58482,
+            "dimensions": [
+                945,
+                1218
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "home-3-img.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-img.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 58454,
+            "dimensions": [
+                945,
+                1218
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "home3-about-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home3-about-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 39785,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/what-is-mind-midjourney-generative-ai_37914395.htm#query=what-is-mind-midjourney-generative-ai&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "home3imgabout.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home3imgabout.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 31676,
+            "dimensions": [
+                410,
+                410
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/conceptual-image-with-lightbulb-mountains-backgroundgenerative-ai_39692184.htm#query=conceptual-image-with-lightbulb-mountains-backgroundgenerative-ai&position=7&from_view=search&track=sph"
+        },
+        {
+            "filename": "home3img-bg-sec.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home3img-bg-sec.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 221616,
+            "dimensions": [
+                1920,
+                551
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/abstract-geometric-pattern-shades-blue-green-generative-ai_41556713.htm#&position=29&from_view=search&track=ais"
+        },
+        {
+            "filename": "home3-bg-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/home3-bg-img-1-800x372.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 294023,
+            "dimensions": [
+                1290,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-spectacular-ecofuturistic-cityscape-full-with-greenery-skyscrapers-parks-other-manmade-green-spaces-urban-area_41241454.htm#query=generative-ai-illustration-spectacular-ecofuturistic-cityscape-full-with-greenery-skyscrapers-parks-other-manmade-green-spaces-urban-area&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "home-3-imge.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-3-imge.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 103881,
+            "dimensions": [
+                615,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/woman-walks-past-giant-clock-that-says-time-is-now_46066459.htm#query=woman-walks-past-giant-clock-that-says-time-is-now&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "Huge-img-1.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Huge-img-1.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1047,
+            "dimensions": [
+                56,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Huge-img-2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Huge-img-2.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 1057,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Huge-img-3.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Huge-img-3.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 872,
+            "dimensions": [
+                42,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Huge-img-4.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Huge-img-4.png",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 906,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "home3-imge.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home3-imge.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 156325,
+            "dimensions": [
+                615,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai_39458875.htm#query=astronaut-plants-tree-some-planet-galaxy-future-concept-generative-ai&position=2&from_view=search&track=sph"
+        },
+        {
+            "filename": "home3-bg-img-1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home3-bg-img-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 153084,
+            "dimensions": [
+                1920,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/abstract-geometric-pattern-shades-blue-green-generative-ai_41556713.htm#&position=29&from_view=search&track=ais"
+        },
+        {
+            "filename": "Team-img-2.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/Team-img-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 11186,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/handsome-realistic-man-business-wear-suit-office-background_57102229.htm#page=4&position=21&from_view=search&track=ais"
+        },
+        {
+            "filename": "Team-img-3.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/Team-img-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 10264,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/free-ai-image\/digital-art-selected_41068857.htm#&position=0&from_view=search&track=ais"
+        },
+        {
+            "filename": "team-img-5.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/team-img-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 10646,
+            "dimensions": [
+                410,
+                430
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/free-ai-image\/woman-with-white-shirt-black-suit-with-pink-logo-that-says-word-game_42322474.htm#&position=1&from_view=search&track=ais"
+        },
+        {
+            "filename": "Pricing-vedio-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Pricing-vedio-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 77339,
+            "dimensions": [
+                630,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/head-with-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that_42210880.htm#query=head-with-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that-has-face-that&position=31&from_view=search&track=sph"
+        },
+        {
+            "filename": "logo-home-ipsom-2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/logo-home-ipsom-2.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1419,
+            "dimensions": [
+                155,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "home2-logoipsom.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home2-logoipsom.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1505,
+            "dimensions": [
+                167,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "Home2-logipsome1.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home2-logipsome1.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1574,
+            "dimensions": [
+                186,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "Home2logipsome2.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home2logipsome2.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1498,
+            "dimensions": [
+                202,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "home2-logoipsom-3.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home2-logoipsom-3.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1376,
+            "dimensions": [
+                172,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "Home2-logoipsome3.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home2-logoipsome3.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1306,
+            "dimensions": [
+                170,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "Home2logoipsome4.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Home2logoipsome4.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 1204,
+            "dimensions": [
+                174,
+                40
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/logoipsum.com\/"
+        },
+        {
+            "filename": "home-bg-png.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/home-bg-png.png",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 307181,
+            "dimensions": [
+                1298,
+                1034
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/woman-s-face-with-colorful-background-word-love-left-side_39321161.htm#query=woman-s-face-with-colorful-background-word-love-left-side&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "shoes-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/shoes-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 166433,
+            "dimensions": [
+                540,
+                650
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/generative-ai-illustration-recycled-boots-with-flowers_41241399.htm#query=generative-ai-illustration-recycled-boots-with-flowers&position=29&from_view=search&track=sph"
+        },
+        {
+            "filename": "contact-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/contact-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                },
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 221902,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/creative-journey-through-sleep-time-space-freedom-thought-generative-ai_37063691.htm#query=creative-journey-through-sleep-time-space-freedom-thought-generative-ai&position=5&from_view=search&track=sph"
+        },
+        {
+            "filename": "location-icon.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/location-icon.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 854,
+            "dimensions": [
+                44,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "phone-icon.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/phone-icon.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 1116,
+            "dimensions": [
+                60,
+                60
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "envolop-icon.png",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/envolop-icon.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 703,
+            "dimensions": [
+                60,
+                40
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Fox-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/Fox-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 179520,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/fox-with-fire-it_41067735.htm#page=3&query=fox-with-fire-it%20jpg&position=32&from_view=search&track=ais"
+        },
+        {
+            "filename": "falcan-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/falcan-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 73961,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": " https:\/\/www.freepik.com\/premium-photo\/agent-eagle_37458769.htm#query=agent-eagle&position=7&from_view=search&track=sph"
+        },
+        {
+            "filename": "montan-img.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/07\/montan-img.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 37385,
+            "dimensions": [
+                250,
+                250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/premium-photo\/digital-painting-landscape-with-camera-top-it_42329824.htm#query=digital-painting-landscape-with-camera-top-it&position=0&from_view=search&track=sph"
+        },
+        {
+            "filename": "About-img-Team.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/About-img-Team.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 8466,
+            "dimensions": [
+                300,
+                260
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/corporate-young-caucasian-businessman_57086343.htm#page=3&position=8&from_view=search&track=ais"
+        },
+        {
+            "filename": "about-img-team1.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/about-img-team1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 8046,
+            "dimensions": [
+                300,
+                260
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/man-with-neon-light-his-face_44433227.htm#&position=8&from_view=search&track=ais"
+        },
+        {
+            "filename": "about-img-team2.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/about-img-team2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 6567,
+            "dimensions": [
+                300,
+                260
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/free-ai-image\/woman-with-white-shirt-black-suit-with-pink-logo-that-says-word-game_42322474.htm#&position=1&from_view=search&track=ais"
+        },
+        {
+            "filename": "about-img-3.jpg",
+            "thumbnail_url": "https:\/\/designingmedia.com\/layout92\/wp-content\/uploads\/2023\/09\/about-img-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 7054,
+            "dimensions": [
+                300,
+                260
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.freepik.com\/premium-ai-image\/handsome-realistic-man-business-wear-suit-office-background_57103217.htm#page=2&position=18&from_view=search&track=ais"
+        }
+    ]
+}

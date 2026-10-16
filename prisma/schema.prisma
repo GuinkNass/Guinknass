@@ -1,0 +1,140 @@
+// Prisma Schema - Sistema de Agendamento Tattoo & Retornos Studio 13Point & GuinkNass
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum AppointmentType {
+  NEW          // Novo Agendamento (1ª sessão com sinal de 25%)
+  TOUCHUP      // Retoque (Isento de sinal, regras de Seg/Ter/Qua/Sex 12:00-19:00)
+  NEXT_SESSION // Próxima Sessão / Continuação (Seg-Sáb 11:00-23:00, Ter-Qui 13:00-17:00)
+}
+
+enum AppointmentStatus {
+  PENDING_PAYMENT              // Hold temporário de 15 minutos aguardando Pix
+  CONFIRMED                    // Confirmado (Pix aprovado ou Retorno isento)
+  CANCELLED                    // Cancelado administrativamente / Hold expirado
+  CANCELLED_DEPOSIT_FORFEITED  // Cancelado pelo cliente com retenção integral do sinal de 25%
+  COMPLETED                    // Sessão realizada
+}
+
+model Quote {
+  id                     String         @id @default(uuid())
+  clientName             String         @map("client_name")
+  clientCpf              String         @map("client_cpf")
+  clientPhone            String         @map("client_phone")
+  clientEmail            String         @map("client_email")
+  tattooDescription      String         @map("tattoo_description")
+  sizeCm                 String         @map("size_cm")
+  style                  String
+  totalPrice             Decimal        @map("total_price") @db.Decimal(10, 2)
+  estimatedDurationHours Int            @default(3) @map("estimated_duration_hours")
+  hasActiveProject       Boolean        @default(false) @map("has_active_project")
+  canRequestTouchup      Boolean        @default(false) @map("can_request_touchup")
+  
+  // Penalidades por cancelamento prévio
+  hasCancellationPenalty Boolean        @default(false) @map("has_cancellation_penalty")
+  rescheduleFeeDue       Decimal        @default(0) @map("reschedule_fee_due") @db.Decimal(10, 2)
+  
+  notes                  String?
+  createdAt              DateTime       @default(now()) @map("created_at")
+  updatedAt              DateTime       @updatedAt @map("updated_at")
+
+  appointments           Appointment[]
+
+  @@index([clientCpf])
+  @@map("quotes")
+}
+
+model Appointment {
+  id                     String            @id @default(uuid())
+  quoteId                String?           @map("quote_id")
+  quote                  Quote?            @relation(fields: [quoteId], references: [id], onDelete: SetNull)
+  
+  clientName             String            @map("client_name")
+  clientCpf              String            @map("client_cpf")
+  clientPhone            String            @map("client_phone")
+  clientEmail            String            @map("client_email")
+  
+  appointmentType        AppointmentType   @map("appointment_type")
+  status                 AppointmentStatus @default(PENDING_PAYMENT)
+  
+  // Explicação obrigatória se for Retoque (ex: área desbotada, falha de cicatrização)
+  touchupReason          String?           @map("touchup_reason")
+  
+  scheduledStart         DateTime          @map("scheduled_start")
+  scheduledEnd           DateTime          @map("scheduled_end")
+  durationHours          Int               @map("duration_hours")
+  bufferMinutes          Int               @default(60) @map("buffer_minutes") // 1h de pausa obrigatória
+  
+  // Valores financeiros
+  totalPrice             Decimal           @map("total_price") @db.Decimal(10, 2)
+  depositPaid            Decimal           @default(0) @map("deposit_paid") @db.Decimal(10, 2)
+  balanceDue             Decimal           @map("balance_due") @db.Decimal(10, 2)
+  isFullyPaid            Boolean           @default(false) @map("is_fully_paid")
+  balancePaidAt          DateTime?         @map("balance_paid_at")
+  balanceOrderId         String?           @map("balance_order_id")
+  
+  // Política de retenção de sinal e cancelamento
+  depositConsent         Boolean           @default(false) @map("deposit_consent")
+  depositForfeited       Boolean           @default(false) @map("deposit_forfeited")
+  cancellationReason     String?           @map("cancellation_reason")
+  cancelledAt            DateTime?         @map("cancelled_at")
+  
+  // Hold temporário de 15 minutos para pagamento Pix
+  holdExpiresAt          DateTime?         @map("hold_expires_at")
+  
+  // Dados de Gateway InfinitePay
+  infinitepayOrderId     String?           @map("infinitepay_order_id")
+  infinitepayTxid        String?           @map("infinitepay_txid")
+  infinitepayQrCode      String?           @map("infinitepay_qrcode")
+  infinitepayCopiaECola  String?           @map("infinitepay_copia_e_cola")
+  
+  // Uploads pré-sessão do cliente
+  skinPhotoUrl           String?           @map("skin_photo_url") @db.Text
+  referenceImages        Json?             @map("reference_images") // Array de URLs ou Base64
+  
+  // Sincronização Google Calendar
+  googleCalendarEventId  String?           @map("google_calendar_event_id")
+  
+  createdAt              DateTime          @default(now()) @map("created_at")
+  updatedAt              DateTime          @updatedAt @map("updated_at")
+
+  anamnese               AnamneseTerm?
+
+  @@index([clientCpf])
+  @@index([scheduledStart, scheduledEnd])
+  @@index([status, holdExpiresAt])
+  @@map("appointments")
+}
+
+model AnamneseTerm {
+  id                     String       @id @default(uuid())
+  appointmentId          String       @unique @map("appointment_id")
+  appointment            Appointment  @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  
+  clientCpf              String       @map("client_cpf")
+  clientName             String       @map("client_name")
+  
+  // Questionário de Saúde Pré-Tattoo
+  hasAllergies           Boolean      @default(false) @map("has_allergies")
+  allergiesDetails       String?      @map("allergies_details")
+  hasHealingProblems     Boolean      @default(false) @map("has_healing_problems") // Quelóide / Cicatrização hipertrófica
+  usesAnticoagulants     Boolean      @default(false) @map("uses_anticoagulants")
+  hasDiabetes            Boolean      @default(false) @map("has_diabetes")
+  isPregnantOrLactating  Boolean      @default(false) @map("is_pregnant_or_lactating")
+  hasSkinDiseases        Boolean      @default(false) @map("has_skin_diseases")
+  skinDiseasesDetails    String?      @map("skin_diseases_details")
+  
+  // Assinatura Digital capturada em tela (Canvas touch/mouse)
+  signatureBase64        String       @map("signature_base64") @db.Text
+  ipAddress              String?      @map("ip_address")
+  signedAt               DateTime     @default(now()) @map("signed_at")
+
+  @@index([clientCpf])
+  @@map("anamnese_terms")
+}

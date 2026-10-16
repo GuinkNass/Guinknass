@@ -1,0 +1,62 @@
+/* ==========================================================================
+   DESIGN TOKENS & SYSTEM VARIABLES (Inspirado no template AiMentor)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Paleta Oficial do Template */
+  --bg-black: #000000;
+  --bg-deep: #070709;
+  --bg-dark: #0D0D0F;
+  --bg-card: #121318;
+  --bg-card-hover: #181922;
+  --bg-card-elevated: #1e1f2a;
+  
+  --color-primary: #6EC1E4;
+  --color-secondary: #00FCDB; /* Ciano Elétrico Neon */
+  --color-accent: #3500FC;    /* Azul Cobalto Intenso */
+  --color-accent-hover: #00FCDB;
+  
+  --text-main: #FFFFFF;
+  --text-secondary: #E1E3E8;
+  --text-muted: #A8ACB7;
+  --text-dim: #71747B;
+
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-cyan: rgba(0, 252, 219, 0.35);
+  --border-accent: rgba(53, 0, 252, 0.4);
+
+  --radius-sm: 6px;
+  --radius-md: 10px; /* Padrão dos botões AiMentor */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --glow-cyan: 0 0 24px rgba(0, 252, 219, 0.3);
+  --glow-accent: 0 0 28px rgba(53, 0, 252, 0.4);
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --header-height: 84px;
+  --header-height-mobile: 72px;
+  --container-max-width: 1280px;
+  --container-padding: 24px;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Redução de movimento respeitando preferência do usuário */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
