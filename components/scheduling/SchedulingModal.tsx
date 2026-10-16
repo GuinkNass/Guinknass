@@ -249,56 +249,83 @@ export default function SchedulingModal({
           </div>
         )}
 
-        {/* TELA DE PAGAMENTO PIX */}
+        {/* TELA DE PAGAMENTO */}
         {pixData ? (
-          <div className="text-center py-2 space-y-5">
-            <div>
-              <h3 className="text-3xl font-extrabold text-white">
-                R$ {pixData.amount.toFixed(2).replace(".", ",")}
+          <div className="py-2 space-y-5">
+            <div className="text-center">
+              <span className="text-xs font-semibold tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full uppercase">
+                Sessão Pré-Agendada
+              </span>
+              <h3 className="text-3xl font-extrabold text-white mt-3">
+                R$ 150,00
               </h3>
               <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">
-                Horário reservado com sucesso! Efetue o pagamento do sinal de <strong>R$ 150,00</strong> para confirmar sua data na agenda.
+                Para confirmar seu horário na agenda oficial do estúdio, realize o pagamento do sinal de <strong>R$ 150,00</strong>. O valor é integralmente abatido no dia da tattoo.
               </p>
             </div>
 
-            <div className="flex justify-center">
-              <div className="bg-white p-4 rounded-2xl shadow-2xl inline-block border-4 border-amber-500/40">
+            {/* BOTÃO PRINCIPAL: CARTÃO DE CRÉDITO OU PIX */}
+            <div className="space-y-2">
+              <a
+                href={pixData.checkoutUrl || "https://checkout.infinitepay.io/deal-hunter-pro-br/YhWrx0WoY3"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-neutral-950 font-black rounded-xl transition flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/20 text-base cursor-pointer text-center"
+              >
+                <span>💳 PAGAR R$ 150,00 NO CARTÃO DE CRÉDITO OU PIX &rarr;</span>
+              </a>
+              <p className="text-[11px] text-center text-neutral-400">
+                Checkout seguro InfinitePay: pague em até 12x no cartão de crédito ou gere o Pix oficial do seu banco.
+              </p>
+            </div>
+
+            {/* OPÇÃO DE ESCANEAR VIA CELULAR SE ESTIVER NO COMPUTADOR */}
+            <div className="p-4 bg-neutral-950/80 border border-neutral-800 rounded-xl flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+              <div className="bg-white p-2 rounded-xl shadow-lg border-2 border-neutral-700 flex-shrink-0">
                 <img
-                  src={pixData.qrCodeUrl}
-                  alt="QR Code Pix InfinitePay"
-                  className="w-48 h-48 mx-auto"
+                  src={pixData.qrCodeUrl || `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(pixData.checkoutUrl || "https://checkout.infinitepay.io/deal-hunter-pro-br/YhWrx0WoY3")}`}
+                  alt="QR Code Pagamento"
+                  className="w-24 h-24 sm:w-28 sm:h-28"
                 />
+              </div>
+              <div className="space-y-1.5 flex-1">
+                <strong className="text-xs text-white block">Está no computador?</strong>
+                <p className="text-[11px] text-neutral-400 leading-relaxed">
+                  Aponte a <strong>câmera do celular</strong> para o QR Code ao lado para abrir a tela de pagamento no seu celular (Cartão ou Pix).
+                </p>
+                <button
+                  type="button"
+                  onClick={copyPix}
+                  className="mt-1 text-xs text-amber-400 hover:text-amber-300 underline font-semibold cursor-pointer block"
+                >
+                  {copied ? "✓ Link de Pagamento Copiado!" : "Copiar Link de Pagamento"}
+                </button>
               </div>
             </div>
 
-            <div className="max-w-md mx-auto space-y-3">
-              {pixData.checkoutUrl && (
-                <a
-                  href={pixData.checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm"
-                >
-                  <span>⚡ Pagar Sinal no Checkout InfinitePay (Pix / Cartão) &rarr;</span>
-                </a>
-              )}
-
-              <button
-                type="button"
-                onClick={copyPix}
-                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 text-xs"
-              >
-                {copied ? "✓ Chave Pix Copiada com Sucesso!" : "Copiar Chave / Link Pix"}
-              </button>
-
-              <a
-                href={preCareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 font-semibold rounded-xl transition border border-emerald-500/30 flex items-center justify-center gap-2 text-xs"
-              >
-                <span>📱 Abrir Guia de Cuidados Pré-Sessão no WhatsApp</span>
-              </a>
+            {/* RECOMENDAÇÕES PRÉ-TATTOO DIRETAMENTE NA TELA */}
+            <div className="bg-neutral-900/90 border border-amber-500/30 rounded-xl p-4 text-xs space-y-2.5 text-left">
+              <div className="font-bold text-amber-400 flex items-center gap-2 uppercase tracking-wider text-[11px]">
+                <span>📋</span> Recomendações Importantes para o Dia da Sessão:
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-neutral-300 text-[11px]">
+                <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800/80">
+                  <strong className="text-white block mb-0.5">🍽️ Alimentação</strong>
+                  Não venha em jejum! Faça uma refeição reforçada até 1h antes do horário marcado.
+                </div>
+                <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800/80">
+                  <strong className="text-white block mb-0.5">💧 Hidratação da Pele</strong>
+                  Beba bastante água nas 48h anteriores para preparar a pele para a tattoo.
+                </div>
+                <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800/80">
+                  <strong className="text-white block mb-0.5">🚫 Sem Álcool</strong>
+                  Não consuma bebidas alcoólicas nas 24h antes para evitar afinamento do sangue.
+                </div>
+                <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800/80">
+                  <strong className="text-white block mb-0.5">👕 Roupas e Sono</strong>
+                  Durma bem na noite anterior e use roupas confortáveis de fácil acesso ao local.
+                </div>
+              </div>
             </div>
 
             <button
@@ -306,9 +333,9 @@ export default function SchedulingModal({
                 onSuccess();
                 onClose();
               }}
-              className="text-xs text-neutral-400 underline hover:text-neutral-200 block mx-auto pt-2"
+              className="text-xs text-neutral-400 underline hover:text-neutral-200 block mx-auto pt-1 cursor-pointer"
             >
-              Já realizei o pagamento Pix (Concluir)
+              Já realizei o pagamento (Concluir)
             </button>
           </div>
         ) : (

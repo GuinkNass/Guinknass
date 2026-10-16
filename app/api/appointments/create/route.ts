@@ -119,8 +119,10 @@ export async function POST(request: NextRequest) {
         amount: depositAmount,
         qrCodeUrl: pixData.qrCodeUrl,
         copiaECola: pixData.copiaECola,
+        checkoutUrl: pixData.checkoutUrl || "https://checkout.infinitepay.io/deal-hunter-pro-br/YhWrx0WoY3",
         expiresInMinutes: 15,
       },
+      checkoutUrl: pixData.checkoutUrl || "https://checkout.infinitepay.io/deal-hunter-pro-br/YhWrx0WoY3",
       summary: {
         totalPrice,
         depositAmount,
