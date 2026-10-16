@@ -52,9 +52,12 @@ function initAnamneseWizard() {
     if (nextBtn) nextBtn.style.display = currentStep < totalSteps ? "inline-flex" : "none";
     if (submitBtn) submitBtn.style.display = currentStep === totalSteps ? "inline-flex" : "none";
 
-    // Se estiver no passo 4 (revisão), preenche o resumo
+    // Se estiver no passo 4 (revisão), preenche o resumo e dimensiona o canvas
     if (currentStep === 4) {
       populateReviewData();
+      setTimeout(() => {
+        if (window.setupSignatureCanvas) window.setupSignatureCanvas();
+      }, 80);
     }
 
     // Rola para o topo do formulário suavemente
@@ -151,10 +154,16 @@ function initAnamneseWizard() {
         localStorage.setItem("guinknass_anamneses", JSON.stringify(stored));
       }
 
-      // Sucesso: oculta o formulário e exibe tela segura sem revelar dados médicos
+      // Sucesso: oculta o formulário e exibe tela segura com preview da assinatura
       form.style.display = "none";
       if (successCard) {
         successCard.style.display = "block";
+        const previewWrap = document.getElementById("anamneseSignaturePreviewWrap");
+        const previewImg = document.getElementById("anamneseSignaturePreviewImg");
+        if (previewWrap && previewImg && anamneseData.signature) {
+          previewImg.src = anamneseData.signature;
+          previewWrap.style.display = "block";
+        }
       }
 
       if (window.showToast) {
@@ -174,31 +183,71 @@ function initAnamneseWizard() {
 }
 
 /* --------------------------------------------------------------------------
-   Canvas de Assinatura Eletrônica
+   Canvas de Assinatura Eletrônica (Suporte Desktop, Celulares e Alta Resolução)
    -------------------------------------------------------------------------- */
+function updateSignatureStatus(signed) {
+  const statusEl = document.getElementById("signatureStatus");
+  if (!statusEl) return;
+  if (signed) {
+    statusEl.innerHTML = `<span style="color: #00FCDB; font-weight: 600;">✓ Assinatura eletrônica capturada com sucesso</span>`;
+  } else {
+    statusEl.innerHTML = `<span style="color: #94a3b8;">✏️ Aguardando assinatura com o dedo (no celular) ou mouse</span>`;
+  }
+}
+
+function setupSignatureCanvas() {
+  signatureCanvas = document.getElementById("signaturePad");
+  if (!signatureCanvas) return;
+  signatureCtx = signatureCanvas.getContext("2d");
+
+  const rect = signatureCanvas.getBoundingClientRect();
+  const width = rect.width || signatureCanvas.parentElement?.clientWidth || 400;
+  const height = 180;
+
+  // Preserva assinatura prévia se houver
+  let temp = null;
+  if (hasSigned && signatureCanvas.width > 0) {
+    try {
+      temp = signatureCanvas.toDataURL("image/png");
+    } catch (e) {}
+  }
+
+  const dpr = window.devicePixelRatio || 1;
+  signatureCanvas.width = width * dpr;
+  signatureCanvas.height = height * dpr;
+  signatureCanvas.style.width = width + "px";
+  signatureCanvas.style.height = height + "px";
+
+  signatureCtx.setTransform(1, 0, 0, 1, 0, 0);
+  signatureCtx.scale(dpr, dpr);
+  signatureCtx.lineWidth = 2.8;
+  signatureCtx.lineCap = "round";
+  signatureCtx.lineJoin = "round";
+  signatureCtx.strokeStyle = "#00FCDB";
+
+  if (temp) {
+    const img = new Image();
+    img.onload = () => {
+      signatureCtx.drawImage(img, 0, 0, width, height);
+    };
+    img.src = temp;
+  }
+}
+window.setupSignatureCanvas = setupSignatureCanvas;
+
 function initSignaturePad() {
   signatureCanvas = document.getElementById("signaturePad");
   if (!signatureCanvas) return;
 
   signatureCtx = signatureCanvas.getContext("2d");
-  
-  // Ajusta dimensões do canvas ao container
-  const resizeCanvas = () => {
-    const rect = signatureCanvas.getBoundingClientRect();
-    signatureCanvas.width = rect.width;
-    signatureCanvas.height = 180;
-    signatureCtx.lineWidth = 2.5;
-    signatureCtx.lineCap = "round";
-    signatureCtx.strokeStyle = "#00FCDB";
-  };
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+  window.addEventListener("resize", () => {
+    if (currentStep === 4) setupSignatureCanvas();
+  });
 
   const getPos = (e) => {
     const rect = signatureCanvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
     return {
       x: clientX - rect.left,
       y: clientY - rect.top
@@ -206,8 +255,10 @@ function initSignaturePad() {
   };
 
   const startDraw = (e) => {
+    if (e.cancelable && e.type.startsWith("touch")) e.preventDefault();
     isDrawing = true;
     hasSigned = true;
+    updateSignatureStatus(true);
     const pos = getPos(e);
     signatureCtx.beginPath();
     signatureCtx.moveTo(pos.x, pos.y);
@@ -215,7 +266,7 @@ function initSignaturePad() {
 
   const draw = (e) => {
     if (!isDrawing) return;
-    e.preventDefault();
+    if (e.cancelable && e.type.startsWith("touch")) e.preventDefault();
     const pos = getPos(e);
     signatureCtx.lineTo(pos.x, pos.y);
     signatureCtx.stroke();
@@ -225,12 +276,12 @@ function initSignaturePad() {
     isDrawing = false;
   };
 
-  // Mouse
+  // Eventos de Mouse
   signatureCanvas.addEventListener("mousedown", startDraw);
   signatureCanvas.addEventListener("mousemove", draw);
   window.addEventListener("mouseup", stopDraw);
 
-  // Touch
+  // Eventos de Touch (Smartphones e Tablets)
   signatureCanvas.addEventListener("touchstart", startDraw, { passive: false });
   signatureCanvas.addEventListener("touchmove", draw, { passive: false });
   window.addEventListener("touchend", stopDraw);
@@ -238,8 +289,11 @@ function initSignaturePad() {
   // Botão Limpar
   const clearBtn = document.getElementById("clearSignatureBtn");
   clearBtn?.addEventListener("click", () => {
-    signatureCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+    if (signatureCtx && signatureCanvas) {
+      signatureCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+    }
     hasSigned = false;
+    updateSignatureStatus(false);
   });
 }
 
@@ -300,7 +354,8 @@ function collectAnamneseData() {
       talkNeeded: document.getElementById("declTalk")?.checked || false,
       lgpdSensivel: document.getElementById("consentLgpd")?.checked || false,
       timestamp: new Date().toLocaleString("pt-BR")
-    }
+    },
+    signature: (hasSigned && signatureCanvas) ? signatureCanvas.toDataURL("image/png") : null
   };
 }
 

@@ -114,6 +114,29 @@ function initBudgetForm() {
       return;
     }
 
+    // Previne envio duplicado
+    submitBtn.disabled = true;
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `<span>Processando imagens e enviando...</span>`;
+
+    // Converte imagens selecionadas em Base64 para envio à planilha/Drive
+    const imagesData = await Promise.all(
+      selectedFiles.map((file) => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            resolve({
+              name: file.name,
+              type: file.type || "image/jpeg",
+              base64: reader.result.split(",")[1]
+            });
+          };
+          reader.onerror = () => resolve(null);
+          reader.readAsDataURL(file);
+        });
+      })
+    );
+
     // Coleta dos dados preenchidos
     const formData = {
       name: document.getElementById("clientName")?.value.trim(),
@@ -129,13 +152,9 @@ function initBudgetForm() {
       colorPreference: form.querySelector('input[name="colorPreference"]:checked')?.value || "Preto e Cinza",
       notes: document.getElementById("additionalNotes")?.value.trim(),
       timestamp: new Date().toISOString(),
-      referenceFilesCount: selectedFiles.length
+      referenceFilesCount: selectedFiles.length,
+      images: imagesData.filter(Boolean)
     };
-
-    // Previne envio duplicado
-    submitBtn.disabled = true;
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Processando solicitação...</span>`;
 
     const webhookUrl = window.GUINKNASS_CONFIG?.integrations?.googleSheetsBudgetWebhookUrl;
 

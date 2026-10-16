@@ -376,7 +376,10 @@
                     <button type="button" id="clearSignatureBtn" class="signature-clear-btn">Limpar Assinatura</button>
                   </div>
                 </div>
-                <p class="form-helper">
+                <div id="signatureStatus" style="font-size: 0.88rem; margin-top: 8px; color: #94a3b8; display: flex; align-items: center; gap: 6px;">
+                  <span>✏️ Aguardando assinatura com o dedo (no celular) ou mouse</span>
+                </div>
+                <p class="form-helper" style="margin-top: 8px;">
                   Assine dentro da área delimitada. Esta assinatura registra sua confirmação eletrônica acompanhada de carimbo de data e hora.
                 </p>
               </div>
@@ -401,6 +404,13 @@
             <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 620px; margin: 0 auto 24px auto; line-height: 1.7;">
               Suas informações foram registradas com sucesso e armazenadas em ambiente seguro e confidencial.
             </p>
+
+            <!-- Preview da Assinatura Registrada -->
+            <div id="anamneseSignaturePreviewWrap" style="display: none; margin: 20px auto; max-width: 320px; padding: 14px; background: rgba(0, 252, 219, 0.05); border: 1px dashed var(--border-cyan); border-radius: var(--radius-md);">
+              <p style="font-size: 0.82rem; color: var(--color-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Assinatura Digital Registrada:</p>
+              <img id="anamneseSignaturePreviewImg" src="" alt="Assinatura Registrada" style="max-width: 100%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 0 6px rgba(0,252,219,0.3));">
+            </div>
+
             <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 32px auto;">
               No dia agendado, conversaremos presencialmente sobre os detalhes da arte e os cuidados. Obrigado pelo preenchimento!
             </p>
