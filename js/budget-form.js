@@ -142,18 +142,18 @@ function initBudgetForm() {
     try {
       if (webhookUrl && webhookUrl.startsWith("http")) {
         // Envio real para o Webhook do Google Apps Script
-        const response = await fetch(webhookUrl, {
+        await fetch(webhookUrl, {
           method: "POST",
-          mode: "no-cors", // Necessário para Google Apps Script Web App
-          headers: { "Content-Type": "application/json" },
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(formData)
         });
-      } else {
-        // Se a integração externa ainda não foi configurada pelo artista, armazena no localStorage
-        const storedBudgets = JSON.parse(localStorage.getItem("guinknass_budgets") || "[]");
-        storedBudgets.push(formData);
-        localStorage.setItem("guinknass_budgets", JSON.stringify(storedBudgets));
       }
+      
+      // Armazena cópia local de contingência no navegador
+      const storedBudgets = JSON.parse(localStorage.getItem("guinknass_budgets") || "[]");
+      storedBudgets.push(formData);
+      localStorage.setItem("guinknass_budgets", JSON.stringify(storedBudgets));
 
       // Sucesso na submissão
       form.style.display = "none";

@@ -22,7 +22,7 @@ const GUINKNASS_CONFIG = {
     // Planilha Oficial de Orçamentos (GuinkNass)
     googleSheetsBudgetUrl: "https://docs.google.com/spreadsheets/d/1KLlUlClEVo6MwR_hy1lTmFPke_gtFWt4MGpdvc_iZIE/edit?usp=sharing",
     googleSheetsBudgetSpreadsheetId: "1KLlUlClEVo6MwR_hy1lTmFPke_gtFWt4MGpdvc_iZIE",
-    googleSheetsBudgetWebhookUrl: "https://script.google.com/macros/s/AKfycby1PrwIql2yT_BMQ2_txseZB4Yzf1kf6GO54QrJEtjAZimCwGXO5-oXshR085mjD6vqYw/exec",
+    googleSheetsBudgetWebhookUrl: "https://script.google.com/macros/s/AKfycbznrzPLyTQ0BA23BXwhcXq0R1tJeMojvCK7nOAPOVHrW0XAPR3eO56ShDnuVM-XXZgu3Q/exec",
 
     // Planilha Oficial de Anamnese (GuinkNass - Restrita)
     googleSheetsAnamneseUrl: "https://docs.google.com/spreadsheets/d/1OmdWYXa2MlHAfpX3kmFbGHSuW3B47KnEeTUWTGwcrzI/edit?usp=sharing",
