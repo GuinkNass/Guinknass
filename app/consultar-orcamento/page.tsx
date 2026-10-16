@@ -87,6 +87,11 @@ export default function ConsultarOrcamentoPage() {
         throw new Error(data.error || "Não foi possível localizar o orçamento.");
       }
 
+      if (data.status === "PENDING_REVIEW") {
+        setErrorMessage(`⏳ ${data.message}`);
+        return;
+      }
+
       setSearchResult(data);
     } catch (err: any) {
       setErrorMessage(err.message || "Erro de conexão ao buscar orçamento.");

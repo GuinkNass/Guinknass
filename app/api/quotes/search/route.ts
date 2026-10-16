@@ -1,28 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchQuoteSchema } from "@/lib/validations/schedule";
 import { STUDIO_ADDRESS } from "@/types";
-
-// Base de dados mock / contingência caso o banco relacional não esteja populado
-const MOCK_QUOTES = [
-  {
-    id: "quote-demo-1",
-    clientName: "Cliente Exemplo GuinkNass",
-    clientCpf: "12345678909",
-    clientPhone: "(11) 99580-2338",
-    clientEmail: "cliente@exemplo.com",
-    tattooDescription: "Fechamento de antebraço autoral surrealista com textura orgânica e sombreado denso",
-    sizeCm: "22 x 12 cm",
-    style: "Autoral / Preto e Cinza",
-    totalPrice: 2400.0,
-    estimatedDurationHours: 4,
-    hasActiveProject: true,
-    canRequestTouchup: true,
-    hasCancellationPenalty: false,
-    rescheduleFeeDue: 0.0,
-    notes: "Projeto iniciado. Disponível para continuação ou retoque de cicatrização.",
-    appointments: [],
-  },
-];
+import { findQuoteByCpf } from "@/lib/quotesStore";
 
 export async function GET(request: NextRequest) {
   try {
@@ -38,7 +17,22 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Busca no banco Prisma ou fallback no Mock
+    // 1. Busca primeiro no store resiliente (orçamentos cadastrados via site ou publicados via Google Sheets)
+    const storedQuote = findQuoteByCpf(cleanCpf);
+
+    // Se estiver no store mas ainda estiver PENDENTE de valor
+    if (storedQuote && storedQuote.status === "PENDENTE") {
+      return NextResponse.json(
+        {
+          status: "PENDING_REVIEW",
+          message: "Seu orçamento foi recebido e está em análise pelo artista GuinkNass. Assim que o valor for aprovado na planilha, seu agendamento estará disponível aqui!",
+          clientName: storedQuote.clientName,
+        },
+        { status: 200 }
+      );
+    }
+
+    // 2. Busca no banco relacional Prisma
     let quote: any = null;
 
     try {
@@ -54,57 +48,66 @@ export async function GET(request: NextRequest) {
         },
       });
     } catch {
-      // Fallback em caso de banco offline
-      quote = MOCK_QUOTES.find((q) => q.clientCpf === cleanCpf) || {
-        id: `quote-${cleanCpf.slice(0, 6)}`,
-        clientName: "Cliente Studio 13Point",
-        clientCpf: cleanCpf,
-        clientPhone: "(11) 99580-2338",
-        clientEmail: "cliente@exemplo.com",
-        tattooDescription: "Projeto Autoral em Preto e Cinza",
-        sizeCm: "15 x 10 cm",
-        style: "Surrealismo & Sombra",
-        totalPrice: 1600.0,
-        estimatedDurationHours: 3,
-        hasActiveProject: true,
-        canRequestTouchup: true,
-        hasCancellationPenalty: false,
-        rescheduleFeeDue: 0.0,
-        notes: "Orçamento aprovado. Escolha entre novo agendamento ou sessão de retoque/continuação.",
-        appointments: [],
-      };
+      // Prisma offline
     }
 
-    if (!quote) {
-      return NextResponse.json(
-        { error: "Nenhum orçamento encontrado para o CPF informado. Envie uma proposta pela página de orçamentos." },
-        { status: 404 }
-      );
+    // Se achou no store aprovado, usa os dados do store
+    if (storedQuote && storedQuote.status === "APROVADO") {
+      return NextResponse.json({
+        quote: {
+          id: storedQuote.id,
+          clientName: storedQuote.clientName,
+          clientCpf: storedQuote.clientCpf,
+          clientPhone: storedQuote.clientPhone,
+          clientEmail: storedQuote.clientEmail,
+          tattooDescription: storedQuote.tattooDescription,
+          sizeCm: storedQuote.sizeCm,
+          style: storedQuote.style,
+          totalPrice: storedQuote.totalPrice,
+          depositAmount: 150.0,
+          estimatedDurationHours: storedQuote.estimatedDurationHours || 3,
+          sessionsCount: storedQuote.sessionsCount || 1,
+          hasActiveProject: true,
+          canRequestTouchup: false,
+          hasCancellationPenalty: false,
+          rescheduleFeeDue: 0.0,
+          notes: storedQuote.notes || "Orçamento aprovado pelo artista. Escolha sua data e confirme com sinal de R$ 150,00.",
+        },
+        studioAddress: STUDIO_ADDRESS,
+        previousAppointments: quote?.appointments || [],
+      });
     }
 
-    // Retorna os dados completos com endereço fixo e regras de sinal
-    return NextResponse.json({
-      quote: {
-        id: quote.id,
-        clientName: quote.clientName,
-        clientCpf: quote.clientCpf,
-        clientPhone: quote.clientPhone,
-        clientEmail: quote.clientEmail,
-        tattooDescription: quote.tattooDescription,
-        sizeCm: quote.sizeCm,
-        style: quote.style,
-        totalPrice: Number(quote.totalPrice),
-        depositAmount: 150.0,
-        estimatedDurationHours: quote.estimatedDurationHours || 3,
-        hasActiveProject: quote.hasActiveProject,
-        canRequestTouchup: quote.canRequestTouchup,
-        hasCancellationPenalty: quote.hasCancellationPenalty || false,
-        rescheduleFeeDue: Number(quote.rescheduleFeeDue || 0),
-        notes: quote.notes,
-      },
-      studioAddress: STUDIO_ADDRESS,
-      previousAppointments: quote.appointments || [],
-    });
+    // Se achou no Prisma
+    if (quote) {
+      return NextResponse.json({
+        quote: {
+          id: quote.id,
+          clientName: quote.clientName,
+          clientCpf: quote.clientCpf,
+          clientPhone: quote.clientPhone,
+          clientEmail: quote.clientEmail,
+          tattooDescription: quote.tattooDescription,
+          sizeCm: quote.sizeCm,
+          style: quote.style,
+          totalPrice: Number(quote.totalPrice),
+          depositAmount: 150.0,
+          estimatedDurationHours: quote.estimatedDurationHours || 3,
+          hasActiveProject: quote.hasActiveProject,
+          canRequestTouchup: quote.canRequestTouchup,
+          hasCancellationPenalty: quote.hasCancellationPenalty || false,
+          rescheduleFeeDue: Number(quote.rescheduleFeeDue || 0),
+          notes: quote.notes,
+        },
+        studioAddress: STUDIO_ADDRESS,
+        previousAppointments: quote.appointments || [],
+      });
+    }
+
+    return NextResponse.json(
+      { error: "Nenhum orçamento encontrado para o CPF informado. Envie uma proposta pela página de orçamentos." },
+      { status: 404 }
+    );
   } catch (error: any) {
     console.error("[API quotes/search] Erro:", error);
     return NextResponse.json(

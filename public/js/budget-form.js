@@ -91,6 +91,25 @@ function initBudgetForm() {
   }
 
   // --------------------------------------------------------------------------
+  // Máscara e Validação de CPF
+  // --------------------------------------------------------------------------
+  const cpfInput = document.getElementById("clientCpf");
+  if (cpfInput) {
+    cpfInput.addEventListener("input", (e) => {
+      let v = e.target.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.slice(0, 11);
+      if (v.length > 9) {
+        v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+      } else if (v.length > 6) {
+        v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
+      } else if (v.length > 3) {
+        v = v.replace(/(\d{3})(\d{1,3})/, "$1.$2");
+      }
+      e.target.value = v;
+    });
+  }
+
+  // --------------------------------------------------------------------------
   // Validação e Envio do Formulário
   // --------------------------------------------------------------------------
   form.addEventListener("submit", async (e) => {
@@ -108,6 +127,14 @@ function initBudgetForm() {
         group?.classList.remove("has-error");
       }
     });
+
+    const rawCpf = document.getElementById("clientCpf")?.value.replace(/\D/g, "") || "";
+    if (rawCpf.length !== 11) {
+      const group = document.getElementById("clientCpf")?.closest(".form-group");
+      group?.classList.add("has-error");
+      if (window.showToast) window.showToast("Por favor, informe um CPF válido com 11 dígitos.", "error");
+      isValid = false;
+    }
 
     if (!isValid) {
       if (window.showToast) window.showToast("Por favor, preencha todos os campos obrigatórios.", "error");
@@ -137,9 +164,11 @@ function initBudgetForm() {
       })
     );
 
-    // Coleta dos dados preenchidos
+    // Coleta dos dados preenchidos com CPF
     const formData = {
       name: document.getElementById("clientName")?.value.trim(),
+      cpf: rawCpf,
+      cpfFormatted: document.getElementById("clientCpf")?.value.trim(),
       email: document.getElementById("clientEmail")?.value.trim(),
       phone: document.getElementById("clientPhone")?.value.trim(),
       city: document.getElementById("clientCity")?.value.trim(),
@@ -167,6 +196,17 @@ function initBudgetForm() {
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(formData)
         });
+      }
+
+      // Envia também para a API interna do site (/api/quotes/submit)
+      try {
+        await fetch("/api/quotes/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+      } catch (apiErr) {
+        console.warn("API de orçamentos interna offline, salvo via webhook e storage:", apiErr);
       }
       
       // Armazena cópia local de contingência no navegador

@@ -105,9 +105,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="clientEmail">E-mail <span class="required">*</span></label>
-                  <input type="email" id="clientEmail" class="form-control" placeholder="seuemail@exemplo.com" required>
-                  <span class="form-error-msg">Informe um e-mail válido.</span>
+                  <label class="form-label" for="clientCpf">CPF <span class="required">*</span></label>
+                  <input type="text" id="clientCpf" class="form-control" placeholder="000.000.000-00" maxlength="14" required>
+                  <span class="form-error-msg">Informe um CPF válido (usado para consultar a resposta do orçamento).</span>
                 </div>
               </div>
 
@@ -119,10 +119,20 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="clientCity">Cidade e Estado <span class="optional">(Opcional)</span></label>
-                  <input type="text" id="clientCity" class="form-control" placeholder="Ex: São Paulo - SP">
+                  <label class="form-label" for="clientEmail">E-mail <span class="required">*</span></label>
+                  <input type="email" id="clientEmail" class="form-control" placeholder="seuemail@exemplo.com" required>
+                  <span class="form-error-msg">Informe um e-mail válido.</span>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientCity">Cidade e Estado <span class="optional">(Opcional)</span></label>
+                <input type="text" id="clientCity" class="form-control" placeholder="Ex: São Paulo - SP">
+              </div>
+
+              <p style="font-size: 0.85rem; color: #00FCDB; margin-top: 8px;">
+                💡 <strong>Importante:</strong> Seu CPF será a sua chave de segurança para consultar a resposta e agendar sua sessão após aprovação do artista.
+              </p>
             </div>
 
             <!-- Bloco 2: Informações da Tatuagem -->
