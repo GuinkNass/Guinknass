@@ -27,7 +27,7 @@ const GUINKNASS_CONFIG = {
     // Planilha Oficial de Anamnese (GuinkNass - Restrita)
     googleSheetsAnamneseUrl: "https://docs.google.com/spreadsheets/d/1OmdWYXa2MlHAfpX3kmFbGHSuW3B47KnEeTUWTGwcrzI/edit?usp=sharing",
     googleSheetsAnamneseSpreadsheetId: "1OmdWYXa2MlHAfpX3kmFbGHSuW3B47KnEeTUWTGwcrzI",
-    googleSheetsAnamneseWebhookUrl: "https://script.google.com/macros/s/AKfycbzUxpAYUFdXcLXbzaoLxsT4dqbZkIUQvmKUDxkJTIKJermjh8XHiShLPKPAeoXGOzyDjg/exec",
+    googleSheetsAnamneseWebhookUrl: "https://script.google.com/macros/s/AKfycbxVTHimb55J8e1O1RRGFi4nh3uRipRWiKqRWAiYWDTmw5WYzLo84PnTzpx3I5abvy2U1g/exec",
 
     // URL ou ID do Google Forms (caso opte pelo formulário externo ou fallback)
     googleFormsBudgetUrl: "",
