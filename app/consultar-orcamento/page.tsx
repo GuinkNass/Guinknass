@@ -81,18 +81,45 @@ export default function ConsultarOrcamentoPage() {
 
     try {
       const res = await fetch(`/api/quotes/search?cpf=${encodeURIComponent(rawCpf)}`);
-      const data = await res.json();
+      let data: any = null;
 
-      if (!res.ok) {
-        throw new Error(data.error || "Não foi possível localizar o orçamento.");
-      }
+      try {
+        data = await res.json();
+      } catch {}
 
-      if (data.status === "PENDING_REVIEW") {
-        setErrorMessage(`⏳ ${data.message}`);
+      if (res.ok && data) {
+        if (data.status === "PENDING_REVIEW") {
+          setErrorMessage(`⏳ ${data.message}`);
+          return;
+        }
+        setSearchResult(data);
         return;
       }
 
-      setSearchResult(data);
+      // Fallback direto: consulta a Planilha Google via Apps Script Webhook
+      const gsWebhook = "https://script.google.com/macros/s/AKfycbznrzPLyTQ0BA23BXwhcXq0R1tJeMojvCK7nOAPOVHrW0XAPR3eO56ShDnuVM-XXZgu3Q/exec";
+      try {
+        const gsRes = await fetch(`${gsWebhook}?cpf=${encodeURIComponent(rawCpf)}`);
+        if (gsRes.ok) {
+          const gsData = await gsRes.json();
+          if (gsData && gsData.found && gsData.quote) {
+            if (gsData.status === "PENDING_REVIEW") {
+              setErrorMessage(`⏳ ${gsData.message}`);
+              return;
+            }
+            setSearchResult({
+              quote: gsData.quote,
+              studioAddress: "Studio 13Point Tattoo - Rua Marechal Fontoura, 26, Água Fria, São Paulo - SP",
+              previousAppointments: [],
+            });
+            return;
+          }
+        }
+      } catch (directErr) {
+        console.warn("[consultar-orcamento] Fallback direto falhou:", directErr);
+      }
+
+      throw new Error(data?.error || "Nenhum orçamento encontrado para o CPF informado. Envie uma proposta pela página de orçamentos.");
     } catch (err: any) {
       setErrorMessage(err.message || "Erro de conexão ao buscar orçamento.");
     } finally {

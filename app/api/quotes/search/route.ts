@@ -104,6 +104,40 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // 3. Fallback Direto no Google Sheets Webhook (dados em tempo real da planilha)
+    try {
+      const gsWebhookUrl = process.env.GOOGLE_SHEETS_BUDGET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbznrzPLyTQ0BA23BXwhcXq0R1tJeMojvCK7nOAPOVHrW0XAPR3eO56ShDnuVM-XXZgu3Q/exec";
+      const gsRes = await fetch(`${gsWebhookUrl}?cpf=${encodeURIComponent(cleanCpf)}`, {
+        cache: "no-store",
+      });
+
+      if (gsRes.ok) {
+        const gsData = await gsRes.json();
+        if (gsData && gsData.found && gsData.quote) {
+          saveOrUpdateQuote(gsData.quote);
+
+          if (gsData.status === "PENDING_REVIEW") {
+            return NextResponse.json(
+              {
+                status: "PENDING_REVIEW",
+                message: gsData.message || "Seu orçamento foi recebido e está em análise pelo artista GuinkNass.",
+                clientName: gsData.quote.clientName,
+              },
+              { status: 200 }
+            );
+          }
+
+          return NextResponse.json({
+            quote: gsData.quote,
+            studioAddress: STUDIO_ADDRESS,
+            previousAppointments: [],
+          });
+        }
+      }
+    } catch (gsErr) {
+      console.warn("[quotes/search] Falha ao consultar Webhook Google Sheets:", gsErr);
+    }
+
     return NextResponse.json(
       { error: "Nenhum orçamento encontrado para o CPF informado. Envie uma proposta pela página de orçamentos." },
       { status: 404 }
