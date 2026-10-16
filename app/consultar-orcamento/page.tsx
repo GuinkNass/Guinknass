@@ -378,89 +378,96 @@ export default function ConsultarOrcamentoPage() {
               </div>
             </div>
 
-            {/* Ações: Escolha entre Novo Agendamento e Retorno */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              {/* Opção A: NOVO AGENDAMENTO (Sinal 25%) */}
-              <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 border border-amber-500/30 hover:border-amber-500/60 transition-all rounded-2xl p-6 flex flex-col justify-between shadow-xl">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      Fluxo Principal
-                    </span>
-                    <span className="text-xs text-neutral-400">1ª Sessão</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Novo Agendamento</h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                    Reserva oficial da sua sessão inaugural com garantia de data e diária de bancada. Exige sinal fixo de R$ 150,00, <strong>não reembolsável em caso de cancelamento</strong>, abatido presencialmente no valor total da tattoo.
-                  </p>
-                  
-                  <div className="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800 text-xs text-neutral-300 space-y-1 mb-5">
-                    <p className="flex items-center gap-1.5">
-                      <span className="text-amber-400">✓</span> Confirmação imediata pós Pix InfinitePay
-                    </p>
-                    <p className="flex items-center gap-1.5">
-                      <span className="text-amber-400">✓</span> Hold de 15 minutos na agenda
-                    </p>
-                    <p className="flex items-center gap-1.5">
-                      <span className="text-amber-400">✓</span> Evento automático na Google Agenda
-                    </p>
-                  </div>
-                </div>
+            {/* Ações de Agendamento */}
+            {(() => {
+              const hasCompletedFirstSession = (searchResult.previousAppointments || []).some(
+                (app) => (app.status === "CONFIRMED" || app.status === "COMPLETED") && new Date(app.scheduledStart) < new Date()
+              );
 
-                <button
-                  onClick={() => handleOpenScheduling("NEW")}
-                  className="w-full py-3.5 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span>Agendar 1ª Sessão (Sinal Fixo R$ 150)</span>
-                </button>
-              </div>
-
-              {/* Opção B: REAGENDAMENTO / RETORNO (Isento de Sinal) */}
-              <div className="bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-all rounded-2xl p-6 flex flex-col justify-between shadow-xl">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                      Isento de Sinal (R$ 0,00)
-                    </span>
-                    <span className="text-xs text-neutral-400">Retorno ou Continuação</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Solicitar Retorno / Reagendamento</h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                    Destinado a clientes com direito a retoque de cicatrização ou continuação de projetos fechados já iniciados. Sem cobrança de novo sinal.
-                  </p>
-
-                  <div className="space-y-2 mb-5">
-                    <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800 text-xs">
-                      <strong className="text-neutral-200 block">1. Retoque de Cicatrização:</strong>
-                      <span className="text-neutral-400">Seg, Ter, Qua e Sex das 12:00 às 19:00 (~2h)</span>
+              if (!hasCompletedFirstSession) {
+                // Fluxo Limpo e Exclusivo para Novo Cliente (1ª Sessão)
+                return (
+                  <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 border border-amber-500/40 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <div>
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                          Etapa Oficial
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">Agendar sua Sessão</h3>
+                      </div>
+                      <div className="text-left sm:text-right">
+                        <span className="text-xs text-neutral-400 block">Sinal de Reserva</span>
+                        <span className="text-lg font-extrabold text-amber-400">R$ 150,00 (Fixo)</span>
+                      </div>
                     </div>
-                    <div className="bg-neutral-950/60 p-2.5 rounded-lg border border-neutral-800 text-xs">
-                      <strong className="text-neutral-200 block">2. Próxima Sessão (Continuação):</strong>
-                      <span className="text-neutral-400">Seg a Sáb 11h-23h (Ter-Qui restrito a 13h-17h)</span>
+
+                    <p className="text-sm text-neutral-300 leading-relaxed mb-6">
+                      Escolha o melhor dia e horário na agenda oficial do estúdio para a realização da sua tatuagem. O valor do sinal garante sua vaga exclusiva e é <strong>100% abatido no dia da tattoo</strong>.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                      <div className="bg-neutral-900/80 p-3.5 rounded-xl border border-neutral-800 text-xs text-neutral-300 flex items-center gap-2">
+                        <span className="text-amber-400 font-bold">✓</span> Confirmação imediata via Pix
+                      </div>
+                      <div className="bg-neutral-900/80 p-3.5 rounded-xl border border-neutral-800 text-xs text-neutral-300 flex items-center gap-2">
+                        <span className="text-amber-400 font-bold">✓</span> Horário exclusivo reservado
+                      </div>
+                      <div className="bg-neutral-900/80 p-3.5 rounded-xl border border-neutral-800 text-xs text-neutral-300 flex items-center gap-2">
+                        <span className="text-amber-400 font-bold">✓</span> Abatido no valor total
+                      </div>
                     </div>
+
+                    <button
+                      onClick={() => handleOpenScheduling("NEW")}
+                      className="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-extrabold rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2 text-base cursor-pointer"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span>ESCOLHER DATA E HORÁRIO DISPONÍVEL &rarr;</span>
+                    </button>
+                  </div>
+                );
+              }
+
+              // Para quem já concluiu a 1ª sessão: exibe opções de continuação e retoque
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-b from-neutral-900 to-neutral-950 border border-amber-500/30 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Nova Sessão</h3>
+                      <p className="text-xs text-neutral-400 mb-4">
+                        Agende uma nova sessão com garantia de data. Sinal fixo de R$ 150,00 abatido no dia da tattoo.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleOpenScheduling("NEW")}
+                      className="w-full py-3.5 px-4 bg-gradient-to-r from-amber-500 to-amber-600 text-neutral-950 font-bold rounded-xl shadow-lg transition-all"
+                    >
+                      Agendar Nova Sessão
+                    </button>
+                  </div>
+
+                  <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+                    <div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        Isento de Novo Sinal
+                      </span>
+                      <h3 className="text-xl font-bold text-white mt-2 mb-2">Solicitar Retoque</h3>
+                      <p className="text-xs text-neutral-400 mb-4">
+                        Disponível para clientes que já realizaram a tattoo e necessitam de pequenos ajustes pós-cicatrização.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleOpenScheduling("TOUCHUP")}
+                      className="w-full py-3.5 px-4 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-bold rounded-xl border border-neutral-700 transition-all"
+                    >
+                      Solicitar Retoque de Cicatrização
+                    </button>
                   </div>
                 </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => handleOpenScheduling("TOUCHUP")}
-                    className="py-3 px-3 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold rounded-xl border border-neutral-700 transition-all text-center"
-                  >
-                    Agendar Retoque
-                  </button>
-                  <button
-                    onClick={() => handleOpenScheduling("NEXT_SESSION")}
-                    className="py-3 px-3 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold rounded-xl border border-neutral-700 transition-all text-center"
-                  >
-                    Próxima Sessão
-                  </button>
-                </div>
-              </div>
-            </div>
+              );
+            })()}
 
             {/* Histórico de Sessões Agendadas & Ações Pré/Pós Sessão */}
             {searchResult.previousAppointments && searchResult.previousAppointments.length > 0 && (
@@ -598,6 +605,7 @@ export default function ConsultarOrcamentoPage() {
             quote={searchResult.quote}
             initialType={selectedFlowType}
             isOpen={isModalOpen}
+            previousAppointments={searchResult.previousAppointments}
             onClose={() => setIsModalOpen(false)}
             onSuccess={handleSchedulingSuccess}
           />
@@ -628,7 +636,7 @@ export default function ConsultarOrcamentoPage() {
                 </strong>.
               </p>
               <div className="p-3 bg-red-950/40 border border-red-500/40 rounded-xl text-xs text-red-300">
-                <strong>ATENÇÃO (POLÍTICA DE DIÁRIA):</strong> Conforme o termo assinado, o sinal de 25% (R$ {cancellingApp.depositPaid.toFixed(2).replace(".", ",")}) é estritamente não reembolsável e será <strong>integralmente retido</strong> para cobrir os custos da reserva e diária de estúdio. A data será removida da agenda.
+                <strong>ATENÇÃO (POLÍTICA DE DIÁRIA):</strong> Conforme o termo assinado, o sinal fixo de reserva (R$ 150,00) é estritamente não reembolsável e será <strong>integralmente retido</strong> para cobrir os custos da reserva do estúdio. A data será removida da agenda.
               </div>
 
               <div>

@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { AppointmentType, QuoteDTO, TimeSlot, STUDIO_ADDRESS, getWhatsAppPreCareLink } from "@/types";
+import React, { useState, useEffect, useMemo } from "react";
+import { AppointmentType, QuoteDTO, AppointmentDTO, TimeSlot, STUDIO_ADDRESS, getWhatsAppPreCareLink } from "@/types";
 
 interface SchedulingModalProps {
   quote: QuoteDTO;
   initialType?: AppointmentType;
   isOpen: boolean;
+  previousAppointments?: AppointmentDTO[];
   onClose: () => void;
   onSuccess: () => void;
 }
@@ -15,11 +16,26 @@ export default function SchedulingModal({
   quote,
   initialType = "NEW",
   isOpen,
+  previousAppointments = [],
   onClose,
   onSuccess,
 }: SchedulingModalProps) {
-  const [appointmentType, setAppointmentType] = useState<AppointmentType>(initialType);
+  // Verifica se o cliente já realizou e concluiu a 1ª sessão para poder solicitar retoque/reagendamento
+  const hasCompletedFirstSession = useMemo(() => {
+    return previousAppointments.some(
+      (app) =>
+        (app.status === "CONFIRMED" || app.status === "COMPLETED") &&
+        new Date(app.scheduledStart) < new Date()
+    );
+  }, [previousAppointments]);
+
+  // Se não concluiu a 1ª sessão, o fluxo é estritamente NOVO AGENDAMENTO
+  const [appointmentType, setAppointmentType] = useState<AppointmentType>(
+    hasCompletedFirstSession ? initialType : "NEW"
+  );
+
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const [showCustomDatePicker, setShowCustomDatePicker] = useState<boolean>(false);
   const [slots, setSlots] = useState<TimeSlot[]>([]);
   const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
   const [touchupReason, setTouchupReason] = useState<string>("");
@@ -27,10 +43,10 @@ export default function SchedulingModal({
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  // Consentimento estrito da política de sinal (25%) e retenção de diária
+  // Consentimento do sinal fixo de R$ 150
   const [depositConsent, setDepositConsent] = useState<boolean>(false);
 
-  // Estado do Pagamento Pix (Novo Agendamento)
+  // Estado do Pagamento Pix
   const [pixData, setPixData] = useState<{
     amount: number;
     qrCodeUrl: string;
@@ -38,21 +54,48 @@ export default function SchedulingModal({
     checkoutUrl?: string;
     expiresInMinutes: number;
   } | null>(null);
-  const [createdAppointmentId, setCreatedAppointmentId] = useState<string | null>(null);
   const [copied, setCopied] = useState<boolean>(false);
 
-  // Define data mínima (amanhã)
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDateStr = tomorrow.toISOString().split("T")[0];
+  // Gera os próximos 21 dias para visualização interativa
+  const upcomingDays = useMemo(() => {
+    const list = [];
+    const base = new Date();
+    const weekNames = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    const monthNames = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
+    for (let i = 1; i <= 21; i++) {
+      const d = new Date();
+      d.setDate(base.getDate() + i);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      const dateStr = `${year}-${month}-${day}`;
+      const dayOfWeek = d.getDay();
+      const isClosed = dayOfWeek === 0; // Domingos fechados
+
+      list.push({
+        dateStr,
+        dayOfWeek,
+        weekDay: weekNames[dayOfWeek],
+        dayNum: d.getDate(),
+        month: monthNames[d.getMonth()],
+        isClosed,
+      });
+    }
+    return list;
+  }, []);
+
+  // Define a primeira data aberta disponível
   useEffect(() => {
     if (isOpen && !selectedDate) {
-      setSelectedDate(minDateStr);
+      const firstOpen = upcomingDays.find((d) => !d.isClosed);
+      if (firstOpen) {
+        setSelectedDate(firstOpen.dateStr);
+      }
     }
-  }, [isOpen, minDateStr, selectedDate]);
+  }, [isOpen, upcomingDays, selectedDate]);
 
-  // Carrega slots sempre que a data ou tipo mudar
+  // Carrega horários disponíveis da data selecionada
   useEffect(() => {
     if (!selectedDate) return;
 
@@ -92,23 +135,22 @@ export default function SchedulingModal({
   const depositAmount = isRetorno ? 0 : 150.0;
   const balanceDue = isRetorno ? 0 : Number(Math.max(0, quote.totalPrice - depositAmount).toFixed(2));
 
-  // Submissão do Formulário
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
 
     if (!selectedSlot) {
-      setErrorMsg("Selecione um horário disponível para a sessão.");
+      setErrorMsg("Selecione um horário disponível para a sua sessão.");
       return;
     }
 
     if (appointmentType === "TOUCHUP" && (!touchupReason || touchupReason.trim().length < 5)) {
-      setErrorMsg("Por favor, descreva detalhadamente o motivo do retoque (ex: falha de cicatrização, área desbotada).");
+      setErrorMsg("Por favor, descreva detalhadamente a região do retoque.");
       return;
     }
 
     if (!isRetorno && !depositConsent) {
-      setErrorMsg("É obrigatório concordar com o termo de reserva de data e retenção de sinal não reembolsável.");
+      setErrorMsg("É obrigatório concordar com o termo de reserva de data.");
       return;
     }
 
@@ -116,7 +158,6 @@ export default function SchedulingModal({
 
     try {
       if (isRetorno) {
-        // Fluxo Isento de Sinal: Confirmação Imediata
         const res = await fetch("/api/appointments/reschedule", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -133,11 +174,10 @@ export default function SchedulingModal({
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Erro ao solicitar retorno.");
 
-        alert("✓ Reagendamento / Retorno confirmado com sucesso! Enviado para a Google Agenda.");
+        alert("✓ Reagendamento / Retorno confirmado com sucesso! Sincronizado na agenda.");
         onSuccess();
         onClose();
       } else {
-        // Fluxo Novo Agendamento: Hold de 15 minutos + Pix 25% InfinitePay
         const res = await fetch("/api/appointments/create", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -154,7 +194,6 @@ export default function SchedulingModal({
         if (!res.ok) throw new Error(data.error || "Erro ao gerar agendamento.");
 
         setPixData(data.pix);
-        setCreatedAppointmentId(data.appointmentId);
       }
     } catch (err: any) {
       setErrorMsg(err.message || "Ocorreu um erro no agendamento.");
@@ -185,7 +224,7 @@ export default function SchedulingModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
       <div className="bg-[#121216] border border-neutral-800 w-full max-w-2xl rounded-2xl p-6 sm:p-8 text-neutral-100 shadow-2xl relative my-8 animate-fadeIn">
         
-        {/* Cabeçalho do Modal */}
+        {/* Cabeçalho */}
         <div className="flex justify-between items-start mb-6 border-b border-neutral-800 pb-4">
           <div>
             <span className="text-xs font-semibold tracking-wider text-amber-500 uppercase">
@@ -210,21 +249,15 @@ export default function SchedulingModal({
           </div>
         )}
 
-        {/* ============================================================== */}
-        {/* TELA DE PAGAMENTO PIX INFINITEPAY (NOVO AGENDAMENTO) */}
-        {/* ============================================================== */}
+        {/* TELA DE PAGAMENTO PIX */}
         {pixData ? (
           <div className="text-center py-2 space-y-5">
-            <div className="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-full">
-              HOLD TEMPORÁRIO DE 15 MINUTOS ATIVO
-            </div>
-            
             <div>
-              <h3 className="text-2xl font-extrabold text-white">
+              <h3 className="text-3xl font-extrabold text-white">
                 R$ {pixData.amount.toFixed(2).replace(".", ",")}
               </h3>
               <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">
-                Seu horário está bloqueado temporariamente. Escaneie o QR Code abaixo no app do seu banco ou use a chave Copia e Cola para concluir o agendamento.
+                Horário reservado com sucesso! Efetue o pagamento do sinal de <strong>R$ 150,00</strong> para confirmar sua data na agenda.
               </p>
             </div>
 
@@ -255,7 +288,7 @@ export default function SchedulingModal({
                 onClick={copyPix}
                 className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-neutral-950 font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 text-xs"
               >
-                {copied ? "✓ Link / Chave Copiado com Sucesso!" : "Copiar Chave / Link Pix"}
+                {copied ? "✓ Chave Pix Copiada com Sucesso!" : "Copiar Chave / Link Pix"}
               </button>
 
               <a
@@ -268,105 +301,68 @@ export default function SchedulingModal({
               </a>
             </div>
 
-            <div className="text-[11px] text-neutral-500 max-w-md mx-auto border-t border-neutral-800 pt-3">
-              Assim que o Pix for aprovado pela InfinitePay, o agendamento é marcado como CONFIRMED e sincronizado na Google Agenda com envio das informações de local.
-            </div>
-
             <button
               onClick={() => {
                 onSuccess();
                 onClose();
               }}
-              className="text-xs text-neutral-400 underline hover:text-neutral-200 block mx-auto"
+              className="text-xs text-neutral-400 underline hover:text-neutral-200 block mx-auto pt-2"
             >
               Já realizei o pagamento Pix (Concluir)
             </button>
           </div>
         ) : (
-          /* ============================================================== */
-          /* FORMULÁRIO DE SELEÇÃO DE FLUXO & HORÁRIOS */
-          /* ============================================================== */
+          /* FORMULÁRIO DE AGENDAMENTO */
           <form onSubmit={handleSubmit} className="space-y-6">
             
-            {/* Seletor de Fluxo Principal */}
-            <div>
-              <label className="block text-sm font-semibold text-neutral-300 mb-2">
-                Tipo de Atendimento:
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setAppointmentType("NEW")}
-                  className={`p-4 rounded-xl border text-left transition ${
-                    appointmentType === "NEW"
-                      ? "bg-amber-500/20 border-amber-500 text-white shadow-lg shadow-amber-500/10"
-                      : "bg-neutral-950 border-neutral-800 text-neutral-400 hover:border-neutral-700"
-                  }`}
-                >
-                  <div className="font-bold">Novo Agendamento</div>
-                  <div className="text-xs mt-1 text-neutral-400">
-                    Primeira sessão (Sinal de 25% obrigatório via Pix)
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setAppointmentType("TOUCHUP")}
-                  className={`p-4 rounded-xl border text-left transition ${
-                    isRetorno
-                      ? "bg-emerald-500/20 border-emerald-500 text-white shadow-lg shadow-emerald-500/10"
-                      : "bg-neutral-950 border-neutral-800 text-neutral-400 hover:border-neutral-700"
-                  }`}
-                >
-                  <div className="font-bold">Retorno / Reagendamento</div>
-                  <div className="text-xs mt-1 text-neutral-400">
-                    Retoque ou Continuação (Isento de novo sinal)
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            {/* Sub-opções de Retorno (quando aplicável) */}
-            {isRetorno && (
-              <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-xl space-y-4">
-                <label className="block text-xs font-bold text-neutral-300 uppercase tracking-wider">
-                  Motivo do Retorno:
+            {/* Se o cliente já concluiu a 1ª sessão, permite escolher Retorno/Retoque */}
+            {hasCompletedFirstSession && (
+              <div>
+                <label className="block text-sm font-semibold text-neutral-300 mb-2">
+                  Tipo de Atendimento:
                 </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setAppointmentType("NEW")}
+                    className={`p-3.5 rounded-xl border text-left transition ${
+                      appointmentType === "NEW"
+                        ? "bg-amber-500/20 border-amber-500 text-white shadow-lg shadow-amber-500/10"
+                        : "bg-neutral-950 border-neutral-800 text-neutral-400 hover:border-neutral-700"
+                    }`}
+                  >
+                    <div className="font-bold text-sm">Nova Sessão</div>
+                    <div className="text-xs mt-0.5 text-neutral-400">
+                      Sinal Fixo de R$ 150,00 via Pix
+                    </div>
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => setAppointmentType("TOUCHUP")}
-                    className={`py-2 px-3 rounded-lg text-xs font-bold border transition ${
-                      appointmentType === "TOUCHUP"
-                        ? "bg-emerald-500 border-emerald-500 text-neutral-950"
-                        : "bg-neutral-900 border-neutral-700 text-neutral-300 hover:border-neutral-600"
+                    className={`p-3.5 rounded-xl border text-left transition ${
+                      isRetorno
+                        ? "bg-emerald-500/20 border-emerald-500 text-white shadow-lg shadow-emerald-500/10"
+                        : "bg-neutral-950 border-neutral-800 text-neutral-400 hover:border-neutral-700"
                     }`}
                   >
-                    1. Retoque de Cicatrização
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setAppointmentType("NEXT_SESSION")}
-                    className={`py-2 px-3 rounded-lg text-xs font-bold border transition ${
-                      appointmentType === "NEXT_SESSION"
-                        ? "bg-emerald-500 border-emerald-500 text-neutral-950"
-                        : "bg-neutral-900 border-neutral-700 text-neutral-300 hover:border-neutral-600"
-                    }`}
-                  >
-                    2. Próxima Sessão (Projeto)
+                    <div className="font-bold text-sm">Retoque de Cicatrização</div>
+                    <div className="text-xs mt-0.5 text-neutral-400">
+                      Isento de novo sinal
+                    </div>
                   </button>
                 </div>
 
                 {appointmentType === "TOUCHUP" && (
-                  <div>
+                  <div className="mt-3">
                     <label className="block text-xs text-neutral-300 mb-1">
-                      Justificativa do Retoque (obrigatório) <span className="text-red-400">*</span>:
+                      Descreva a região para o retoque <span className="text-red-400">*</span>:
                     </label>
                     <textarea
                       value={touchupReason}
                       onChange={(e) => setTouchupReason(e.target.value)}
-                      placeholder="Ex: Área no contorno que perdeu pigmentação durante a cicatrização..."
-                      className="w-full text-xs p-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-amber-500 h-20"
+                      placeholder="Ex: Pequeno detalhe no traço do antebraço após cicatrização..."
+                      className="w-full text-xs p-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-amber-500 h-16"
                       required
                     />
                   </div>
@@ -374,35 +370,84 @@ export default function SchedulingModal({
               </div>
             )}
 
-            {/* Seleção de Data */}
+            {/* SELETOR INTERATIVO DE DATAS (Datas visíveis diretamente na aba) */}
             <div>
-              <label className="block text-sm font-semibold text-neutral-300 mb-2">
-                Selecione a Data:
-              </label>
-              <input
-                type="date"
-                min={minDateStr}
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full p-3 bg-neutral-950 border border-neutral-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-              />
+              <div className="flex justify-between items-center mb-2.5">
+                <label className="text-sm font-semibold text-neutral-300">
+                  Selecione o Dia da Sessão:
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowCustomDatePicker(!showCustomDatePicker)}
+                  className="text-xs text-amber-400 hover:text-amber-300 underline"
+                >
+                  {showCustomDatePicker ? "← Ver dias sugeridos" : "📅 Outra data futura..."}
+                </button>
+              </div>
+
+              {showCustomDatePicker ? (
+                <input
+                  type="date"
+                  min={upcomingDays[0]?.dateStr}
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full p-3 bg-neutral-950 border border-neutral-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              ) : (
+                <div className="grid grid-cols-3 sm:grid-cols-7 gap-2 max-h-52 overflow-y-auto p-1.5 bg-neutral-950/60 rounded-xl border border-neutral-800">
+                  {upcomingDays.map((item) => {
+                    const isSelected = selectedDate === item.dateStr;
+                    if (item.isClosed) {
+                      return (
+                        <div
+                          key={item.dateStr}
+                          className="p-2 rounded-lg border border-neutral-900 bg-neutral-950/40 text-center opacity-40 cursor-not-allowed select-none"
+                          title="Estúdio fechado aos domingos"
+                        >
+                          <div className="text-[10px] uppercase font-bold text-neutral-500">{item.weekDay}</div>
+                          <div className="text-sm font-bold text-neutral-600">{item.dayNum}</div>
+                          <div className="text-[9px] text-neutral-600">{item.month}</div>
+                          <div className="text-[9px] text-red-500/80 font-medium mt-0.5">Fechado</div>
+                        </div>
+                      );
+                    }
+                    return (
+                      <button
+                        key={item.dateStr}
+                        type="button"
+                        onClick={() => setSelectedDate(item.dateStr)}
+                        className={`p-2 rounded-lg border text-center transition cursor-pointer ${
+                          isSelected
+                            ? "bg-amber-500/25 border-amber-500 text-amber-300 shadow-md shadow-amber-500/20 font-bold ring-1 ring-amber-500 scale-[1.02]"
+                            : "bg-neutral-900 border-neutral-800 text-neutral-200 hover:border-amber-400/60 hover:bg-neutral-800/80"
+                        }`}
+                      >
+                        <div className="text-[10px] uppercase font-bold text-neutral-400">{item.weekDay}</div>
+                        <div className="text-base font-extrabold text-white">{item.dayNum}</div>
+                        <div className="text-[10px] text-neutral-400">{item.month}</div>
+                        <div className="text-[9px] text-emerald-400 font-semibold mt-0.5">Disponível</div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
-            {/* Seleção de Slots Livres */}
+            {/* SELEÇÃO DE HORÁRIOS DISPONÍVEIS */}
             <div>
               <div className="flex justify-between items-center mb-2">
                 <label className="text-sm font-semibold text-neutral-300">
-                  Horários Disponíveis (Duração: {duration}h + 1h Buffer Obrigatório):
+                  Horários Disponíveis (Sessão de {duration}h):
                 </label>
-                {loadingSlots && <span className="text-xs text-amber-400 animate-pulse">Calculando slots...</span>}
+                {loadingSlots && <span className="text-xs text-amber-400 animate-pulse">Consultando agenda...</span>}
               </div>
 
               {slots.length === 0 && !loadingSlots ? (
                 <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-xl text-xs text-neutral-400 text-center">
-                  Nenhum horário disponível para esta data ou janela incompatível com as regras. Tente outro dia.
+                  Não há horários disponíveis para esta data. Escolha outro dia acima.
                 </div>
               ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-h-48 overflow-y-auto pr-1">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-h-44 overflow-y-auto pr-1">
                   {slots.map((slot, idx) => (
                     <button
                       key={idx}
@@ -416,7 +461,6 @@ export default function SchedulingModal({
                           ? "bg-neutral-950 border-neutral-700 text-white hover:border-amber-400"
                           : "bg-neutral-950/40 border-neutral-800 text-neutral-600 cursor-not-allowed line-through"
                       }`}
-                      title={slot.reason || "Disponível"}
                     >
                       {slot.start} às {slot.end}
                     </button>
@@ -425,7 +469,7 @@ export default function SchedulingModal({
               )}
             </div>
 
-            {/* Resumo Financeiro & Local */}
+            {/* RESUMO FINANCEIRO LIMPO */}
             <div className="p-4 bg-neutral-950 border border-neutral-800 rounded-xl text-xs space-y-2">
               <div className="flex justify-between">
                 <span className="text-neutral-400">Local de Atendimento:</span>
@@ -434,24 +478,24 @@ export default function SchedulingModal({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-400">Valor Total do Projeto:</span>
+                <span className="text-neutral-400">Valor Total da Tattoo:</span>
                 <span className="text-white font-semibold">R$ {quote.totalPrice.toFixed(2).replace(".", ",")}</span>
               </div>
               <div className="flex justify-between text-amber-400 font-bold text-sm">
-                <span>Sinal a Pagar Agora:</span>
-                <span>{isRetorno ? "R$ 0,00 (Isento)" : "R$ 150,00 (Sinal Fixo)"}</span>
+                <span>Sinal Fixo de Reserva:</span>
+                <span>{isRetorno ? "R$ 0,00 (Isento)" : "R$ 150,00"}</span>
               </div>
               {!isRetorno && (
                 <div className="flex justify-between text-neutral-400 border-t border-neutral-800 pt-2">
-                  <span>Saldo Restante no Estúdio:</span>
-                  <span className="text-neutral-300">R$ {balanceDue.toFixed(2).replace(".", ",")}</span>
+                  <span>Restante a Pagar no Estúdio no Dia:</span>
+                  <span className="text-neutral-200 font-semibold">R$ {balanceDue.toFixed(2).replace(".", ",")}</span>
                 </div>
               )}
             </div>
 
-            {/* Checkbox Obrigatório de Consentimento da Retenção de Sinal */}
+            {/* TERMO DE RESERVA */}
             {!isRetorno && (
-              <div className="p-4 bg-amber-950/20 border border-amber-500/40 rounded-xl space-y-2">
+              <div className="p-3.5 bg-amber-950/20 border border-amber-500/40 rounded-xl">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
@@ -461,22 +505,22 @@ export default function SchedulingModal({
                     required
                   />
                   <span className="text-xs text-amber-200 leading-relaxed">
-                    <strong>Termo de Reserva de Data e Diária:</strong> Estou ciente de que o sinal fixo de R$ 150,00 garante a reserva da minha data e diária do estúdio, <strong>NÃO sendo reembolsável em nenhuma hipótese de cancelamento ou não comparecimento</strong>. O valor será integralmente abatido no dia da tattoo.
+                    <strong>Termo de Reserva:</strong> Estou ciente de que o sinal fixo de R$ 150,00 garante a reserva exclusiva da minha data e horário na agenda do GuinkNass, <strong>NÃO sendo reembolsável em caso de cancelamento</strong>. O valor será integralmente abatido no dia da tattoo.
                   </span>
                 </label>
               </div>
             )}
 
-            {/* Botão de Ação */}
+            {/* BOTÃO PRINCIPAL */}
             <button
               type="submit"
               disabled={submitting || !selectedSlot || (!isRetorno && !depositConsent)}
-              className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:from-neutral-800 disabled:to-neutral-800 disabled:text-neutral-600 text-neutral-950 font-bold rounded-xl transition shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:from-neutral-800 disabled:to-neutral-800 disabled:text-neutral-600 text-neutral-950 font-bold rounded-xl transition shadow-lg flex items-center justify-center gap-2 cursor-pointer"
             >
               {submitting
-                ? "Processando Agendamento..."
+                ? "Processando..."
                 : isRetorno
-                ? "CONFIRMAR RETORNO / REAGENDAMENTO (R$ 0,00)"
+                ? "Confirmar Retoque (R$ 0,00)"
                 : "PAGAR SINAL FIXO DE R$ 150,00 VIA PIX"}
             </button>
           </form>
