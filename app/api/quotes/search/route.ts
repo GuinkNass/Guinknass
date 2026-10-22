@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchQuoteSchema } from "@/lib/validations/schedule";
 import { STUDIO_ADDRESS } from "@/types";
-import { findQuoteByCpf } from "@/lib/quotesStore";
+import { findQuoteByCpf, saveOrUpdateQuote } from "@/lib/quotesStore";
 
 export async function GET(request: NextRequest) {
   try {
