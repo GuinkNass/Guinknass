@@ -1,6 +1,7 @@
 /**
  * GUINKNASS 3D BODY VIEWER & ANATOMICAL RAYCASTING
  * Integração Three.js com OrbitControls, Raycasting e cálculo em centímetros reais
+ * Paleta: Dourado (#C5A059, #DFC17B) e Âmbar Quente (#F59E0B)
  */
 
 (function () {
@@ -8,6 +9,17 @@
 
   // Dicionário de regiões anatômicas pré-definidas para atalhos rápidos e cálculo
   const REGION_PRESETS = {
+    antebraco: {
+      name: "Antebraço Esquerdo (Frente)",
+      category: "Antebraço",
+      view: "Frente",
+      baseWidth: 18,
+      baseHeight: 9,
+      desc: "A tela mais clássica e visível do corpo, perfeita para composições verticais.",
+      camPos: { x: 80, y: 85, z: 120 },
+      markerPos: { x: 26, y: 88, z: 4 },
+      normal: { x: 0.6, y: 0.1, z: 0.8 },
+    },
     antebraço: {
       name: "Antebraço Esquerdo (Frente)",
       category: "Antebraço",
@@ -18,6 +30,17 @@
       camPos: { x: 80, y: 85, z: 120 },
       markerPos: { x: 26, y: 88, z: 4 },
       normal: { x: 0.6, y: 0.1, z: 0.8 },
+    },
+    braco: {
+      name: "Braço Superior (Bíceps) Esquerdo",
+      category: "Braço",
+      view: "Frente",
+      baseWidth: 18,
+      baseHeight: 15,
+      desc: "Plano muscular amplo, excelente para fechamento de meia manga.",
+      camPos: { x: 100, y: 110, z: 100 },
+      markerPos: { x: 22, y: 118, z: 2 },
+      normal: { x: 0.8, y: 0.1, z: 0.5 },
     },
     braço: {
       name: "Braço Superior (Bíceps) Esquerdo",
@@ -101,10 +124,18 @@
     let scene, camera, renderer, controls, modelRoot, markerGroup;
     let bbox = { min: { x: -53.4, y: 0.58, z: -16.3 }, max: { x: 53.4, y: 180.5, z: 20.6 } };
 
-    if (typeof THREE === "undefined") {
-      loadThreeScripts(() => startScene());
-    } else {
-      startScene();
+    function checkThreeReady(callback, attempts = 0) {
+      if (
+        typeof THREE !== "undefined" &&
+        typeof THREE.OrbitControls !== "undefined" &&
+        typeof THREE.GLTFLoader !== "undefined"
+      ) {
+        callback();
+      } else if (attempts < 80) {
+        setTimeout(() => checkThreeReady(callback, attempts + 1), 60);
+      } else if (typeof THREE === "undefined") {
+        loadThreeScripts(callback);
+      }
     }
 
     function loadThreeScripts(callback) {
@@ -123,6 +154,8 @@
       };
       document.head.appendChild(scriptThree);
     }
+
+    checkThreeReady(() => startScene());
 
     function startScene() {
       if (!canvasMount) return;
@@ -156,18 +189,20 @@
       controls.maxPolarAngle = Math.PI / 2 + 0.05;
       controls.update();
 
-      // Iluminação de Estúdio
-      const ambientLight = new THREE.AmbientLight(0x222430, 1.2);
+      // Iluminação de Estúdio Dourada / Âmbar Quente
+      const ambientLight = new THREE.AmbientLight(0x222430, 1.3);
       scene.add(ambientLight);
 
       const keyLight = new THREE.DirectionalLight(0xfff6ea, 2.4);
       keyLight.position.set(60, 150, 100);
       scene.add(keyLight);
 
-      const fillLight = new THREE.DirectionalLight(0x00fcdb, 0.9);
+      // Luz de preenchimento âmbar suave (paleta GuinkNass)
+      const fillLight = new THREE.DirectionalLight(0xf59e0b, 0.8);
       fillLight.position.set(-80, 100, 70);
       scene.add(fillLight);
 
+      // Luz de recorte dourada
       const rimLight = new THREE.DirectionalLight(0xc5a059, 3.2);
       rimLight.position.set(0, 130, -110);
       scene.add(rimLight);
@@ -176,7 +211,7 @@
       grid.position.y = 0;
       scene.add(grid);
 
-      // Marcador Visual 3D
+      // Marcador Visual 3D Dourado/Âmbar
       markerGroup = new THREE.Group();
       markerGroup.visible = false;
 
@@ -190,18 +225,18 @@
       const ringMesh = new THREE.Mesh(ringGeo, ringMat);
       markerGroup.add(ringMesh);
 
-      const centerGeo = new THREE.CircleGeometry(0.6, 24);
+      const centerGeo = new THREE.CircleGeometry(0.65, 24);
       const centerMat = new THREE.MeshBasicMaterial({
-        color: 0x00fcdb,
+        color: 0xf59e0b,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.95,
       });
       const centerMesh = new THREE.Mesh(centerGeo, centerMat);
       centerMesh.position.z = 0.05;
       markerGroup.add(centerMesh);
 
-      const pointLight = new THREE.PointLight(0xc5a059, 1.5, 30);
+      const pointLight = new THREE.PointLight(0xf59e0b, 2.0, 35);
       pointLight.position.z = 2.0;
       markerGroup.add(pointLight);
 
@@ -236,6 +271,7 @@
             root.position.x = -center.x;
             root.position.y = -box.min.y;
             root.position.z = -center.z;
+            root.updateMatrixWorld(true);
 
             box.setFromObject(root);
             bbox = box;
@@ -262,7 +298,7 @@
 
       tryLoadModel(0);
 
-      // Raycasting ao Clicar (Com tolerância suave para cliques reais)
+      // Raycasting ao Clicar (Com tolerância suave para cliques reais em desktop e mobile)
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
       let downPos = { x: 0, y: 0 };
@@ -281,8 +317,8 @@
         const dist = Math.hypot(clientX - downPos.x, clientY - downPos.y);
         const duration = Date.now() - downTime;
 
-        // Se moveu mais de 12px ou demorou mais de 450ms, foi arraste/órbita da câmera
-        if (dist > 12 || duration > 450) return;
+        // Se moveu mais de 16px ou demorou mais de 650ms, foi arraste/órbita da câmera
+        if (dist > 16 || duration > 650) return;
 
         const rect = renderer.domElement.getBoundingClientRect();
         mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
@@ -305,9 +341,13 @@
             markerGroup.visible = true;
           }
 
-          const raw = identifyAnatomy(point, bbox);
-          currentSelected = updateCalculations(raw);
-          updateUI(currentSelected);
+          try {
+            const raw = identifyAnatomy(point, bbox);
+            currentSelected = updateCalculations(raw);
+            updateUI(currentSelected);
+          } catch (err) {
+            console.error("[3D Raycasting Error]", err);
+          }
         }
       };
 
@@ -351,11 +391,12 @@
         });
       });
 
-      // Atalhos Rápidos de Região (Chips)
+      // Atalhos Rápidos de Região (Chips com suporte seguro a normalização e acentos)
       document.querySelectorAll("[data-quick-region]").forEach((chip) => {
         chip.addEventListener("click", () => {
-          const regionKey = chip.getAttribute("data-quick-region");
-          const preset = REGION_PRESETS[regionKey];
+          const rawKey = (chip.getAttribute("data-quick-region") || "").toLowerCase().trim();
+          const normalizedKey = rawKey.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          const preset = REGION_PRESETS[rawKey] || REGION_PRESETS[normalizedKey];
           if (!preset) return;
 
           // Anima marcador para a posição pré-definida
@@ -599,6 +640,7 @@
     }
 
     function updateCalculations(raw) {
+      if (!raw) return null;
       const scaleFactor = (clientHeight || 175) / MODEL_BASE_HEIGHT_CM;
       const multiplier = sizePreset === "pequeno" ? 0.65 : sizePreset === "grande" ? 1.45 : 1.0;
       const realWidth = Math.max(3, Math.round(raw.baseWidth * scaleFactor * multiplier));
@@ -668,9 +710,15 @@
         const locInput = document.getElementById("tattooLocation");
         const sizeInput = document.getElementById("tattooSize");
 
-        if (locInput) locInput.value = currentSelected.name;
+        if (locInput) {
+          locInput.value = currentSelected.name;
+          locInput.dispatchEvent(new Event("input", { bubbles: true }));
+          locInput.dispatchEvent(new Event("change", { bubbles: true }));
+        }
         if (sizeInput) {
           sizeInput.value = `${currentSelected.realWidth} cm x ${currentSelected.realHeight} cm (~${currentSelected.areaCm2} cm²)`;
+          sizeInput.dispatchEvent(new Event("input", { bubbles: true }));
+          sizeInput.dispatchEvent(new Event("change", { bubbles: true }));
         }
 
         if (locInput) {
@@ -685,6 +733,24 @@
         setTimeout(() => toast.remove(), 4000);
       });
     }
+
+    // Suporte a mensagens do simulador tela cheia ou parâmetros de URL
+    window.addEventListener("message", (event) => {
+      if (event.data && event.data.type === "GUINKNASS_3D_SELECT") {
+        const item = event.data.data;
+        if (!item) return;
+        const locInput = document.getElementById("tattooLocation");
+        const sizeInput = document.getElementById("tattooSize");
+        if (locInput) {
+          locInput.value = item.name;
+          locInput.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+        if (sizeInput) {
+          sizeInput.value = `${item.realWidth} cm x ${item.realHeight} cm (~${item.areaCm2} cm²)`;
+          sizeInput.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+      }
+    });
 
     const urlParams = new URLSearchParams(window.location.search);
     const paramLocal = urlParams.get("local");

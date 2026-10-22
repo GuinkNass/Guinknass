@@ -31,7 +31,7 @@
   --bg-card-hover: #181922;
   --bg-card-elevated: #1e1f2a;
   
-  /* Paleta Nobre / Artística Dourada & Bronze */
+  /* Paleta Nobre / Artística Dourada & Alaranjada (Identidade Oficial do Logo) */
   --gold-primary: #C5A059;       /* Ouro nobre acetinado / champagne */
   --gold-light: #DFC17B;         /* Iluminação dourada suave */
   --gold-dark: #9A7B38;          /* Bronze nobre */
@@ -39,8 +39,9 @@
   --gold-border: rgba(197, 160, 89, 0.4);
 
   --color-primary: #C5A059;      /* Dourado Nobre */
-  --color-secondary: #00FCDB;    /* Ciano Elétrico Neon moderado para detalhes ativos e técnicos */
-  --color-accent: #C5A059;       /* Substitui o antigo roxo pelo ouro nobre da marca */
+  --color-secondary: #F59E0B;    /* Âmbar / Laranja Dourado Nobre */
+  --color-secondary-hover: #D97706;
+  --color-accent: #E68A00;       /* Alaranjado Dourado Vibrante */
   --color-accent-hover: #DFC17B;
   
   --text-main: #FFFFFF;
@@ -50,7 +51,7 @@
 
   --border-light: rgba(255, 255, 255, 0.08);
   --border-medium: rgba(255, 255, 255, 0.16);
-  --border-cyan: rgba(0, 252, 219, 0.35);
+  --border-cyan: rgba(245, 158, 11, 0.35);
   --border-accent: rgba(197, 160, 89, 0.4);
   --border-gold: rgba(197, 160, 89, 0.4);
 
@@ -62,7 +63,7 @@
 
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.6);
-  --glow-cyan: 0 0 24px rgba(0, 252, 219, 0.3);
+  --glow-cyan: 0 0 24px rgba(245, 158, 11, 0.35);
   --glow-accent: 0 0 28px rgba(197, 160, 89, 0.35);
   --glow-gold: 0 0 28px rgba(197, 160, 89, 0.35);
 

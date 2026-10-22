@@ -265,18 +265,20 @@ p.lead {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
 }
 
-/* Botão WhatsApp */
+/* Botão WhatsApp em harmonia com a paleta dourada e alaranjada */
 .btn-whatsapp {
-  background-color: #25D366;
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #0A0A0D;
+  font-weight: 700;
+  border: 1px solid #F59E0B;
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.28);
 }
 
 .btn-whatsapp:hover {
-  background-color: #1ebd5a;
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+  color: #050507;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45);
 }
 
 .btn-sm {
@@ -466,13 +468,13 @@ p.lead {
   bottom: 24px;
   right: 24px;
   background: #0D0E14;
-  color: #00FCDB;
-  border: 1px solid #00FCDB;
+  color: #DFC17B;
+  border: 1px solid #C5A059;
   padding: 14px 22px;
   border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: 0 10px 30px rgba(0, 252, 219, 0.25);
+  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.35);
   z-index: 9999;
   animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }

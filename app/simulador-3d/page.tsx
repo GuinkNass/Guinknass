@@ -65,9 +65,9 @@ export default function Simulador3DPage() {
 
         {/* Notificação / Toast de Confirmação */}
         {confirmedData && (
-          <div className="mt-4 p-4 rounded-xl bg-[#121319] border border-[#00FCDB]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-4 p-4 rounded-xl bg-[#121319] border border-[#C5A059]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[#00FCDB]/10 text-[#00FCDB] flex items-center justify-center font-bold text-sm">
+              <span className="w-8 h-8 rounded-full bg-[#C5A059]/15 text-[#DFC17B] flex items-center justify-center font-bold text-sm">
                 ✓
               </span>
               <div>

@@ -388,7 +388,7 @@ export default function BodyModelViewer({
     keyLight.position.set(60, 150, 100);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0x00fcdb, 0.9);
+    const fillLight = new THREE.DirectionalLight(0xf59e0b, 1.2);
     fillLight.position.set(-80, 100, 70);
     scene.add(fillLight);
 
@@ -417,10 +417,10 @@ export default function BodyModelViewer({
 
     const centerGeo = new THREE.CircleGeometry(0.6, 24);
     const centerMat = new THREE.MeshBasicMaterial({
-      color: 0x00fcdb,
+      color: 0xf59e0b,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.95,
     });
     const centerMesh = new THREE.Mesh(centerGeo, centerMat);
     centerMesh.position.z = 0.05;
@@ -639,7 +639,7 @@ export default function BodyModelViewer({
         {/* Instrução Superior */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
           <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 text-xs text-white/80 pointer-events-auto flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#00FCDB] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#F59E0B] animate-pulse" />
             <span>Gire 360° e clique para marcar o local</span>
           </div>
 
@@ -697,7 +697,7 @@ export default function BodyModelViewer({
                 </span>
                 <h3 className="text-base font-bold text-white">Local da Tatuagem</h3>
               </div>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[#00FCDB]/10 text-[#00FCDB] border border-[#00FCDB]/30 font-mono">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/30 font-mono">
                 Raycasting
               </span>
             </div>
@@ -788,7 +788,7 @@ export default function BodyModelViewer({
                   </div>
                   <div className="p-3 bg-black/40 border border-white/10 rounded-xl">
                     <span className="text-[10px] uppercase font-semibold text-white/50 block">Área de Cobertura</span>
-                    <span className="text-sm font-bold font-mono text-[#00FCDB] block mt-0.5">
+                    <span className="text-sm font-bold font-mono text-[#F59E0B] block mt-0.5">
                       ~{selectedRegion.areaCm2} cm²
                     </span>
                   </div>
@@ -816,7 +816,7 @@ export default function BodyModelViewer({
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-xs flex items-center justify-center gap-2 hover:brightness-110 shadow-lg shadow-green-900/30 transition cursor-pointer"
+                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#F59E0B] to-[#D97706] text-[#0A0A0D] font-bold text-xs flex items-center justify-center gap-2 hover:brightness-105 shadow-lg shadow-amber-900/30 transition cursor-pointer"
               >
                 <span>Enviar no WhatsApp</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

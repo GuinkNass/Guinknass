@@ -189,7 +189,7 @@ function updateSignatureStatus(signed) {
   const statusEl = document.getElementById("signatureStatus");
   if (!statusEl) return;
   if (signed) {
-    statusEl.innerHTML = `<span style="color: #00FCDB; font-weight: 600;">✓ Assinatura eletrônica capturada com sucesso</span>`;
+    statusEl.innerHTML = `<span style="color: #DFC17B; font-weight: 600;">✓ Assinatura eletrônica capturada com sucesso</span>`;
   } else {
     statusEl.innerHTML = `<span style="color: #94a3b8;">✏️ Aguardando assinatura com o dedo (no celular) ou mouse</span>`;
   }
@@ -223,7 +223,7 @@ function setupSignatureCanvas() {
   signatureCtx.lineWidth = 2.8;
   signatureCtx.lineCap = "round";
   signatureCtx.lineJoin = "round";
-  signatureCtx.strokeStyle = "#00FCDB";
+  signatureCtx.strokeStyle = "#DFC17B";
 
   if (temp) {
     const img = new Image();
