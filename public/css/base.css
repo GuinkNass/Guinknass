@@ -353,3 +353,137 @@ p.lead {
     padding: 60px 0;
   }
 }
+
+/* ==========================================================================
+   SIMULADOR & VISUALIZADOR ANATÔMICO 3D (Three.js)
+   ========================================================================== */
+.body3d-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 36px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.body3d-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  min-height: 540px;
+}
+
+@media (max-width: 991px) {
+  .body3d-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.body3d-viewport {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #161822 0%, #0a0a0e 100%);
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.body3d-canvas-mount {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  cursor: grab;
+}
+
+.body3d-canvas-mount:active {
+  cursor: grabbing;
+}
+
+.body3d-sidebar {
+  background: var(--bg-deep);
+  border-left: 1px solid var(--border-light);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 991px) {
+  .body3d-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--border-light);
+  }
+}
+
+.body3d-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.body3d-btn-cam {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.body3d-btn-cam:hover {
+  background: rgba(197, 160, 89, 0.15);
+  border-color: var(--gold-primary);
+  color: #FFFFFF;
+}
+
+.body3d-size-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--text-muted);
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.body3d-size-btn:hover {
+  border-color: var(--border-medium);
+  color: #FFFFFF;
+}
+
+.body3d-size-btn.active {
+  background: var(--gold-primary);
+  color: #000000;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 16px rgba(197, 160, 89, 0.3);
+}
+
+.budget-3d-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0D0E14;
+  color: #00FCDB;
+  border: 1px solid #00FCDB;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 252, 219, 0.25);
+  z-index: 9999;
+  animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

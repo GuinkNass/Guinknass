@@ -152,6 +152,117 @@
                 <input type="text" id="tattooMeaning" class="form-control" placeholder="Algum significado pessoal especial?">
               </div>
 
+              <!-- SIMULADOR ANATÔMICO 3D INTERATIVO (Raycasting em Tempo Real) -->
+              <div style="margin: 28px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                  <div>
+                    <span class="tag-badge" style="font-size: 0.72rem; padding: 4px 12px; margin-bottom: 4px;">Inovação Studio 3D</span>
+                    <h4 style="color: #FFFFFF; font-size: 1.15rem; margin: 0;">Seletor Anatômico 3D & Dimensionamento Real</h4>
+                  </div>
+                  <a href="/simulador-3d" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; color: #00FCDB; text-decoration: none; border: 1px solid rgba(0, 252, 219, 0.3); padding: 5px 12px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px;">
+                    <span>Abrir Tela Cheia</span> &nearr;
+                  </a>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+                  Gire o corpo 360°, dê zoom e <strong>clique na região desejada</strong>. O sistema identifica o membro exato e calcula as medidas em centímetros com base na sua altura.
+                </p>
+
+                <div id="body3dContainer" class="body3d-wrapper">
+                  <div class="body3d-grid">
+                    <!-- Viewport 3D -->
+                    <div class="body3d-viewport">
+                      <div id="body3dCanvasMount" class="body3d-canvas-mount"></div>
+
+                      <!-- Loading -->
+                      <div id="body3dLoading" style="position: absolute; inset: 0; background: rgba(10, 10, 14, 0.88); backdrop-filter: blur(4px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; z-index: 10;">
+                        <div style="width: 36px; height: 36px; border: 2px solid #C5A059; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        <span style="font-size: 0.75rem; color: #C5A059; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Carregando Modelo 3D...</span>
+                      </div>
+
+                      <!-- Barra Superior de Instrução -->
+                      <div style="position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; z-index: 5;">
+                        <span style="background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.12); padding: 5px 14px; border-radius: 9999px; font-size: 0.75rem; color: rgba(255,255,255,0.85); pointer-events: auto;">
+                          <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #00FCDB; margin-right: 6px; box-shadow: 0 0 6px #00FCDB;"></span>
+                          Clique para marcar o local
+                        </span>
+                        <button type="button" class="body3d-btn-cam" data-cam-view="reset" style="pointer-events: auto;">⟲ Reset</button>
+                      </div>
+
+                      <!-- Atalhos de Câmera -->
+                      <div style="position: absolute; bottom: 12px; left: 12px; display: flex; gap: 6px; z-index: 5; background: rgba(0,0,0,0.65); padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <button type="button" class="body3d-btn-cam" data-cam-view="front">Frente</button>
+                        <button type="button" class="body3d-btn-cam" data-cam-view="back">Costas</button>
+                        <button type="button" class="body3d-btn-cam" data-cam-view="left">Esq</button>
+                        <button type="button" class="body3d-btn-cam" data-cam-view="right">Dir</button>
+                      </div>
+                    </div>
+
+                    <!-- Painel Lateral -->
+                    <div class="body3d-sidebar">
+                      <div>
+                        <!-- Altura Real do Cliente -->
+                        <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+                          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <label for="clientRealHeight" style="font-size: 0.8rem; font-weight: 600; color: #E1E3E8;">Sua Altura Real</label>
+                            <span id="clientRealHeightDisplay" style="font-size: 0.85rem; font-weight: 700; color: #DFC17B; font-family: monospace;">175 cm</span>
+                          </div>
+                          <input type="range" id="clientRealHeight" min="145" max="210" value="175" style="width: 100%; accent-color: #C5A059; cursor: pointer;">
+                          <span style="font-size: 0.7rem; color: var(--text-dim); display: block; margin-top: 4px;">Recalcula a escala real e área em cm² automaticamente.</span>
+                        </div>
+
+                        <!-- Estado Vazio -->
+                        <div id="body3dEmptyState" style="text-align: center; padding: 24px 12px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 12px; background: rgba(0,0,0,0.2);">
+                          <div style="font-size: 1.8rem; margin-bottom: 6px;">👆</div>
+                          <h5 style="color: #FFFFFF; font-size: 0.95rem; margin-bottom: 4px;">Nenhum Ponto Marcado</h5>
+                          <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Clique em qualquer músculo ou membro no modelo ao lado.</p>
+                        </div>
+
+                        <!-- Estado Preenchido -->
+                        <div id="body3dFilledState" style="display: none;">
+                          <div style="background: linear-gradient(135deg, rgba(26,28,37,0.9), rgba(18,19,25,0.95)); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 12px; padding: 14px; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.5);">
+                            <span id="body3dSelectedBadge" style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #C5A059; letter-spacing: 0.08em; display: block; margin-bottom: 4px;">ANTEBRAÇO • FRENTE</span>
+                            <h4 id="body3dRegionName" style="color: #FFFFFF; font-size: 1.05rem; margin-bottom: 6px;">Antebraço Esquerdo (Frente)</h4>
+                            <p id="body3dRegionDesc" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">Área visível e anatômica ideal para composições verticais.</p>
+                          </div>
+
+                          <!-- Porte do Projeto -->
+                          <div style="margin-bottom: 14px;">
+                            <label style="font-size: 0.78rem; font-weight: 600; color: #E1E3E8; display: block; margin-bottom: 6px;">Porte do Projeto</label>
+                            <div style="display: flex; gap: 6px;">
+                              <button type="button" class="body3d-size-btn" data-size-preset="pequeno">Pequeno</button>
+                              <button type="button" class="body3d-size-btn active" data-size-preset="medio">Médio</button>
+                              <button type="button" class="body3d-size-btn" data-size-preset="grande">Grande</button>
+                            </div>
+                          </div>
+
+                          <!-- Grid de Medidas -->
+                          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+                            <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-light); border-radius: 10px; padding: 10px;">
+                              <span style="font-size: 0.68rem; text-transform: uppercase; color: var(--text-muted); display: block;">Dimensões</span>
+                              <span id="body3dRegionDims" style="font-size: 0.95rem; font-weight: 700; color: #DFC17B; font-family: monospace;">18 x 9 cm</span>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border-light); border-radius: 10px; padding: 10px;">
+                              <span style="font-size: 0.68rem; text-transform: uppercase; color: var(--text-muted); display: block;">Área Estimada</span>
+                              <span id="body3dRegionArea" style="font-size: 0.95rem; font-weight: 700; color: #00FCDB; font-family: monospace;">~162 cm²</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Botões de Ação do 3D -->
+                      <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+                        <button type="button" id="body3dConfirmBtn" class="btn btn-primary" style="width: 100%; opacity: 0.5; padding: 10px;" disabled>
+                          Confirmar este Local no Formulário &darr;
+                        </button>
+                        <a id="body3dWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%; display: none; padding: 10px; justify-content: center; font-size: 0.85rem;">
+                          Enviar Resumo para o WhatsApp
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="grid-2">
                 <div class="form-group">
                   <label class="form-label" for="tattooLocation">Local do Corpo <span class="required">*</span></label>
@@ -293,6 +404,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Three.js 3D Engine & Model Viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/body3d-viewer.js"></script>
 
   <!-- Scripts -->
   <script src="js/config.js"></script>
