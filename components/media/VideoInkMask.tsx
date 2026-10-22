@@ -47,7 +47,7 @@ export default function VideoInkMask({
             WebkitMaskRepeat: "no-repeat",
             maskMode: "alpha",
             WebkitMaskMode: "alpha",
-          }}
+          } as React.CSSProperties}
         >
           <source src={videoSrc} type="video/mp4" />
         </video>

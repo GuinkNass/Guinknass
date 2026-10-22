@@ -36,7 +36,7 @@ export default function ParallaxHeroSection() {
             WebkitMaskRepeat: "no-repeat",
             maskMode: "alpha",
             WebkitMaskMode: "alpha",
-          }}
+          } as React.CSSProperties}
         >
           <source src="/Portifolio/minha foto/eu.mp4" type="video/mp4" />
         </video>
