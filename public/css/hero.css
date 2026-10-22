@@ -25,26 +25,35 @@
   background-color: #000000;
 }
 
+/* 1ª Camada: Vídeo de apresentação / fundo */
 .hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.95) contrast(1.05);
+  filter: brightness(0.92) contrast(1.08);
   transform: scale(1.02);
   transition: opacity var(--transition-normal);
+  z-index: 1;
+}
 
-  /* Alpha Masking / Video Reveal (Efeito de Tinta Escorrendo) */
-  mask-image: url('/portfolio/videotinta.svg');
-  -webkit-mask-image: url('/portfolio/videotinta.svg');
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  mask-position: center;
-  -webkit-mask-position: center;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-mode: alpha;
-  -webkit-mask-mode: alpha;
+/* 2ª Camada: Vídeo de tinta fluida sobreposta rodando simultaneamente em tempo real */
+.hero-video-ink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 2;
+  transform: scale(1.02);
 }
 
 /* Camada de Contraste e Legibilidade (Fundo cinematográfico refinado) */

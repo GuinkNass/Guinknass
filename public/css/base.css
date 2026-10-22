@@ -97,10 +97,11 @@ ul, ol {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.18;
   color: var(--text-main);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
 h1 {

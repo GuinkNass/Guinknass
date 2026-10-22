@@ -1,60 +1,76 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export interface VideoInkMaskProps {
-  /** Fonte do vídeo em execução */
+  /** Fonte do vídeo de apresentação / fundo (1ª camada) */
   videoSrc?: string;
-  /** Caminho do arquivo SVG de máscara de tinta (ex: /portfolio/videotinta.svg) */
-  maskSrc?: string;
+  /** Fonte do vídeo de tinta fluida sobreposta rodando simultaneamente (2ª camada) */
+  inkVideoSrc?: string;
   className?: string;
   children?: React.ReactNode;
 }
 
 /**
- * Componente de Máscara de Vídeo (Alpha Masking / Reveal com Tinta Escorrendo)
- * Baseado em Next.js e Tailwind CSS.
- * O vídeo roda continuamente e fica visível apenas onde o SVG tem opacidade (tinta),
- * revelando o fundo sólido (preto) nas partes transparentes.
+ * Componente de Vídeo em Duas Camadas Simultâneas
+ * - 1ª Camada: Vídeo de fundo com alta resolução (eu.mp4)
+ * - 2ª Camada: Vídeo de tinta fluida sobreposta rodando em tempo real (videotinta.mp4)
+ * com mix-blend-mode: multiply para transparência orgânica e sincronismo contínuo.
  */
 export default function VideoInkMask({
   videoSrc = "/Portifolio/minha foto/eu.mp4",
-  maskSrc = "/portfolio/videotinta.svg",
+  inkVideoSrc = "/Portifolio/videotinta.mp4",
   className = "",
   children,
 }: VideoInkMaskProps) {
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const inkVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Garante que ambos os vídeos iniciem simultaneamente sem interrupção
+    if (bgVideoRef.current) {
+      bgVideoRef.current.play().catch(() => {});
+    }
+    if (inkVideoRef.current) {
+      inkVideoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   return (
     <div
       className={`relative w-full min-h-screen overflow-hidden bg-black flex items-center justify-center ${className}`}
     >
-      {/* 1. Container do Vídeo Mascarado com Fundo Preto */}
+      {/* 1. Container de Vídeos em Duas Camadas Sobrepostas */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-black">
+        {/* 1ª Camada: Vídeo de fundo */}
         <video
-          className="w-full h-full object-cover brightness-[0.95] contrast-[1.05]"
+          ref={bgVideoRef}
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.92] contrast-[1.08] z-0"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          style={{
-            maskImage: `url('${maskSrc}')`,
-            WebkitMaskImage: `url('${maskSrc}')`,
-            maskSize: "cover",
-            WebkitMaskSize: "cover",
-            maskPosition: "center",
-            WebkitMaskPosition: "center",
-            maskRepeat: "no-repeat",
-            WebkitMaskRepeat: "no-repeat",
-            maskMode: "alpha",
-            WebkitMaskMode: "alpha",
-          } as React.CSSProperties}
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
 
-        {/* 2. Camada Sobreposta de Contraste para Máxima Legibilidade */}
+        {/* 2ª Camada: Vídeo de tinta fluida sobreposta */}
+        <video
+          ref={inkVideoRef}
+          className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-95 pointer-events-none z-10"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src={inkVideoSrc} type="video/mp4" />
+        </video>
+
+        {/* Camada Sobreposta de Contraste para Máxima Legibilidade */}
         <div
-          className="absolute inset-0 z-10 pointer-events-none"
+          className="absolute inset-0 z-20 pointer-events-none"
           style={{
             background:
               "radial-gradient(circle at 50% 45%, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.72) 68%, #000000 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 35%, rgba(0, 0, 0, 0.75) 82%, #000000 100%)",
@@ -63,8 +79,8 @@ export default function VideoInkMask({
         />
       </div>
 
-      {/* 3. Container Interativo Sobreposto (Textos, Botões e Conteúdo) */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 py-12 text-center pointer-events-auto">
+      {/* 2. Container Interativo Sobreposto (Textos, Botões e Conteúdo) */}
+      <div className="relative z-30 w-full max-w-5xl mx-auto px-6 py-12 text-center pointer-events-auto">
         {children}
       </div>
     </div>

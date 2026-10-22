@@ -94,10 +94,13 @@
          ====================================================================== -->
     <section class="hero-section" id="hero">
       <div class="hero-video-bg-container">
-        <!-- Vídeo de fundo com muted, autoplay, loop e playsinline com Alpha Masking de tinta escorrendo -->
-        <video class="hero-video-bg" autoplay muted loop playsinline preload="auto" style="mask-image: url('/portfolio/videotinta.svg'); -webkit-mask-image: url('/portfolio/videotinta.svg'); mask-size: cover; -webkit-mask-size: cover; mask-position: center; -webkit-mask-position: center; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-mode: alpha; -webkit-mask-mode: alpha;">
+        <!-- 1ª Camada: Vídeo de apresentação / fundo -->
+        <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
           <source src="Portifolio/minha foto/eu.mp4" type="video/mp4">
-          <!-- Fallback de imagem caso o vídeo não seja suportado -->
+        </video>
+        <!-- 2ª Camada: Vídeo de tinta fluida sobreposta rodando simultaneamente -->
+        <video class="hero-video-ink" autoplay muted loop playsinline preload="auto">
+          <source src="Portifolio/videotinta.mp4" type="video/mp4">
         </video>
         <div class="hero-static-fallback" style="background-image: url('Portifolio/quadros/quadro 1.png');"></div>
       </div>

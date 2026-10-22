@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initWhatsAppWidget();
   highlightActiveNavLink();
   initHeroParallaxLogo();
+  initHeroVideos();
 });
 
 /* --------------------------------------------------------------------------
@@ -205,4 +206,37 @@ function initHeroParallaxLogo() {
   window.addEventListener("scroll", calculateParallax, { passive: true });
   window.addEventListener("resize", calculateParallax, { passive: true });
   calculateParallax();
+}
+
+/* --------------------------------------------------------------------------
+   Sincronização das Camadas de Vídeo Hero (Background e Tinta Sobreposta)
+   -------------------------------------------------------------------------- */
+function initHeroVideos() {
+  const bgVideo = document.querySelector(".hero-video-bg");
+  const inkVideo = document.querySelector(".hero-video-ink");
+
+  const startVideos = () => {
+    [bgVideo, inkVideo].forEach((video) => {
+      if (video) {
+        video.muted = true;
+        video.playsInline = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const unlockPlay = () => {
+              video.play().catch(() => {});
+              window.removeEventListener("click", unlockPlay);
+              window.removeEventListener("touchstart", unlockPlay);
+              window.removeEventListener("scroll", unlockPlay);
+            };
+            window.addEventListener("click", unlockPlay, { once: true });
+            window.addEventListener("touchstart", unlockPlay, { once: true });
+            window.addEventListener("scroll", unlockPlay, { once: true });
+          });
+        }
+      }
+    });
+  };
+
+  startVideos();
 }
