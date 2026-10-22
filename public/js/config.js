@@ -221,7 +221,7 @@ const GUINKNASS_CONFIG = {
     "tag": "Preto e Cinza / Sombras"
   },
   {
-    "file": "Portifolio/foto tattoo/Autoral convenção (realismo, colorido).jpg",
+    "file": "Portifolio/foto tattoo/Autoral convencao (realismo, colorido).jpg",
     "title": "Arte Autoral de Convenção",
     "tag": "Projeto Autoral"
   },
@@ -290,7 +290,7 @@ const GUINKNASS_CONFIG = {
   },
   {
     "id": 5,
-    "file": "Portifolio/foto tattoo/Autoral convenção (realismo, colorido).jpg",
+    "file": "Portifolio/foto tattoo/Autoral convencao (realismo, colorido).jpg",
     "title": "Arte Autoral de Convenção",
     "category": "colorido",
     "tags": [
