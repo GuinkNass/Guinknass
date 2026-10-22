@@ -6,6 +6,76 @@
 (function () {
   const MODEL_BASE_HEIGHT_CM = 180.0;
 
+  // Dicionário de regiões anatômicas pré-definidas para atalhos rápidos e cálculo
+  const REGION_PRESETS = {
+    antebraço: {
+      name: "Antebraço Esquerdo (Frente)",
+      category: "Antebraço",
+      view: "Frente",
+      baseWidth: 18,
+      baseHeight: 9,
+      desc: "A tela mais clássica e visível do corpo, perfeita para composições verticais.",
+      camPos: { x: 80, y: 85, z: 120 },
+      markerPos: { x: 26, y: 88, z: 4 },
+      normal: { x: 0.6, y: 0.1, z: 0.8 },
+    },
+    braço: {
+      name: "Braço Superior (Bíceps) Esquerdo",
+      category: "Braço",
+      view: "Frente",
+      baseWidth: 18,
+      baseHeight: 15,
+      desc: "Plano muscular amplo, excelente para fechamento de meia manga.",
+      camPos: { x: 100, y: 110, z: 100 },
+      markerPos: { x: 22, y: 118, z: 2 },
+      normal: { x: 0.8, y: 0.1, z: 0.5 },
+    },
+    peitoral: {
+      name: "Peitoral Esquerdo (Tórax)",
+      category: "Peitoral",
+      view: "Frente",
+      baseWidth: 20,
+      baseHeight: 16,
+      desc: "Plano muscular forte, ideal para arte de grande impacto e composições centrais.",
+      camPos: { x: 0, y: 130, z: 140 },
+      markerPos: { x: 9, y: 132, z: 11 },
+      normal: { x: 0.2, y: 0.1, z: 0.95 },
+    },
+    costas: {
+      name: "Costas Superior / Escápula",
+      category: "Costas",
+      view: "Costas",
+      baseWidth: 32,
+      baseHeight: 22,
+      desc: "Área nobre e ampla para painéis autorais completos e texturas ricas.",
+      camPos: { x: 0, y: 130, z: -160 },
+      markerPos: { x: 0, y: 132, z: -10 },
+      normal: { x: 0, y: 0.1, z: -0.98 },
+    },
+    coxa: {
+      name: "Coxa Direita (Anterior)",
+      category: "Coxa",
+      view: "Frente",
+      baseWidth: 28,
+      baseHeight: 18,
+      desc: "Uma das maiores telas musculares do corpo humano para painéis completos.",
+      camPos: { x: -60, y: 65, z: 130 },
+      markerPos: { x: -11, y: 66, z: 10 },
+      normal: { x: -0.3, y: 0.1, z: 0.94 },
+    },
+    panturrilha: {
+      name: "Panturrilha Esquerda (Posterior)",
+      category: "Panturrilha",
+      view: "Costas",
+      baseWidth: 24,
+      baseHeight: 15,
+      desc: "Volume muscular curvo que confere profundidade impressionante à tatuagem.",
+      camPos: { x: 50, y: 35, z: -120 },
+      markerPos: { x: 10, y: 36, z: -8 },
+      normal: { x: 0.2, y: 0.1, z: -0.95 },
+    },
+  };
+
   function init3DBodyViewer() {
     const container = document.getElementById("body3dContainer");
     if (!container) return;
@@ -28,13 +98,10 @@
     let clientHeight = heightSlider ? parseInt(heightSlider.value, 10) || 175 : 175;
     let sizePreset = "medio";
 
-    // Three.js instances
-    let scene, camera, renderer, controls, bodyMesh, markerGroup;
+    let scene, camera, renderer, controls, modelRoot, markerGroup;
     let bbox = { min: { x: -53.4, y: 0.58, z: -16.3 }, max: { x: 53.4, y: 180.5, z: 20.6 } };
 
-    // Verifica suporte a Three.js
     if (typeof THREE === "undefined") {
-      console.warn("[Body3D] Three.js não carregado globalmente. Carregando dinamicamente...");
       loadThreeScripts(() => startScene());
     } else {
       startScene();
@@ -63,23 +130,23 @@
       const width = canvasMount.clientWidth || 600;
       const height = canvasMount.clientHeight || 500;
 
-      // Cena
       scene = new THREE.Scene();
       scene.background = new THREE.Color(0x0a0a0e);
 
-      // Câmera
       camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 1000);
       camera.position.set(0, 95, 230);
 
-      // Renderizador WebGL
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance",
+      });
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
       canvasMount.replaceChildren(renderer.domElement);
 
-      // OrbitControls
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.06;
@@ -89,7 +156,7 @@
       controls.maxPolarAngle = Math.PI / 2 + 0.05;
       controls.update();
 
-      // Iluminação de Estúdio Clean Dark Mode
+      // Iluminação de Estúdio
       const ambientLight = new THREE.AmbientLight(0x222430, 1.2);
       scene.add(ambientLight);
 
@@ -105,12 +172,11 @@
       rimLight.position.set(0, 130, -110);
       scene.add(rimLight);
 
-      // Grid de apoio dos pés
       const grid = new THREE.GridHelper(160, 32, 0xc5a059, 0x1f212a);
       grid.position.y = 0;
       scene.add(grid);
 
-      // Marcador Visual 3D de Seleção
+      // Marcador Visual 3D
       markerGroup = new THREE.Group();
       markerGroup.visible = false;
 
@@ -141,68 +207,82 @@
 
       scene.add(markerGroup);
 
-      // Carrega Modelo GLB
+      // Carregamento do GLB com fallback de caminhos
       const gltfLoader = new THREE.GLTFLoader();
-      const modelPath = "Portifolio/3d/male_body.glb";
+      const modelPaths = [
+        "Portifolio/3d/male_body.glb",
+        "/Portifolio/3d/male_body.glb",
+        "portfolio/3d/male_body.glb",
+        "/portfolio/3d/male_body.glb",
+      ];
 
-      gltfLoader.load(
-        modelPath,
-        (gltf) => {
-          const root = gltf.scene;
-
-          // Centralização precisa e apoio dos pés no chão Y = 0
-          const box = new THREE.Box3().setFromObject(root);
-          const center = box.getCenter(new THREE.Vector3());
-
-          root.position.x = -center.x;
-          root.position.y = -box.min.y;
-          root.position.z = -center.z;
-
-          box.setFromObject(root);
-          bbox = box;
-
-          // Material dark mode estilo escultura de estúdio
-          root.traverse((child) => {
-            if (child.isMesh) {
-              bodyMesh = child;
-              child.material = new THREE.MeshStandardMaterial({
-                color: 0x22242c,
-                roughness: 0.52,
-                metalness: 0.28,
-              });
-            }
-          });
-
-          scene.add(root);
-          if (loadingEl) loadingEl.style.display = "none";
-        },
-        undefined,
-        (err) => {
-          console.error("[Body3D] Erro ao carregar GLB:", err);
+      function tryLoadModel(index) {
+        if (index >= modelPaths.length) {
           if (loadingEl) {
-            loadingEl.innerHTML = `<span style="color:#ef4444; font-size: 0.85rem;">Falha ao carregar o modelo 3D.</span>`;
+            loadingEl.innerHTML = `<span style="color:#ef4444; font-size: 0.85rem;">Falha ao carregar modelo 3D.</span>`;
           }
+          return;
         }
-      );
 
-      // Raycasting ao Clicar
+        gltfLoader.load(
+          modelPaths[index],
+          (gltf) => {
+            const root = gltf.scene;
+            modelRoot = root;
+
+            const box = new THREE.Box3().setFromObject(root);
+            const center = box.getCenter(new THREE.Vector3());
+
+            root.position.x = -center.x;
+            root.position.y = -box.min.y;
+            root.position.z = -center.z;
+
+            box.setFromObject(root);
+            bbox = box;
+
+            root.traverse((child) => {
+              if (child.isMesh) {
+                child.material = new THREE.MeshStandardMaterial({
+                  color: 0x22242c,
+                  roughness: 0.52,
+                  metalness: 0.28,
+                });
+              }
+            });
+
+            scene.add(root);
+            if (loadingEl) loadingEl.style.display = "none";
+          },
+          undefined,
+          () => {
+            tryLoadModel(index + 1);
+          }
+        );
+      }
+
+      tryLoadModel(0);
+
+      // Raycasting ao Clicar (Com tolerância suave para cliques reais)
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2();
-      let startPos = { x: 0, y: 0 };
+      let downPos = { x: 0, y: 0 };
+      let downTime = 0;
 
       const onPointerDown = (e) => {
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        startPos = { x: clientX, y: clientY };
+        downPos = { x: clientX, y: clientY };
+        downTime = Date.now();
       };
 
       const onPointerUp = (e) => {
         const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
-        const dx = Math.abs(clientX - startPos.x);
-        const dy = Math.abs(clientY - startPos.y);
+        const dist = Math.hypot(clientX - downPos.x, clientY - downPos.y);
+        const duration = Date.now() - downTime;
 
-        if (dx > 6 || dy > 6) return; // Arraste de rotação
+        // Se moveu mais de 12px ou demorou mais de 450ms, foi arraste/órbita da câmera
+        if (dist > 12 || duration > 450) return;
 
         const rect = renderer.domElement.getBoundingClientRect();
         mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
@@ -210,8 +290,8 @@
 
         raycaster.setFromCamera(mouse, camera);
 
-        if (!bodyMesh) return;
-        const intersects = raycaster.intersectObject(bodyMesh, true);
+        if (!modelRoot) return;
+        const intersects = raycaster.intersectObject(modelRoot, true);
 
         if (intersects.length > 0) {
           const hit = intersects[0];
@@ -268,6 +348,33 @@
         btn.addEventListener("click", () => {
           const view = btn.getAttribute("data-cam-view");
           setCameraView(view);
+        });
+      });
+
+      // Atalhos Rápidos de Região (Chips)
+      document.querySelectorAll("[data-quick-region]").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const regionKey = chip.getAttribute("data-quick-region");
+          const preset = REGION_PRESETS[regionKey];
+          if (!preset) return;
+
+          // Anima marcador para a posição pré-definida
+          if (markerGroup) {
+            markerGroup.position.set(preset.markerPos.x, preset.markerPos.y, preset.markerPos.z);
+            const n = new THREE.Vector3(preset.normal.x, preset.normal.y, preset.normal.z);
+            markerGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), n);
+            markerGroup.visible = true;
+          }
+
+          // Move câmera
+          if (camera && controls) {
+            camera.position.set(preset.camPos.x, preset.camPos.y, preset.camPos.z);
+            controls.target.set(0, preset.markerPos.y, 0);
+            controls.update();
+          }
+
+          currentSelected = updateCalculations(preset);
+          updateUI(currentSelected);
         });
       });
     }
@@ -331,7 +438,7 @@
         };
       }
 
-      const isArmZone = yNorm >= 0.38 && yNorm <= 0.84 && absX > 16.5;
+      const isArmZone = yNorm >= 0.38 && yNorm <= 0.84 && absX > 16.0;
       if (isArmZone) {
         if (yNorm >= 0.72) {
           return {
@@ -531,7 +638,6 @@
       }
     }
 
-    // Listener para Slider de Altura
     if (heightSlider) {
       heightSlider.addEventListener("input", (e) => {
         clientHeight = parseInt(e.target.value, 10) || 175;
@@ -543,7 +649,6 @@
       });
     }
 
-    // Listener para Botões de Preset de Porte
     document.querySelectorAll("[data-size-preset]").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("[data-size-preset]").forEach((b) => b.classList.remove("active"));
@@ -556,7 +661,6 @@
       });
     });
 
-    // Listener para Botão Confirmar Local
     if (confirmBtn) {
       confirmBtn.addEventListener("click", () => {
         if (!currentSelected) return;
@@ -569,13 +673,11 @@
           sizeInput.value = `${currentSelected.realWidth} cm x ${currentSelected.realHeight} cm (~${currentSelected.areaCm2} cm²)`;
         }
 
-        // Scroll suave até o formulário
         if (locInput) {
           locInput.scrollIntoView({ behavior: "smooth", block: "center" });
           locInput.focus();
         }
 
-        // Feedback visual
         const toast = document.createElement("div");
         toast.className = "budget-3d-toast";
         toast.textContent = `✓ Local definido: ${currentSelected.name} (${currentSelected.realWidth}x${currentSelected.realHeight} cm)`;
@@ -584,7 +686,6 @@
       });
     }
 
-    // Trata parâmetros de URL (?local=...&tamanho=...) se vindo de simulador externo
     const urlParams = new URLSearchParams(window.location.search);
     const paramLocal = urlParams.get("local");
     const paramTamanho = urlParams.get("tamanho");
@@ -598,7 +699,6 @@
     }
   }
 
-  // Inicializa quando o DOM estiver pronto
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init3DBodyViewer);
   } else {

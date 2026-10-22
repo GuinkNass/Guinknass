@@ -4,17 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Fonte Oficial GuinkNass - Blacked Soubery Highstem Brush Display Font */
+/* Fonte Oficial GuinkNass - Crondie Display Font */
 @font-face {
-  font-family: 'Blacked Soubery';
-  src: url('/Portifolio/fonte/Blacked Soubery.woff') format('woff'),
-       url('../Portifolio/fonte/Blacked Soubery.woff') format('woff'),
-       url('/Portifolio/fonte/Blacked Soubery.ttf') format('truetype'),
-       url('../Portifolio/fonte/Blacked Soubery.ttf') format('truetype'),
-       url('/Portifolio/fonte/Blacked Soubery.otf') format('opentype'),
-       url('../Portifolio/fonte/Blacked Soubery.otf') format('opentype'),
-       url('/Portifolio/fonte/Blacked Soubery Highstem Brush Display Font/Blacked Soubery.woff') format('woff'),
-       url('../Portifolio/fonte/Blacked Soubery Highstem Brush Display Font/Blacked Soubery.woff') format('woff');
+  font-family: 'Crondie';
+  src: url('/Portifolio/fonte/Crondie.woff2') format('woff2'),
+       url('../Portifolio/fonte/Crondie.woff2') format('woff2'),
+       url('/Portifolio/fonte/Crondie/Crondie.woff2') format('woff2'),
+       url('../Portifolio/fonte/Crondie/Crondie.woff2') format('woff2'),
+       url('/Portifolio/fonte/Crondie.woff') format('woff'),
+       url('../Portifolio/fonte/Crondie.woff') format('woff'),
+       url('/Portifolio/fonte/Crondie.ttf') format('truetype'),
+       url('../Portifolio/fonte/Crondie.ttf') format('truetype'),
+       url('/Portifolio/fonte/Crondie.otf') format('opentype'),
+       url('../Portifolio/fonte/Crondie.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -64,9 +66,9 @@
   --glow-accent: 0 0 28px rgba(197, 160, 89, 0.35);
   --glow-gold: 0 0 28px rgba(197, 160, 89, 0.35);
 
-  --font-family: 'Blacked Soubery', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: 'Blacked Soubery', cursive, sans-serif;
-  --font-display: 'Blacked Soubery', cursive, sans-serif;
+  --font-family: 'Crondie', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Crondie', cursive, sans-serif;
+  --font-display: 'Crondie', cursive, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   
   --header-height: 88px;
