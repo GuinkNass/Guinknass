@@ -47,9 +47,9 @@
 }
 
 .header-logo-img {
-  height: 68px;
+  height: 54px;
   width: auto;
-  max-width: 130px;
+  max-width: 150px;
   object-fit: contain;
   display: block;
   transition: transform var(--transition-fast), filter var(--transition-fast), height var(--transition-fast);
@@ -62,7 +62,8 @@
 }
 
 .site-header.scrolled .header-logo-img {
-  height: 56px;
+  height: 44px;
+  max-width: 125px;
 }
 
 .site-logo .logo-dot {
@@ -255,11 +256,11 @@
 
 @media (max-width: 768px) {
   .header-logo-img {
-    height: 52px;
-    max-width: 95px;
+    height: 44px;
+    max-width: 120px;
   }
   .mobile-drawer .header-logo-img {
-    height: 76px;
-    max-width: 130px;
+    height: 56px;
+    max-width: 150px;
   }
 }
