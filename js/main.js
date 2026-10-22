@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initWhatsAppWidget();
   highlightActiveNavLink();
+  initHeroParallaxLogo();
 });
 
 /* --------------------------------------------------------------------------
@@ -137,3 +138,71 @@ function showToast(message, type = "success", duration = 4500) {
 
 // Expõe showToast globalmente
 window.showToast = showToast;
+
+/* --------------------------------------------------------------------------
+   Efeito Parallax Scrolling no Logo Central (Inspirado no Osmo Supply)
+   Interpolação contínua acelerada por GPU, willChange: transform
+   Ciclo de visibilidade: target hero, offset: ["start end", "end start"]
+   -------------------------------------------------------------------------- */
+function initHeroParallaxLogo() {
+  const hero = document.getElementById("hero");
+  const logo = document.querySelector(".hero-logo-center .hero-logo-img");
+  if (!hero || !logo) return;
+
+  // Respeita preferência do usuário por redução de movimento
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  logo.style.willChange = "transform";
+
+  let currentY = 0;
+  let targetY = 0;
+  let currentScale = 1;
+  let targetScale = 1;
+  let isTicking = false;
+
+  const calculateParallax = () => {
+    const rect = hero.getBoundingClientRect();
+    const windowH = window.innerHeight;
+
+    // Se o elemento estiver totalmente fora do viewport, ignora cálculo
+    if (rect.bottom < 0 || rect.top > windowH) return;
+
+    // Offset ["start end", "end start"]:
+    // 0 = quando o topo do hero toca o fundo do viewport
+    // 1 = quando o fundo do hero toca o topo do viewport
+    const totalDist = windowH + rect.height;
+    const currentDist = windowH - rect.top;
+    const progress = Math.max(0, Math.min(1, currentDist / totalDist));
+
+    // Deslocamento suave de -20% a +20%
+    const isMobile = window.innerWidth < 768;
+    const maxOffset = isMobile ? 24 : 50;
+    targetY = (progress - 0.5) * 2 * maxOffset;
+
+    // Leve respiração tridimensional de escala (0.97 a 1.03)
+    targetScale = 1 + (1 - Math.abs(progress - 0.5) * 2) * 0.03;
+
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(renderParallax);
+    }
+  };
+
+  const renderParallax = () => {
+    // Amortecimento suave (lerp 0.12) idêntico ao Framer Motion useSpring
+    currentY += (targetY - currentY) * 0.12;
+    currentScale += (targetScale - currentScale) * 0.12;
+
+    logo.style.transform = `translate3d(0, ${currentY.toFixed(2)}px, 0) scale(${currentScale.toFixed(4)})`;
+
+    if (Math.abs(targetY - currentY) > 0.05 || Math.abs(targetScale - currentScale) > 0.0005) {
+      requestAnimationFrame(renderParallax);
+    } else {
+      isTicking = false;
+    }
+  };
+
+  window.addEventListener("scroll", calculateParallax, { passive: true });
+  window.addEventListener("resize", calculateParallax, { passive: true });
+  calculateParallax();
+}
