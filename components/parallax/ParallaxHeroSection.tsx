@@ -16,21 +16,33 @@ export default function ParallaxHeroSection() {
       id="hero-parallax"
       className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-black pt-20"
     >
-      {/* 1. Background com Vídeo & Degradê Cinematográfico */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+      {/* 1. Background com Vídeo & Máscara de Tinta (Alpha Masking / Reveal) */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-black">
         <video
-          className="w-full h-full object-cover brightness-[0.92] contrast-[1.04] scale-[1.02]"
+          className="w-full h-full object-cover brightness-[0.95] contrast-[1.05]"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          style={{
+            maskImage: "url('/portfolio/videotinta.svg')",
+            WebkitMaskImage: "url('/portfolio/videotinta.svg')",
+            maskSize: "cover",
+            WebkitMaskSize: "cover",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskMode: "alpha",
+            WebkitMaskMode: "alpha",
+          }}
         >
           <source src="/Portifolio/minha foto/eu.mp4" type="video/mp4" />
         </video>
-        {/* Degradê de Alto Contraste */}
+        {/* Degradê de Alto Contraste Sobreposto */}
         <div
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background:
               "radial-gradient(circle at 50% 45%, rgba(7, 7, 9, 0.38) 0%, rgba(7, 7, 9, 0.74) 68%, #000000 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.78) 82%, #000000 100%)",
@@ -38,8 +50,8 @@ export default function ParallaxHeroSection() {
         />
       </div>
 
-      {/* 2. Conteúdo Editorial & Camada Parallax */}
-      <div className="relative z-20 max-w-4xl mx-auto px-6 py-10 text-center">
+      {/* 2. Conteúdo Editorial & Camada Parallax Interativa */}
+      <div className="relative z-20 max-w-4xl mx-auto px-6 py-10 text-center pointer-events-auto">
         {/* Badge da Categoria */}
         <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#DFC17B] bg-[#C5A059]/10 border border-[#C5A059]/40 px-5 py-1.5 rounded-full mb-5">
           Artista Visual & Tatuador
