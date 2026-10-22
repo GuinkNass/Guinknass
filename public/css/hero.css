@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HERO SECTION: VÍDEO EU DE APRESENTAÇÃO & EXPERIÊNCIA IMERSIVA
+   HERO SECTION: VÍDEO EU DE APRESENTAÇÃO & EXPERIÊNCIA IMERSIVA PREMIUM
    ========================================================================== */
 
 .hero-section {
@@ -29,18 +29,18 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.92) contrast(1.02);
+  filter: brightness(0.92) contrast(1.04);
   transform: scale(1.02);
   transition: opacity var(--transition-normal);
 }
 
-/* Camada de Contraste e Legibilidade (Mais Clara e Suave) */
+/* Camada de Contraste e Legibilidade (Fundo cinematográfico refinado) */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 75%, #000000 100%),
-              linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.65) 85%, #000000 100%);
+  background: radial-gradient(circle at 50% 45%, rgba(7, 7, 9, 0.38) 0%, rgba(7, 7, 9, 0.74) 68%, #000000 100%),
+              linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.78) 82%, #000000 100%);
   pointer-events: none;
 }
 
@@ -48,30 +48,49 @@
 .hero-content {
   position: relative;
   z-index: 3;
-  max-width: 920px;
+  max-width: 860px;
   text-align: center;
-  padding: 40px 24px;
+  padding: 40px 24px 30px 24px;
 }
 
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid var(--gold-border);
+  padding: 6px 20px;
+  border-radius: var(--radius-full);
+  margin-bottom: 20px;
+}
+
+/* Logo Central de Destaque */
 .hero-logo-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 16px auto 26px auto;
+  margin: 12px auto 26px auto;
+  position: relative;
 }
 
 .hero-logo-img {
-  max-width: 380px;
-  width: min(85vw, 380px);
-  max-height: 220px;
+  width: min(90vw, 480px);
+  max-width: 480px;
+  height: auto;
+  max-height: 310px;
   object-fit: contain;
-  filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(0, 240, 255, 0.3));
-  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 10px 32px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 38px rgba(197, 160, 89, 0.25));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-logo-img:hover {
-  transform: scale(1.03);
-  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 1)) drop-shadow(0 0 45px rgba(0, 240, 255, 0.5));
+  transform: scale(1.02);
+  filter: drop-shadow(0 14px 40px rgba(0, 0, 0, 1)) drop-shadow(0 0 48px rgba(197, 160, 89, 0.38));
 }
 
 .sr-only {
@@ -86,42 +105,42 @@
   border: 0;
 }
 
-.hero-title {
-  font-size: clamp(3.2rem, 8vw, 6.2rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 2px 10px rgba(0, 0, 0, 0.8);
+/* Hierarquia de Mensagem Institucional */
+.hero-statement {
+  max-width: 660px;
+  margin: 0 auto 34px auto;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.28rem, 2.7vw, 1.75rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
 .hero-lead {
-  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-  color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 760px;
-  margin: 0 auto 36px auto;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(225, 227, 232, 0.88);
+  line-height: 1.65;
+  margin: 0 auto;
   font-weight: 400;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95);
-}
-
-.hero-lead strong {
-  color: #ffffff;
-  font-weight: 600;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
 }
 
 .hero-actions {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
 /* Indicador de Rolagem */
 .hero-scroll-indicator {
   position: absolute;
-  bottom: 30px;
+  bottom: 26px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -130,20 +149,21 @@
   align-items: center;
   gap: 8px;
   color: var(--text-dim);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
 .hero-scroll-indicator:hover {
-  color: var(--color-secondary);
+  color: var(--gold-light);
 }
 
 .mouse-icon {
   width: 24px;
   height: 38px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(197, 160, 89, 0.35);
   border-radius: 12px;
   position: relative;
 }
@@ -151,7 +171,7 @@
 .mouse-wheel {
   width: 4px;
   height: 8px;
-  background-color: var(--color-secondary);
+  background-color: var(--gold-primary);
   border-radius: 2px;
   position: absolute;
   top: 6px;
@@ -178,20 +198,44 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 92vh;
+    min-height: 94vh;
+    padding-top: var(--header-height-mobile);
   }
-  .hero-title {
-    font-size: 3rem;
+  .hero-content {
+    padding: 30px 18px 24px 18px;
+  }
+  .hero-logo-center {
+    margin: 10px auto 20px auto;
+  }
+  .hero-logo-img {
+    width: min(88vw, 340px);
+    max-height: 220px;
+  }
+  .hero-statement {
+    margin-bottom: 28px;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
   }
   .hero-lead {
-    font-size: 1.1rem;
-    margin-bottom: 28px;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 14px;
   }
   .hero-actions .btn {
     width: 100%;
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo-img {
+    width: min(86vw, 290px);
+    max-height: 190px;
   }
 }

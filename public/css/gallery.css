@@ -26,16 +26,16 @@
 }
 
 .filter-btn:hover {
-  border-color: var(--color-secondary);
+  border-color: var(--gold-primary);
   color: #ffffff;
 }
 
 .filter-btn.active {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
-  color: #000000;
+  background: linear-gradient(135deg, #DFC17B 0%, #C5A059 100%);
+  border-color: #DFC17B;
+  color: #0A0A0D;
   font-weight: 700;
-  box-shadow: var(--glow-cyan);
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.28);
 }
 
 /* --------------------------------------------------------------------------
@@ -312,7 +312,7 @@
 
 /* Painel de Controle de Visibilidade do Artista */
 .visibility-banner {
-  background: rgba(53, 0, 252, 0.1);
+  background: rgba(197, 160, 89, 0.1);
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-md);
   padding: 16px 24px;

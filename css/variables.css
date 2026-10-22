@@ -13,10 +13,17 @@
   --bg-card-hover: #181922;
   --bg-card-elevated: #1e1f2a;
   
-  --color-primary: #6EC1E4;
-  --color-secondary: #00FCDB; /* Ciano Elétrico Neon */
-  --color-accent: #3500FC;    /* Azul Cobalto Intenso */
-  --color-accent-hover: #00FCDB;
+  /* Paleta Nobre / Artística Dourada & Bronze */
+  --gold-primary: #C5A059;       /* Ouro nobre acetinado / champagne */
+  --gold-light: #DFC17B;         /* Iluminação dourada suave */
+  --gold-dark: #9A7B38;          /* Bronze nobre */
+  --gold-glow: rgba(197, 160, 89, 0.28);
+  --gold-border: rgba(197, 160, 89, 0.4);
+
+  --color-primary: #C5A059;      /* Dourado Nobre */
+  --color-secondary: #00FCDB;    /* Ciano Elétrico Neon moderado para detalhes ativos e técnicos */
+  --color-accent: #C5A059;       /* Substitui o antigo roxo pelo ouro nobre da marca */
+  --color-accent-hover: #DFC17B;
   
   --text-main: #FFFFFF;
   --text-secondary: #E1E3E8;
@@ -26,10 +33,11 @@
   --border-light: rgba(255, 255, 255, 0.08);
   --border-medium: rgba(255, 255, 255, 0.16);
   --border-cyan: rgba(0, 252, 219, 0.35);
-  --border-accent: rgba(53, 0, 252, 0.4);
+  --border-accent: rgba(197, 160, 89, 0.4);
+  --border-gold: rgba(197, 160, 89, 0.4);
 
   --radius-sm: 6px;
-  --radius-md: 10px; /* Padrão dos botões AiMentor */
+  --radius-md: 10px; /* Padrão dos botões */
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
@@ -37,12 +45,13 @@
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.6);
   --glow-cyan: 0 0 24px rgba(0, 252, 219, 0.3);
-  --glow-accent: 0 0 28px rgba(53, 0, 252, 0.4);
+  --glow-accent: 0 0 28px rgba(197, 160, 89, 0.35);
+  --glow-gold: 0 0 28px rgba(197, 160, 89, 0.35);
 
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   
-  --header-height: 84px;
-  --header-height-mobile: 72px;
+  --header-height: 88px;
+  --header-height-mobile: 76px;
   --container-max-width: 1280px;
   --container-padding: 24px;
 

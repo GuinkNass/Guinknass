@@ -175,9 +175,9 @@ p.lead {
 }
 
 .tag-badge-accent {
-  color: #a78bfa;
-  background: rgba(53, 0, 252, 0.15);
-  border-color: rgba(167, 139, 250, 0.3);
+  color: var(--gold-light);
+  background: rgba(197, 160, 89, 0.12);
+  border-color: var(--gold-border);
 }
 
 .section-header {
@@ -192,7 +192,7 @@ p.lead {
 }
 
 /* ==========================================================================
-   BUTTONS (Especificação fiel ao template AiMentor)
+   BUTTONS (Acabamento Nobre Dourado & Dark Elegante)
    ========================================================================== */
 
 .btn {
@@ -200,46 +200,52 @@ p.lead {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  padding: 16px 36px;
+  letter-spacing: 0.03em;
+  padding: 15px 34px;
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
   text-align: center;
   user-select: none;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Botão Principal Accent (Azul Cobalto para Ciano) */
+/* Botão Principal: Dourado Nobre Acetinado com texto escuro para legibilidade máxima */
 .btn-primary {
-  background-color: var(--color-accent);
-  color: #ffffff;
-  border: 1px solid var(--color-accent);
-  box-shadow: 0 4px 15px rgba(53, 0, 252, 0.3);
+  background: linear-gradient(135deg, #DFC17B 0%, #C5A059 100%);
+  color: #0A0A0D;
+  font-weight: 700;
+  border: 1px solid #DFC17B;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.28);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
-  color: #000000;
-  box-shadow: var(--glow-cyan);
+  background: linear-gradient(135deg, #EAD397 0%, #D4AF65 100%);
+  border-color: #EAD397;
+  color: #050507;
+  box-shadow: 0 6px 24px rgba(197, 160, 89, 0.42);
   transform: translateY(-2px);
 }
 
-/* Botão Secundário Outline */
+/* Botão Secundário: Fundo escuro com contorno dourado elegante */
 .btn-outline {
-  background-color: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background-color: rgba(13, 13, 15, 0.65);
+  color: #FFFFFF;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .btn-outline:hover {
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-  background-color: rgba(0, 252, 219, 0.06);
+  border-color: #DFC17B;
+  color: #DFC17B;
+  background-color: rgba(197, 160, 89, 0.08);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.2);
   transform: translateY(-2px);
 }
 

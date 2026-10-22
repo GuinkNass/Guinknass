@@ -124,8 +124,8 @@
 .carousel-dot.active {
   width: 30px;
   border-radius: 6px;
-  background: var(--color-secondary);
-  box-shadow: 0 0 12px var(--color-secondary);
+  background: var(--gold-primary);
+  box-shadow: 0 0 12px rgba(197, 160, 89, 0.5);
 }
 
 .carousel-nav-buttons {
@@ -148,10 +148,10 @@
 }
 
 .carousel-nav-btn:hover {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
-  color: #000000;
-  box-shadow: var(--glow-cyan);
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: #0A0A0D;
+  box-shadow: 0 4px 16px rgba(197, 160, 89, 0.4);
 }
 
 /* Responsividade do Carrossel */
