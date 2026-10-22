@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio de Tatuagens — GuinkNass</title>
   <meta name="description" content="Explore o portfólio de tatuagens autorais do artista GuinkNass. Mais de 13 anos de experiência em composições de alto impacto, preto e cinza e projetos sob medida.">
+  <link rel="icon" type="image/png" href="Portifolio/logo.png">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
@@ -17,9 +18,8 @@
   <!-- Cabeçalho -->
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="site-logo">
-        <span>Guink<span class="text-cyan">Nass</span></span>
-        <span class="logo-tag">ART</span>
+      <a href="index.html" class="site-logo" aria-label="Página Inicial GuinkNass">
+        <img src="Portifolio/logo.png" alt="GuinkNass" class="header-logo-img">
       </a>
 
       <nav class="nav-desktop">
@@ -52,7 +52,9 @@
   <aside class="mobile-drawer">
     <div>
       <div style="margin-bottom: 32px;">
-        <span class="site-logo">Guink<span class="text-cyan">Nass</span></span>
+        <a href="index.html" class="site-logo" aria-label="Página Inicial GuinkNass">
+          <img src="Portifolio/logo.png" alt="GuinkNass" class="header-logo-img">
+        </a>
       </div>
       <nav class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-link">Início</a>
@@ -89,11 +91,12 @@
         <!-- Filtros de Categoria -->
         <div class="filter-tabs">
           <button class="filter-btn active" data-filter="todos">Todos os Trabalhos</button>
-          <button class="filter-btn" data-filter="autorais">Autorais</button>
           <button class="filter-btn" data-filter="pretoecinza">Preto e Cinza</button>
-          <button class="filter-btn" data-filter="realismo">Realismo & Sombra</button>
-          <button class="filter-btn" data-filter="detalhes">Detalhes & Traços</button>
+          <button class="filter-btn" data-filter="realismo">Realismo</button>
+          <button class="filter-btn" data-filter="colorido">Colorido</button>
+          <button class="filter-btn" data-filter="portrait">Portraits</button>
           <button class="filter-btn" data-filter="fechamento">Fechamentos</button>
+          <button class="filter-btn" data-filter="autorais">Autorais</button>
         </div>
 
         <!-- Grade Dinâmica -->

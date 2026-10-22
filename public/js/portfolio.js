@@ -55,7 +55,7 @@ function initPortfolio() {
       if (category === "todos") {
         activeList = [...tattoos];
       } else {
-        activeList = tattoos.filter(t => t.category === category);
+        activeList = tattoos.filter(t => t.category === category || (t.tags && t.tags.includes(category)));
       }
 
       renderGrid();

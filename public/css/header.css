@@ -43,6 +43,21 @@
   letter-spacing: -0.03em;
   color: #ffffff;
   text-transform: uppercase;
+  text-decoration: none;
+}
+
+.header-logo-img {
+  height: 46px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.site-logo:hover .header-logo-img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.45));
 }
 
 .site-logo .logo-dot {

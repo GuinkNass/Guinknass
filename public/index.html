@@ -12,7 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="GuinkNass — Artista Visual & Tatuador">
   <meta property="og:description" content="Mais de 20 anos de arte visual e mais de 13 anos de tatuagem autoral. Conheça as obras e solicite seu orçamento.">
-  <meta property="og:image" content="Portifolio/quadro 1.png">
+  <meta property="og:image" content="Portifolio/quadros/quadro 1.png">
+  <link rel="icon" type="image/png" href="Portifolio/logo.png">
 
   <!-- Estilos Globais e do Template -->
   <link rel="stylesheet" href="css/variables.css">
@@ -31,8 +32,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="site-logo" aria-label="Página Inicial GuinkNass">
-        <span>Guink<span class="text-cyan">Nass</span></span>
-        <span class="logo-tag">ART</span>
+        <img src="Portifolio/logo.png" alt="GuinkNass" class="header-logo-img">
       </a>
 
       <!-- Menu Desktop -->
@@ -67,7 +67,9 @@
   <aside class="mobile-drawer" aria-label="Menu Mobile">
     <div>
       <div style="margin-bottom: 32px;">
-        <span class="site-logo">Guink<span class="text-cyan">Nass</span></span>
+        <a href="index.html" class="site-logo" aria-label="Página Inicial GuinkNass">
+          <img src="Portifolio/logo.png" alt="GuinkNass" class="header-logo-img">
+        </a>
       </div>
       <nav class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-link active">Início</a>
@@ -94,10 +96,10 @@
       <div class="hero-video-bg-container">
         <!-- Vídeo de fundo com muted, autoplay, loop e playsinline -->
         <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
-          <source src="Portifolio/eu.mp4" type="video/mp4">
+          <source src="Portifolio/minha foto/eu.mp4" type="video/mp4">
           <!-- Fallback de imagem caso o vídeo não seja suportado -->
         </video>
-        <div class="hero-static-fallback" style="background-image: url('Portifolio/quadro 1.png');"></div>
+        <div class="hero-static-fallback" style="background-image: url('Portifolio/quadros/quadro 1.png');"></div>
       </div>
 
       <!-- Camada de Contraste para máxima legibilidade -->
@@ -106,7 +108,10 @@
       <!-- Conteúdo Editorial -->
       <div class="hero-content">
         <span class="tag-badge">Artista Visual & Tatuador</span>
-        <h1 class="hero-title">GUINK<span class="text-gradient">NASS</span></h1>
+        <div class="hero-logo-center">
+          <img src="Portifolio/logo.png" alt="GuinkNass — Artista Visual & Tatuador" class="hero-logo-img">
+        </div>
+        <h1 class="sr-only">GuinkNass — Artista Visual & Tatuador Oficial</h1>
         <p class="hero-lead">
           <strong>Mais de 20 anos de trajetória artística.</strong><br>
           Mais de 13 anos transformando ideias em tatuagens autorais e obras de expressão singular.
@@ -212,7 +217,7 @@
           <!-- Card Quadro 1 -->
           <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <div style="aspect-ratio: 4/5; overflow: hidden; background: #000;">
-              <img src="Portifolio/quadro 1.png" alt="Quadro 01 - GuinkNass" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              <img src="Portifolio/quadros/quadro 1.png" alt="Quadro 01 - GuinkNass" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
             </div>
             <div style="padding: 28px;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
@@ -231,7 +236,7 @@
           <!-- Card Quadro 2 -->
           <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <div style="aspect-ratio: 4/5; overflow: hidden; background: #000;">
-              <img src="Portifolio/quadro 2.png" alt="Quadro 02 - A Ilha Flutuante & Ghost" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              <img src="Portifolio/quadros/quadro 2.png" alt="Quadro 02 - A Ilha Flutuante & Ghost" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
             </div>
             <div style="padding: 28px;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">

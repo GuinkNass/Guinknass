@@ -28,9 +28,11 @@ const endpoints = [
   '/js/estudos.js',
   '/js/budget-form.js',
   '/js/anamnese-form.js',
-  '/Portifolio/quadro 1.png',
-  '/Portifolio/quadro 2.png',
-  '/Portifolio/arte1.jpg'
+  '/Portifolio/logo.png',
+  '/Portifolio/quadros/quadro 1.png',
+  '/Portifolio/quadros/quadro 2.png',
+  '/Portifolio/minha foto/eu.mp4',
+  '/Portifolio/minha foto/My_first_board_Realistic_3D_CGI_Render_Tattoo_Artist_0BKq6n05.jpg'
 ];
 
 async function checkUrl(path) {
